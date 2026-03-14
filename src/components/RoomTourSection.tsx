@@ -184,6 +184,60 @@ const RoomTourSection = () => {
           </div>
         </ScrollReveal>
       </div>
+
+      {/* Lightbox */}
+      {lightbox !== null && (
+        <div
+          className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-4 animate-fade-in"
+          onClick={() => setLightbox(null)}
+        >
+          <button
+            className="absolute top-4 right-4 text-primary-foreground/80 hover:text-primary-foreground z-10"
+            onClick={() => setLightbox(null)}
+          >
+            <X className="w-8 h-8" />
+          </button>
+
+          {lightbox > 0 && (
+            <button
+              className="absolute left-4 text-primary-foreground/80 hover:text-primary-foreground z-10"
+              onClick={(e) => { e.stopPropagation(); setLightbox(lightbox - 1); }}
+            >
+              <ChevronLeft className="w-10 h-10" />
+            </button>
+          )}
+
+          {lightbox < zone.images.length - 1 && (
+            <button
+              className="absolute right-4 text-primary-foreground/80 hover:text-primary-foreground z-10"
+              onClick={(e) => { e.stopPropagation(); setLightbox(lightbox + 1); }}
+            >
+              <ChevronRight className="w-10 h-10" />
+            </button>
+          )}
+
+          <img
+            src={zone.images[lightbox]}
+            alt={`${zone.label} — фото ${lightbox + 1}`}
+            className="max-w-full max-h-[85vh] rounded-lg object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+
+          {zone.images.length > 1 && (
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+              {zone.images.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setLightbox(i); }}
+                  className={`w-2 h-2 rounded-full transition-all ${
+                    i === lightbox ? "bg-primary-foreground w-6" : "bg-primary-foreground/40"
+                  }`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </section>
   );
 };
