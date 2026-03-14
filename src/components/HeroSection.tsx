@@ -22,6 +22,13 @@ const images = [
 
 const HeroSection = () => {
   const [index, setIndex] = useState(0);
+  const [showScroll, setShowScroll] = useState(true);
+
+  useEffect(() => {
+    const onScroll = () => setShowScroll(window.scrollY < 100);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
