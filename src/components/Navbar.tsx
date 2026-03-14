@@ -81,11 +81,15 @@ const Navbar = () => {
               className={`text-sm font-medium transition-colors relative pb-0.5 ${
                 scrolled ? "text-foreground/80" : "text-primary-foreground/80"
               } ${
-                activeSection === l.id
+                l.isPage && location.pathname === l.href
                   ? scrolled
                     ? "!text-primary"
                     : "!text-primary-foreground"
-                  : ""
+                  : activeSection === l.id
+                    ? scrolled
+                      ? "!text-primary"
+                      : "!text-primary-foreground"
+                    : ""
               } hover:opacity-70`}
             >
               {l.label}
