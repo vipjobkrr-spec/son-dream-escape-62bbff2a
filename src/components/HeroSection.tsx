@@ -21,6 +21,8 @@ const images = [
 const HeroSection = () => {
   const [index, setIndex] = useState(0);
   const [showScroll, setShowScroll] = useState(true);
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
 
   useEffect(() => {
     const onScroll = () => setShowScroll(window.scrollY < 100);
@@ -35,9 +37,14 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToBooking = useCallback(() => {
-    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  const handleBooking = useCallback(() => {
+    if (checkIn || checkOut) {
+      const text = `Здравствуйте! Хочу забронировать домик «Сон». Даты: ${checkIn || "___"} – ${checkOut || "___"}. Подскажите наличие и стоимость.`;
+      window.open(`${MAX_URL.split("?")[0]}?text=${encodeURIComponent(text)}`, "_blank");
+    } else {
+      document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [checkIn, checkOut]);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
