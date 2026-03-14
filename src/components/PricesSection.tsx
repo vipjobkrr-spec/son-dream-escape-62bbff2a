@@ -165,6 +165,7 @@ const ShaderCanvas = () => {
 
 /* ── Main section ────────────────────────────────────────── */
 const PricesSection = () => {
+  const isMobile = useIsMobile();
   const [selected, setSelected] = useState<string | null>(null);
   const [guests, setGuests] = useState(2);
   const [extraBed, setExtraBed] = useState(false);
