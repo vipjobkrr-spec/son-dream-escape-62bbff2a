@@ -161,7 +161,7 @@ const RoomTourSection = () => {
 
             {/* Thumbnail strip */}
             {zone.images.length > 1 && (
-              <div className="flex gap-3 mt-4 justify-center">
+              <div className="flex gap-2 md:gap-3 mt-3 md:mt-4 justify-center">
                 {zone.images.map((src, i) => (
                   <button
                     key={src}
