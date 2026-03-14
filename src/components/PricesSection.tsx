@@ -185,7 +185,11 @@ const PricesSection = () => {
 
   return (
     <section id="prices" className="relative py-16 md:py-24 overflow-hidden">
-      <ShaderCanvas />
+      {isMobile ? (
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 pointer-events-none" aria-hidden />
+      ) : (
+        <ShaderCanvas />
+      )}
 
       <div className="container relative z-10">
         <ScrollReveal>
