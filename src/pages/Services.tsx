@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ChevronRight, Flame, Mountain, Bike, Ship, TreePine, MapPin, Clock, Sparkles } from "lucide-react";
+import { ChevronRight, Flame, Mountain, Bike, Ship, TreePine, MapPin, Clock, Sparkles, CreditCard, CheckCircle2 } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
