@@ -292,6 +292,7 @@ const PricesSection = () => {
                         </span>
                         <button
                           onClick={() => setNights(Math.min(30, nights + 1))}
+                          aria-label="Увеличить количество ночей"
                           className="w-10 h-10 rounded-lg bg-muted/60 text-muted-foreground font-semibold hover:bg-muted/80 transition-colors backdrop-blur-sm"
                         >
                           +
