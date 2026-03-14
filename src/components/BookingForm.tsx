@@ -1,8 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 import ScrollReveal from "./ScrollReveal";
+import maxLogo from "@/assets/max-logo.webp";
 
-const WHATSAPP_BASE = "https://wa.me/79001234567";
+const MAX_BASE = "https://max.me/79001234567";
 
 const BookingForm = () => {
   const [form, setForm] = useState({
@@ -32,10 +33,10 @@ const BookingForm = () => {
     toast.success("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
   };
 
-  const buildWhatsAppUrl = () => {
+  const buildMaxUrl = () => {
     const extraText = form.extraBed ? "да" : "нет";
     const text = `Здравствуйте! Хочу забронировать домик «Сон». Даты: ${form.checkIn || "___"} – ${form.checkOut || "___"}. Гостей: ${form.guests}. Нужно доп. место: ${extraText}. Подскажите, пожалуйста, итоговую стоимость и условия предоплаты.`;
-    return `${WHATSAPP_BASE}?text=${encodeURIComponent(text)}`;
+    return `${MAX_BASE}?text=${encodeURIComponent(text)}`;
   };
 
   const set = (key: string, value: string | boolean) =>
@@ -52,7 +53,7 @@ const BookingForm = () => {
             Забронировать домик
           </h2>
           <p className="text-center text-muted-foreground mb-10">
-            Заполните форму или напишите нам в WhatsApp
+            Заполните форму или напишите нам в MAX
           </p>
         </ScrollReveal>
 
@@ -151,12 +152,13 @@ const BookingForm = () => {
                 Отправить заявку
               </button>
               <a
-                href={buildWhatsAppUrl()}
+                href={buildMaxUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 px-6 py-4 border border-primary text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors"
+                className="flex-1 px-6 py-4 border border-primary text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
               >
-                Написать в WhatsApp
+                <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+                Написать в MAX
               </a>
             </div>
           </form>
