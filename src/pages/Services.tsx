@@ -89,7 +89,15 @@ const services = [
   },
 ];
 
+const installmentSteps = [
+  { step: "1", title: "Забронируйте", desc: "Выберите даты и домик, оставьте заявку через MAX" },
+  { step: "2", title: "Внесите предоплату 30%", desc: "Оплатите 30% от стоимости для подтверждения брони" },
+  { step: "3", title: "Оплатите остаток", desc: "Внесите оставшуюся сумму не позднее 7 дней до заезда" },
+];
+
 const Services = () => {
+  const [installmentOpen, setInstallmentOpen] = useState(false);
+
   useEffect(() => {
     document.title = "Услуги — База отдыха Сон, Тенгинка";
     const meta = document.querySelector('meta[name="description"]');
