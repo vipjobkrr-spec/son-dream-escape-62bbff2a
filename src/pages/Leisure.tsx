@@ -162,7 +162,8 @@ const Leisure = () => {
         </BentoGrid>
 
         <ContainerScale>
-          <div className="text-center px-4 max-w-3xl">
+          <div className="absolute inset-0 bg-foreground/50" />
+          <div className="relative text-center px-4 max-w-3xl">
             {/* Breadcrumbs */}
             <nav className="flex items-center justify-center gap-1.5 text-sm text-primary-foreground/60 mb-6">
               <Link to="/" className="hover:text-primary-foreground transition-colors">
