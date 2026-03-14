@@ -230,7 +230,7 @@ const RoomTourSection = () => {
           <img
             src={zone.images[lightbox]}
             alt={`${zone.label} — фото ${lightbox + 1}`}
-            className="max-w-full max-h-[85vh] rounded-lg object-contain"
+            className="max-w-full max-h-[70vh] md:max-h-[85vh] rounded-lg object-contain"
             onClick={(e) => e.stopPropagation()}
           />
 
