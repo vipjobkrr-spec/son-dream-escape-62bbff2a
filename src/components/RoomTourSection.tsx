@@ -86,20 +86,20 @@ const RoomTourSection = () => {
 
         {/* Zone tabs */}
         <ScrollReveal delay={0.1}>
-          <div className="flex gap-2 justify-center mb-8 overflow-x-auto pb-2 -mx-5 px-5 md:mx-0 md:px-0">
+          <div className="flex gap-2 justify-center mb-6 md:mb-8 overflow-x-auto pb-2 -mx-5 px-5 md:mx-0 md:px-0">
             {zones.map((z, i) => {
               const Icon = z.icon;
               return (
                 <button
                   key={z.id}
                   onClick={() => handleZoneChange(i)}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-5 md:py-3 rounded-xl text-xs md:text-sm font-medium transition-all whitespace-nowrap ${
                     activeZone === i
                       ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105"
                       : "bg-background text-muted-foreground hover:bg-background/80 shadow-soft"
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
                   {z.label}
                 </button>
               );
@@ -116,12 +116,12 @@ const RoomTourSection = () => {
               style={{ perspective: "1000px" }}
             >
               <div
-                className="transition-transform duration-500 ease-out group-hover:[transform:rotateY(1deg)_rotateX(-1deg)_scale(1.01)]"
+                className="transition-transform duration-500 ease-out md:group-hover:[transform:rotateY(1deg)_rotateX(-1deg)_scale(1.01)]"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <button
                   onClick={() => setLightbox(activeImage)}
-                  className="relative aspect-[16/10] bg-muted w-full cursor-zoom-in"
+                  className="relative aspect-[4/3] md:aspect-[16/10] bg-muted w-full cursor-zoom-in"
                 >
                   {zone.images.map((src, i) => (
                     <img
@@ -141,11 +141,11 @@ const RoomTourSection = () => {
                 </button>
 
                 {/* Zone label overlay */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-foreground/60 to-transparent p-6">
-                  <p className="text-primary-foreground font-display text-xl md:text-2xl font-semibold">
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-foreground/60 to-transparent p-4 md:p-6">
+                  <p className="text-primary-foreground font-display text-lg md:text-2xl font-semibold">
                     {zone.label}
                   </p>
-                  <p className="text-primary-foreground/80 text-sm mt-1">
+                  <p className="text-primary-foreground/80 text-xs md:text-sm mt-0.5 md:mt-1">
                     {zone.description}
                   </p>
                 </div>
@@ -161,7 +161,7 @@ const RoomTourSection = () => {
 
             {/* Thumbnail strip */}
             {zone.images.length > 1 && (
-              <div className="flex gap-3 mt-4 justify-center">
+              <div className="flex gap-2 md:gap-3 mt-3 md:mt-4 justify-center">
                 {zone.images.map((src, i) => (
                   <button
                     key={src}
@@ -211,26 +211,26 @@ const RoomTourSection = () => {
 
           {lightbox > 0 && (
             <button
-              className="absolute left-4 text-primary-foreground/80 hover:text-primary-foreground z-10"
+              className="absolute left-2 md:left-4 text-primary-foreground/80 hover:text-primary-foreground z-10 p-2"
               onClick={(e) => { e.stopPropagation(); setLightbox(lightbox - 1); }}
             >
-              <ChevronLeft className="w-10 h-10" />
+              <ChevronLeft className="w-7 h-7 md:w-10 md:h-10" />
             </button>
           )}
 
           {lightbox < zone.images.length - 1 && (
             <button
-              className="absolute right-4 text-primary-foreground/80 hover:text-primary-foreground z-10"
+              className="absolute right-2 md:right-4 text-primary-foreground/80 hover:text-primary-foreground z-10 p-2"
               onClick={(e) => { e.stopPropagation(); setLightbox(lightbox + 1); }}
             >
-              <ChevronRight className="w-10 h-10" />
+              <ChevronRight className="w-7 h-7 md:w-10 md:h-10" />
             </button>
           )}
 
           <img
             src={zone.images[lightbox]}
             alt={`${zone.label} — фото ${lightbox + 1}`}
-            className="max-w-full max-h-[85vh] rounded-lg object-contain"
+            className="max-w-full max-h-[70vh] md:max-h-[85vh] rounded-lg object-contain"
             onClick={(e) => e.stopPropagation()}
           />
 
