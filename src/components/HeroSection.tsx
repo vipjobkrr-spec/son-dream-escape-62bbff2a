@@ -96,13 +96,13 @@ const HeroSection = () => {
             className="text-white text-lg md:text-xl font-semibold tracking-wide mb-2"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            8 уютных домиков и баня
+            Спокойный семейный отдых на Чёрном море
           </p>
           <p
-            className="text-white/60 text-sm md:text-base tracking-[0.15em] uppercase"
+            className="text-white/70 text-sm md:text-base leading-relaxed max-w-xl"
             style={{ fontFamily: "var(--font-body)" }}
           >
-            Тишина и покой • Кондиционер • Wi‑Fi
+            Тенгинка между Туапсе и Сочи. Восемь уютных домиков с бассейном и баней — комфортная альтернатива большим отелям Краснодара и Сочи.
           </p>
         </motion.div>
 

@@ -83,8 +83,7 @@ const AboutSection = () => {
               Что такое база «Сон»?
             </h2>
             <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Это загородная база отдыха в духе природного лагеря — комфорт дома
-              среди гор и моря Кавказа.
+              База отдыха «Сон» расположена в селе Тенгинка, Туапсинский район, Краснодарский край — курортный посёлок между Краснодаром и Сочи на берегу Чёрного моря. Это небольшая семейная база с 8 домиками и баней, где можно отдохнуть в тишине, но при этом оставаться в удобной доступности от Туапсе и Сочи.
             </p>
           </ScrollReveal>
         </div>
@@ -175,9 +174,9 @@ const AboutSection = () => {
                     />
                   </div>
                   <div className="absolute -bottom-4 -left-4 md:-left-6 bg-primary text-primary-foreground px-5 py-3 rounded-xl shadow-lg">
-                    <p className="font-display text-2xl font-semibold">12</p>
+                    <p className="font-display text-2xl font-semibold">8</p>
                     <p className="text-xs text-primary-foreground/80">
-                      уютных домиков
+                      домиков и баня
                     </p>
                   </div>
                 </div>
