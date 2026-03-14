@@ -1,67 +1,342 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import LeisureHeroBlock from '@/components/LeisureHeroBlock';
+import ScrollReveal from '@/components/ScrollReveal';
+import { Button } from '@/components/ui/button';
+import {
+  Phone,
+  Mountain,
+  Waves,
+  Ship,
+  TreePine,
+  Flame,
+  Camera,
+  Utensils,
+  MapPin,
+  Bike,
+  ChevronRight,
+  Trees,
+  Compass,
+  Anchor,
+} from 'lucide-react';
 
+import sea1 from '@/assets/leisure/sea-1.webp';
+import lake from '@/assets/leisure/lake.webp';
+import sea2 from '@/assets/leisure/sea-2.webp';
+import flowers from '@/assets/leisure/flowers.webp';
+import river1 from '@/assets/leisure/river-1.webp';
+import river2 from '@/assets/leisure/river-2.webp';
+import sunset from '@/assets/leisure/sunset.webp';
 import river3 from '@/assets/leisure/river-3.webp';
 import sea3 from '@/assets/leisure/sea-3.webp';
 import river4 from '@/assets/leisure/river-4.webp';
+import bbq from '@/assets/bbq.jpg';
 
+/* ── Category slider items ── */
+const categories = [
+  { icon: Trees, label: 'Природа', anchor: 'nature' },
+  { icon: Anchor, label: 'Море', anchor: 'sea' },
+  { icon: Compass, label: 'Приключения', anchor: 'adventures' },
+];
+
+/* ── Main activities ── */
 const activities = [
   {
+    id: 'sea',
+    icon: Waves,
     title: 'Пляжи Чёрного моря',
-    description: 'Галечные и песчаные пляжи в 15 минутах езды. Чистое море, живописные бухты и уединённые места для отдыха.',
-    image: sea3,
+    description:
+      'Галечные пляжи всего в 10–15 минутах от базы. Чистое открытое море, живописные бухты и уединённые места для спокойного отдыха. Мы подскажем лучшие пляжи и организуем трансфер.',
+    image: sea2,
+    badge: 'Бесплатно для гостей',
   },
   {
+    id: 'nature',
+    icon: Mountain,
     title: 'Горные реки и ущелья',
-    description: 'Прозрачные горные реки с изумрудной водой, скальные каньоны и природные купели — идеально для жаркого дня.',
-    image: river3,
+    description:
+      'Прозрачные реки с изумрудной водой, скальные каньоны и природные купели. Освежитесь в горной реке среди нетронутой природы Кавказа — идеально в жаркий летний день.',
+    image: river1,
+    badge: 'Бесплатно / экскурсия от 1 500 ₽',
   },
   {
-    title: 'Пешие прогулки',
-    description: 'Маршруты по горам Кавказа разной сложности: от лёгких прогулок до серьёзных треков с панорамными видами.',
+    id: 'nature',
+    icon: TreePine,
+    title: 'Пешие маршруты и водопады',
+    description:
+      'Маршруты разной сложности по горам Туапсинского района: от лёгких прогулок к водопадам до серьёзных треков с панорамными видами на Чёрное море и горные хребты.',
     image: river4,
+    badge: 'Бесплатно / с гидом от 1 000 ₽',
+  },
+  {
+    id: 'adventures',
+    icon: Bike,
+    title: 'Велопрогулки по окрестностям',
+    description:
+      'Живописные велосипедные маршруты вдоль рек и через горные посёлки. Прокат велосипедов на базе — просто садитесь и наслаждайтесь природой.',
+    image: flowers,
+    badge: 'Прокат от 500 ₽ / день',
+  },
+  {
+    id: 'sea',
+    icon: Ship,
+    title: 'Морские прогулки на катере',
+    description:
+      'Прогулки вдоль побережья, рыбалка в открытом море, снорклинг в чистейших бухтах. Незабываемые закаты с воды и купание вдали от берега.',
+    image: sunset,
+    badge: 'от 2 000 ₽ / чел.',
+  },
+  {
+    id: 'adventures',
+    icon: Camera,
+    title: 'Экскурсии и достопримечательности',
+    description:
+      'Дольмены, водопады, горные перевалы и старинные крепости — Туапсинский район полон удивительных мест. Организуем индивидуальные и групповые экскурсии.',
+    image: river3,
+    badge: 'от 1 500 ₽ / чел.',
+  },
+  {
+    id: 'adventures',
+    icon: Flame,
+    title: 'Барбекю на природе',
+    description:
+      'У каждого домика — своя зона барбекю с мангалом и всем необходимым. Готовьте на свежем воздухе под звуки реки и пение птиц. Продукты можно заказать прямо у нас.',
+    image: bbq,
+    badge: 'Бесплатно для гостей',
+  },
+];
+
+/* ── Extra services ── */
+const extras = [
+  {
+    icon: MapPin,
+    title: 'Трансфер',
+    desc: 'Организуем встречу и трансфер из аэропорта, вокзала Туапсе или Краснодара.',
+  },
+  {
+    icon: Waves,
+    title: 'Аренда снаряжения',
+    desc: 'Велосипеды, SUP-борды, удочки и снаряжение для активного отдыха на природе.',
+  },
+  {
+    icon: Utensils,
+    title: 'Доставка продуктов',
+    desc: 'Закажите свежие продукты — мы доставим их прямо к вашему домику.',
   },
 ];
 
 const Leisure = () => {
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+
   useEffect(() => {
     document.title = 'Досуг — База отдыха Сон, Тенгинка';
   }, []);
 
+  const scrollTo = (anchor: string) => {
+    const el = sectionRefs.current[anchor];
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <>
       <Navbar />
-      <div className="pt-16">
-        <LeisureHeroBlock />
 
-        <section className="py-12 md:py-20">
+      {/* ═══ Hero ═══ */}
+      <section className="relative min-h-[75vh] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={lake}
+            alt="Природа Кавказа — база отдыха Сон"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
+        </div>
+
+        <div className="relative z-10 w-full pb-16 pt-32">
           <div className="container">
-            <h2 className="text-display text-3xl md:text-4xl font-semibold text-center mb-12">
+            {/* Breadcrumbs */}
+            <nav className="flex items-center gap-1.5 text-sm text-primary-foreground/60 mb-8">
+              <Link to="/" className="hover:text-primary-foreground transition-colors">
+                Главная
+              </Link>
+              <ChevronRight className="w-3.5 h-3.5" />
+              <span className="text-primary-foreground">Досуг</span>
+            </nav>
+
+            <h1 className="text-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-4 leading-tight max-w-3xl">
+              Добавьте впечатлений
+              <span className="block text-secondary">к вашему отдыху</span>
+            </h1>
+            <p className="text-primary-foreground/80 text-lg md:text-xl max-w-xl mb-8">
+              Море, горы, реки и природа Кавказа — всё в шаговой доступности от базы
+            </p>
+            <a href="tel:+79001234567">
+              <Button
+                size="lg"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full px-8 gap-2"
+              >
+                <Phone className="w-4 h-4" />
+                Узнать подробности
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Category slider ═══ */}
+      <section className="py-10 md:py-14 border-b border-border">
+        <div className="container">
+          <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-none snap-x snap-mandatory md:justify-center">
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <button
+                  key={cat.anchor}
+                  onClick={() => scrollTo(cat.anchor)}
+                  className="flex-shrink-0 snap-start flex flex-col items-center gap-3 px-8 py-5 rounded-2xl bg-card shadow-card hover:shadow-md transition-shadow cursor-pointer group min-w-[140px]"
+                >
+                  <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">{cat.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Activities zigzag ═══ */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-display text-3xl md:text-5xl font-semibold mb-4">
               Чем заняться
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              {activities.map((act) => (
-                <div key={act.title} className="group rounded-2xl overflow-hidden shadow-card bg-card">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={act.image}
-                      alt={act.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-display text-xl font-semibold mb-2">{act.title}</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{act.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="text-muted-foreground max-w-lg mx-auto">
+              От расслабленного пляжного дня до горных приключений — мы поможем организовать всё
+            </p>
           </div>
-        </section>
-      </div>
+
+          <div className="space-y-20 md:space-y-28">
+            {activities.map((item, i) => {
+              const Icon = item.icon;
+              const isReversed = i % 2 !== 0;
+
+              return (
+                <ScrollReveal key={item.title}>
+                  <div
+                    ref={(el) => {
+                      if (!sectionRefs.current[item.id]) sectionRefs.current[item.id] = el;
+                    }}
+                    className={`flex flex-col ${
+                      isReversed ? 'md:flex-row-reverse' : 'md:flex-row'
+                    } gap-8 md:gap-14 items-center`}
+                  >
+                    {/* Image */}
+                    <div className="w-full md:w-[55%]">
+                      <div className="rounded-2xl overflow-hidden shadow-card aspect-[4/3]">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="w-full md:w-[45%] space-y-4">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                        <Icon className="w-4 h-4" />
+                        {item.badge}
+                      </div>
+                      <h3 className="text-display text-2xl md:text-3xl font-semibold">
+                        {item.title}
+                      </h3>
+                      <p className="text-muted-foreground leading-relaxed text-base">
+                        {item.description}
+                      </p>
+                      <a href="tel:+79001234567">
+                        <Button
+                          variant="outline"
+                          className="rounded-full mt-2 gap-2"
+                        >
+                          <Phone className="w-4 h-4" />
+                          Забронировать
+                        </Button>
+                      </a>
+                    </div>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ Extras grid ═══ */}
+      <section className="py-16 md:py-24 bg-muted/50">
+        <div className="container">
+          <ScrollReveal>
+            <h2 className="text-display text-3xl md:text-4xl font-semibold text-center mb-12">
+              Дополнительные услуги
+            </h2>
+          </ScrollReveal>
+          <div className="grid sm:grid-cols-3 gap-8">
+            {extras.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <ScrollReveal key={item.title} delay={i * 0.1}>
+                  <div className="bg-card rounded-2xl p-8 shadow-card text-center space-y-4 h-full">
+                    <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                      <Icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-display text-xl font-semibold">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                </ScrollReveal>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ CTA Banner ═══ */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <ScrollReveal>
+            <div className="relative rounded-3xl overflow-hidden">
+              <img
+                src={sea1}
+                alt="Чёрное море — база отдыха Сон"
+                className="w-full h-72 md:h-96 object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/85 to-primary/40 flex items-center">
+                <div className="px-8 md:px-16 max-w-xl">
+                  <h2 className="text-display text-2xl md:text-4xl font-bold text-primary-foreground mb-4">
+                    Готовы к незабываемому отдыху?
+                  </h2>
+                  <p className="text-primary-foreground/80 mb-6">
+                    Свяжитесь с нами — поможем спланировать ваш идеальный отпуск на Кавказе
+                  </p>
+                  <a href="tel:+79001234567">
+                    <Button
+                      size="lg"
+                      className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full px-8 gap-2"
+                    >
+                      <Phone className="w-4 h-4" />
+                      +7 (900) 123-45-67
+                    </Button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       <Footer />
     </>
   );
