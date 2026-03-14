@@ -147,7 +147,7 @@ const Navbar = () => {
           {links.map((l) => (
             <button
               key={l.href}
-              onClick={() => handleClick(l.href)}
+              onClick={() => l.isPage ? (() => { setMobileOpen(false); navigate(l.href); })() : handleClick(l.href)}
               className={`block w-full text-left py-2.5 text-sm font-medium transition-colors ${
                 activeSection === l.id
                   ? "text-primary"
