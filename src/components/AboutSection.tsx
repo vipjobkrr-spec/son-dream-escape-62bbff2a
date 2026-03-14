@@ -88,11 +88,32 @@ const AboutSection = () => {
 
       {/* Description block */}
       <div className="bg-background">
-        <div className="container py-10 md:py-14">
+        <div className="container py-12 md:py-16">
           <ScrollReveal>
-            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto text-center">
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto text-center mb-10 md:mb-12">
               База отдыха «Сон» расположена в селе Тенгинка, Туапсинский район, Краснодарский край — курортный посёлок между Краснодаром и Сочи на берегу Чёрного моря. Это небольшая семейная база с 8 домиками и баней, где можно отдохнуть в тишине, но при этом оставаться в удобной доступности от Туапсе и Сочи.
             </p>
+          </ScrollReveal>
+          <ScrollReveal>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
+              {[
+                { icon: MapPin, label: "Тенгинка", sub: "Туапсинский район" },
+                { icon: Home, label: "8 домиков", sub: "и баня" },
+                { icon: Users, label: "Семейный", sub: "формат отдыха" },
+                { icon: Waves, label: "10 мин", sub: "до моря" },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex flex-col items-center text-center p-4 rounded-2xl bg-muted/50 border border-border/50"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                    <item.icon className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">{item.label}</span>
+                  <span className="text-xs text-muted-foreground">{item.sub}</span>
+                </div>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
       </div>
