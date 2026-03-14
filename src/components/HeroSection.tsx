@@ -169,19 +169,23 @@ const HeroSection = () => {
                   <label className="block text-xs text-muted-foreground mb-1">
                     Заезд
                   </label>
-                  <input
-                    type="date"
-                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="block text-xs text-muted-foreground mb-1">
-                    Выезд
-                  </label>
-                  <input
-                    type="date"
-                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
+                    <input
+                      type="date"
+                      value={checkIn}
+                      onChange={(e) => setCheckIn(e.target.value)}
+                      className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label className="block text-xs text-muted-foreground mb-1">
+                      Выезд
+                    </label>
+                    <input
+                      type="date"
+                      value={checkOut}
+                      onChange={(e) => setCheckOut(e.target.value)}
+                      className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
                 </div>
               </div>
               <div className="flex gap-2 sm:flex-shrink-0">
