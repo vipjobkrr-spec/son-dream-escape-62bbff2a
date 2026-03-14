@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Bed, CookingPot, Sofa, Bath, RotateCcw, X, ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
