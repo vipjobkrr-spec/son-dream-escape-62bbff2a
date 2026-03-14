@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect } from "react";
-import { CalendarDays, Users, Check, Bed, ArrowRight, Crown } from "lucide-react";
+import { CalendarDays, Users, Bed, ArrowRight, Crown, Flower2, Sun, Waves, Leaf, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
+import { PricingCard } from "./ui/pricing-card";
 import maxLogo from "@/assets/max-logo.webp";
 
 const MAX_BASE = "https://max.me/79001234567";
@@ -9,48 +10,64 @@ const MAX_BASE = "https://max.me/79001234567";
 const seasons = [
   {
     id: "spring",
-    period: "01.03 — 15.06",
     label: "Весна",
+    period: "01.03 — 15.06",
     price: 6500,
     tag: "Лучшая цена",
-    tagColor: "bg-primary",
+    isPopular: false,
+    icon: Flower2,
+    description: "Мягкий климат, цветущие сады и пустые пляжи — идеальное время для спокойного отдыха вдвоём.",
+    features: ["Тишина и минимум туристов", "Цветение природы", "Самая низкая цена"],
   },
   {
     id: "early-summer",
-    period: "16.06 — 27.06",
     label: "Начало лета",
+    period: "16.06 — 27.06",
     price: 8500,
+    icon: Sun,
+    description: "Тёплое море, длинные дни и ещё нет летнего наплыва — золотая середина сезона.",
+    features: ["Комфортная температура", "Тёплое море", "Умеренные цены"],
   },
   {
     id: "peak",
-    period: "28.06 — 24.08",
     label: "Высокий сезон",
+    period: "28.06 — 24.08",
     price: 12000,
     tag: "Популярный",
-    tagColor: "bg-secondary",
+    isPopular: true,
+    icon: Waves,
+    description: "Пик лета: жаркие дни, тёплое море и максимум активностей для всей семьи.",
+    features: ["Самое тёплое море", "Все активности доступны", "Идеально для детей"],
   },
   {
     id: "velvet",
-    period: "25.08 — 14.09",
     label: "Бархатный сезон",
+    period: "25.08 — 14.09",
     price: 9000,
     tag: "Рекомендуем",
-    tagColor: "bg-primary",
+    icon: Sparkles,
+    description: "Мягкое солнце, тёплое море и спелые фрукты — самое уютное время на побережье.",
+    features: ["Тёплое море без жары", "Спелые фрукты", "Меньше людей на пляжах"],
   },
   {
     id: "autumn",
-    period: "15.09 — 31.10",
     label: "Осень",
+    period: "15.09 — 31.10",
     price: 7000,
+    icon: Leaf,
+    description: "Золотая осень в горах, тёплые дни и полное уединение на базе и побережье.",
+    features: ["Красочная природа", "Тишина и уединение", "Низкие цены"],
   },
   {
     id: "vip",
-    period: "Круглый год",
     label: "VIP",
+    period: "Круглый год",
     price: 16999,
     tag: "VIP",
-    tagColor: "bg-amber-500",
     isVip: true,
+    icon: Crown,
+    description: "Премиальный домик с расширенным набором услуг, доступен в любое время года.",
+    features: ["Лучший домик на базе", "Приоритетное бронирование", "Расширенный набор услуг", "Доступен круглый год"],
   },
 ];
 
@@ -166,7 +183,6 @@ const PricesSection = () => {
 
   return (
     <section id="prices" className="relative py-16 md:py-24 overflow-hidden">
-      {/* Animated WebGL background */}
       <ShaderCanvas />
 
       <div className="container relative z-10">
@@ -174,66 +190,30 @@ const PricesSection = () => {
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
             Цены на проживание
           </h2>
-          <p className="text-center text-muted-foreground mb-10 text-base">
+          <p className="text-center text-muted-foreground mb-12 text-base">
             Выберите сезон — рассчитайте стоимость и забронируйте
           </p>
         </ScrollReveal>
 
-        {/* Season cards — glassy */}
+        {/* Season cards grid */}
         <ScrollReveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 max-w-5xl mx-auto mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-5xl mx-auto mb-6">
             {seasons.map((s) => {
               const isActive = selected === s.id;
               return (
-                <motion.button
+                <PricingCard
                   key={s.id}
+                  title={s.label}
+                  price={formatPrice(s.price)}
+                  priceDescription={`/ сутки • ${s.period}`}
+                  description={s.description}
+                  features={s.features}
+                  tag={s.tag}
+                  isActive={isActive}
+                  isPopular={s.isPopular}
+                  isVip={s.isVip}
                   onClick={() => setSelected(isActive ? null : s.id)}
-                  className={`relative rounded-2xl p-4 md:p-5 text-left transition-all duration-300 border cursor-pointer group backdrop-blur-xl ${
-                    (s as any).isVip && !isActive
-                      ? "border-amber-500/30 bg-gradient-to-b from-amber-50/80 to-popover/70 shadow-lg hover:shadow-xl"
-                      : isActive
-                        ? "border-primary/50 bg-primary text-primary-foreground shadow-xl scale-[1.02]"
-                        : "border-border/40 bg-popover/60 shadow-md hover:shadow-lg hover:border-primary/30 hover:bg-popover/80"
-                  }`}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  {s.tag && (
-                    <span
-                      className={`absolute -top-2.5 left-3 px-2 py-0.5 rounded-full text-[10px] font-semibold text-primary-foreground ${
-                        isActive ? "bg-primary-foreground/20 backdrop-blur" : s.tagColor
-                      }`}
-                    >
-                      {s.tag}
-                    </span>
-                  )}
-                  <div
-                    className={`text-xs font-medium mb-1 ${
-                      isActive ? "text-primary-foreground/70" : "text-muted-foreground"
-                    }`}
-                  >
-                    {s.label}
-                  </div>
-                  <div className="font-display text-2xl md:text-3xl font-semibold leading-tight flex items-center gap-1.5">
-                    {(s as any).isVip && !isActive && <Crown className="w-5 h-5 text-amber-500" />}
-                    {formatPrice(s.price)}
-                  </div>
-                  <div
-                    className={`text-[11px] mt-1 ${
-                      isActive ? "text-primary-foreground/60" : "text-muted-foreground"
-                    }`}
-                  >
-                    {s.period}
-                  </div>
-                  {isActive && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      className="absolute top-3 right-3 w-5 h-5 rounded-full bg-primary-foreground/20 flex items-center justify-center"
-                    >
-                      <Check className="w-3 h-3" />
-                    </motion.div>
-                  )}
-                </motion.button>
+                />
               );
             })}
           </div>
@@ -244,7 +224,7 @@ const PricesSection = () => {
           Единый тариф на все 8 домиков • Доп. место +1 000 ₽/сут
         </div>
 
-        {/* Calculator panel — glassy */}
+        {/* Calculator panel */}
         <AnimatePresence>
           {activeSeason && (
             <motion.div
