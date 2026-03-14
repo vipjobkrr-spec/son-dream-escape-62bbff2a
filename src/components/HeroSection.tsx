@@ -86,17 +86,25 @@ const HeroSection = () => {
         </motion.h1>
 
         {/* Description */}
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="text-white/75 text-base md:text-lg max-w-md mx-auto leading-relaxed mb-10"
-          style={{ fontFamily: "var(--font-body)" }}
+          className="max-w-lg mx-auto text-center mb-10"
         >
-          8 уютных домиков и баня.
-          <br className="hidden sm:block" />
-          Тишина и покой, кондиционер, Wi‑Fi
-        </motion.p>
+          <p
+            className="text-white text-lg md:text-xl font-semibold tracking-wide mb-2"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            8 уютных домиков и баня
+          </p>
+          <p
+            className="text-white/60 text-sm md:text-base tracking-[0.15em] uppercase"
+            style={{ fontFamily: "var(--font-body)" }}
+          >
+            Тишина и покой • Кондиционер • Wi‑Fi
+          </p>
+        </motion.div>
 
         {/* Image dots */}
         <motion.div
