@@ -1,11 +1,27 @@
-import { useState } from "react";
-import { TreePine, Mountain, Sunrise, Wind, Home, Waves, UtensilsCrossed, Heart, MapPin, Users, Bath, Wifi } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { TreePine, Mountain, Sunrise, Wind, Home, Waves, UtensilsCrossed, Heart, MapPin, Users, Bath, Wifi, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import territory1 from "@/assets/territory-1.webp";
 import territory2 from "@/assets/territory-2.webp";
 import poolImg from "@/assets/pool-1.jpg";
 import terraceImg from "@/assets/terrace.jpg";
+
+import aboutBbq from "@/assets/about/bbq-friends.jpg";
+import aboutPoolGirl from "@/assets/about/pool-girl.jpg";
+import aboutPoolWalk from "@/assets/about/pool-walk.jpg";
+import aboutFamily from "@/assets/about/family-pool.jpg";
+import aboutPoolGirls from "@/assets/about/pool-girls.jpg";
+import aboutTerritory from "@/assets/about/territory-sun.webp";
+
+const heroSlides = [
+  { src: aboutTerritory, alt: "Территория базы отдыха Сон — домики и бассейн" },
+  { src: aboutPoolWalk, alt: "Прогулка у бассейна на базе Сон" },
+  { src: aboutFamily, alt: "Семейный отдых в бассейне" },
+  { src: aboutBbq, alt: "Барбекю с друзьями на базе Сон" },
+  { src: aboutPoolGirl, alt: "Отдых у бассейна с видом на горы" },
+  { src: aboutPoolGirls, alt: "Купание в бассейне на базе Сон" },
+];
 
 const tabs = [
   {
@@ -60,20 +76,74 @@ const tabs = [
 
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const [heroSlide, setHeroSlide] = useState(0);
   const current = tabs[activeTab];
+
+  const nextSlide = useCallback(() => {
+    setHeroSlide((prev) => (prev + 1) % heroSlides.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, [nextSlide]);
 
   return (
     <section id="about" className="relative">
-      {/* Hero image */}
-      <div className="relative h-[55vh] md:h-[65vh] overflow-hidden">
-        <img
-          src={territory1}
-          alt="Территория базы отдыха Сон"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ transform: "translateZ(0)" }}
-          loading="lazy"
-        />
+      {/* Hero slider */}
+      <div className="relative h-[55vh] md:h-[65vh] overflow-hidden touch-pan-y">
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={heroSlide}
+            src={heroSlides[heroSlide].src}
+            alt={heroSlides[heroSlide].alt}
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            className="absolute inset-0 w-full h-full object-cover"
+            loading="eager"
+            draggable={false}
+          />
+        </AnimatePresence>
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/70" />
+
+        {/* Navigation arrows */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/20 backdrop-blur-sm border border-primary-foreground/20 flex items-center justify-center text-primary-foreground hover:bg-background/40 transition-all"
+          aria-label="Предыдущее фото"
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/20 backdrop-blur-sm border border-primary-foreground/20 flex items-center justify-center text-primary-foreground hover:bg-background/40 transition-all"
+          aria-label="Следующее фото"
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        {/* Dots */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+          {heroSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setHeroSlide(i)}
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                i === heroSlide
+                  ? "bg-primary-foreground w-6"
+                  : "bg-primary-foreground/40 hover:bg-primary-foreground/60"
+              }`}
+              aria-label={`Слайд ${i + 1}`}
+            />
+          ))}
+        </div>
+
         <div className="absolute inset-0 flex items-center justify-center">
           <ScrollReveal className="text-center px-5">
             <p className="text-secondary font-medium text-sm mb-3 tracking-widest uppercase">
