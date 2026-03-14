@@ -89,7 +89,7 @@ const PricesSection = () => {
 
         {/* Season cards */}
         <ScrollReveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 max-w-4xl mx-auto mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 max-w-5xl mx-auto mb-6">
             {seasons.map((s) => {
               const isActive = selected === s.id;
               return (
