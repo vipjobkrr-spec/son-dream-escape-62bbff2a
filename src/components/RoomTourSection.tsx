@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bed, CookingPot, Sofa, Bath, RotateCcw } from "lucide-react";
+import { Bed, CookingPot, Sofa, Bath, RotateCcw, X, ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 import bedroom1 from "@/assets/tour/bedroom-1.jpg";
