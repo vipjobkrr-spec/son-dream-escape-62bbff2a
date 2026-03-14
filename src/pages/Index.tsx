@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import PricesSection from "@/components/PricesSection";
@@ -14,6 +15,7 @@ import Footer from "@/components/Footer";
 const Index = () => {
   return (
     <>
+      <Navbar />
       <HeroSection />
       <TrustBar />
       <PricesSection />
