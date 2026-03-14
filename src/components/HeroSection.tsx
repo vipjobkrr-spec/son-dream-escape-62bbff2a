@@ -74,7 +74,7 @@ const HeroSection = () => {
                 src={img.src}
                 alt={img.alt}
                 className="h-full w-full object-cover"
-                loading="lazy"
+                loading="eager"
               />
             )}
           </BentoCell>
