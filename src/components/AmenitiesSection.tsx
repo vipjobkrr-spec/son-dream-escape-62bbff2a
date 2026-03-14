@@ -1,11 +1,11 @@
 import {
-  Sun, Flame, Wind, Wifi, UtensilsCrossed, BedDouble, ShowerHead, Armchair
+  Sun, Waves, Wind, Wifi, UtensilsCrossed, BedDouble, ShowerHead, Armchair
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const amenities = [
   { icon: Sun, title: "Крытый навес", desc: "Уютная обеденная зона под навесом — завтраки и ужины на свежем воздухе в любую погоду" },
-  { icon: Flame, title: "Зона барбекю", desc: "Индивидуальный мангал у каждого домика" },
+  { icon: Waves, title: "Бассейн", desc: "Открытый бассейн с чистой водой и шезлонгами — идеальное место для отдыха в жаркий день" },
   { icon: Wind, title: "Кондиционер", desc: "Комфортная температура в любую погоду" },
   { icon: BedDouble, title: "Удобные кровати", desc: "Ортопедические матрасы для крепкого сна" },
   { icon: Armchair, title: "Диван-кровать", desc: "Дополнительное спальное место" },
