@@ -53,8 +53,8 @@ const BookingForm = () => {
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
             Забронировать домик
           </h2>
-          <p className="text-center text-muted-foreground mb-10">
-            Заполните форму или напишите нам в MAX
+          <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto text-sm">
+            Забронировать домик на базе отдыха «Сон» удобно жителям Краснодара, Сочи и всего Краснодарского края — достаточно выбрать даты, указать количество гостей и дождаться подтверждения. Мы ориентированы на семейный отдых и помогаем спланировать поездку в Тенгинку с учётом дороги, времени в пути и особенностей сезона.
           </p>
         </ScrollReveal>
 
