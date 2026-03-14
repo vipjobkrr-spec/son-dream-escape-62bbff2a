@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, Users, Check, Bed, ArrowRight } from "lucide-react";
+import { CalendarDays, Users, Check, Bed, ArrowRight, Crown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
 import maxLogo from "@/assets/max-logo.webp";
