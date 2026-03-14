@@ -9,6 +9,7 @@ const links: { href: string; id: string; label: string; isPage?: boolean }[] = [
   { href: "#cabins", id: "cabins", label: "Домики" },
   { href: "#tour", id: "tour", label: "Тур" },
   { href: "#gallery", id: "gallery", label: "Галерея" },
+  { href: "/services", id: "services", label: "Услуги", isPage: true },
   { href: "/leisure", id: "leisure", label: "Досуг", isPage: true },
   { href: "#location", id: "location", label: "Локация" },
   { href: "#faq", id: "faq", label: "FAQ" },
