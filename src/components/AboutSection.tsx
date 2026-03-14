@@ -14,6 +14,14 @@ import aboutFamily from "@/assets/about/family-pool.jpg";
 import aboutPoolGirls from "@/assets/about/pool-girls.jpg";
 import aboutTerritory from "@/assets/about/territory-sun.webp";
 
+import natureRiverCanyon from "@/assets/nature/river-canyon.webp";
+import natureRiverTree from "@/assets/nature/river-tree.webp";
+import natureRiverRocks from "@/assets/nature/river-rocks.webp";
+import natureSeaSunset from "@/assets/nature/sea-sunset.webp";
+import natureSeaClouds from "@/assets/nature/sea-clouds.webp";
+import natureMountainStream from "@/assets/nature/mountain-stream.webp";
+import banyaImg from "@/assets/services/banya.jpg";
+
 const heroSlides = [
   { src: aboutTerritory, alt: "Территория базы отдыха Сон — домики и бассейн" },
   { src: aboutPoolWalk, alt: "Прогулка у бассейна на базе Сон" },
@@ -21,6 +29,16 @@ const heroSlides = [
   { src: aboutBbq, alt: "Барбекю с друзьями на базе Сон" },
   { src: aboutPoolGirl, alt: "Отдых у бассейна с видом на горы" },
   { src: aboutPoolGirls, alt: "Купание в бассейне на базе Сон" },
+];
+
+const natureGallery = [
+  { src: natureRiverCanyon, alt: "Горная река в каньоне у Тенгинки" },
+  { src: natureSeaSunset, alt: "Чёрное море на закате" },
+  { src: natureRiverTree, alt: "Река с прозрачной водой и деревьями" },
+  { src: banyaImg, alt: "Баня на территории базы Сон" },
+  { src: natureSeaClouds, alt: "Волны Чёрного моря" },
+  { src: natureRiverRocks, alt: "Горная река у скал" },
+  { src: natureMountainStream, alt: "Горный ручей среди скал и зелени" },
 ];
 
 const tabs = [
@@ -31,6 +49,7 @@ const tabs = [
     heading: "Первозданная природа вокруг",
     text: "Посвятите время себе и своему здоровью. Насладитесь чистой природой и свежим воздухом, наполненным ароматом трав и хвои. Прогуляйтесь по лесным тропинкам, покупайтесь в море и почувствуйте, как отпуск наполняет вас новой энергией.",
     image: territory1,
+    hasGallery: true,
     highlights: [
       { icon: Mountain, text: "Горы и море — всё в шаговой доступности" },
       { icon: Wind, text: "Место, где дышится полной грудью" },
@@ -77,6 +96,7 @@ const tabs = [
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [heroSlide, setHeroSlide] = useState(0);
+  const [natureSlide, setNatureSlide] = useState(0);
   const current = tabs[activeTab];
 
   const nextSlide = useCallback(() => {
@@ -263,20 +283,74 @@ const AboutSection = () => {
                   </a>
                 </div>
 
-                {/* Image */}
+                {/* Image / Gallery */}
                 <div className="relative">
-                  <div className="rounded-2xl overflow-hidden shadow-card">
-                    <motion.img
-                      key={current.image}
-                      src={current.image}
-                      alt={current.heading}
-                      initial={{ opacity: 0, scale: 1.05 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.5 }}
-                      className="w-full h-72 md:h-[400px] object-cover"
-                      loading="lazy"
-                    />
-                  </div>
+                  {current.hasGallery ? (
+                    <div className="space-y-3">
+                      {/* Main nature image with slider */}
+                      <div className="relative rounded-2xl overflow-hidden shadow-card">
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={natureSlide}
+                            src={natureGallery[natureSlide].src}
+                            alt={natureGallery[natureSlide].alt}
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -30 }}
+                            transition={{ duration: 0.4 }}
+                            className="w-full h-64 md:h-[350px] object-cover"
+                            loading="lazy"
+                          />
+                        </AnimatePresence>
+                        {/* Slide arrows */}
+                        <button
+                          onClick={() => setNatureSlide((p) => (p - 1 + natureGallery.length) % natureGallery.length)}
+                          className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-primary-foreground hover:bg-background/50 transition-all"
+                          aria-label="Назад"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => setNatureSlide((p) => (p + 1) % natureGallery.length)}
+                          className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-primary-foreground hover:bg-background/50 transition-all"
+                          aria-label="Вперёд"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                        {/* Caption */}
+                        <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-foreground/60 to-transparent p-3">
+                          <p className="text-primary-foreground text-xs text-center">{natureGallery[natureSlide].alt}</p>
+                        </div>
+                      </div>
+                      {/* Thumbnail strip */}
+                      <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
+                        {natureGallery.map((img, i) => (
+                          <button
+                            key={i}
+                            onClick={() => setNatureSlide(i)}
+                            className={`shrink-0 rounded-lg overflow-hidden border-2 transition-all ${
+                              i === natureSlide ? "border-primary scale-105" : "border-transparent opacity-60 hover:opacity-90"
+                            }`}
+                          >
+                            <img src={img.src} alt={img.alt} className="w-14 h-14 md:w-16 md:h-16 object-cover" loading="lazy" />
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="rounded-2xl overflow-hidden shadow-card">
+                      <motion.img
+                        key={current.image}
+                        src={current.image}
+                        alt={current.heading}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5 }}
+                        className="w-full h-72 md:h-[400px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
                   <div className="absolute -bottom-4 -left-4 md:-left-6 bg-primary text-primary-foreground px-5 py-3 rounded-xl shadow-lg">
                     <p className="font-display text-2xl font-semibold">8</p>
                     <p className="text-xs text-primary-foreground/80">
