@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Home, ChevronLeft, ChevronRight } from "lucide-react";
+import { Home, ChevronLeft, ChevronRight, Sun, Flame, Wind, BedDouble, ShowerHead, UtensilsCrossed } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
 
