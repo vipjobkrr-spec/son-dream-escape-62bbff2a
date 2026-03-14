@@ -43,6 +43,15 @@ const seasons = [
     label: "Осень",
     price: 7000,
   },
+  {
+    id: "vip",
+    period: "Круглый год",
+    label: "VIP",
+    price: 16999,
+    tag: "VIP",
+    tagColor: "bg-amber-500",
+    isVip: true,
+  },
 ];
 
 const formatPrice = (n: number) =>
