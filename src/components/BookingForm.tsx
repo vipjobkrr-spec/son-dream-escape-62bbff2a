@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import { ExternalLink } from "lucide-react";
 import { toast } from "sonner";
 import ScrollReveal from "./ScrollReveal";
 import maxLogo from "@/assets/max-logo.webp";
