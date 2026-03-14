@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { CalendarDays } from "lucide-react";
+import { CalendarDays, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 import heroImg from "@/assets/atmosphere.webp";
