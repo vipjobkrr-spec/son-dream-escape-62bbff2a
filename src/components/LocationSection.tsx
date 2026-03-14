@@ -38,7 +38,7 @@ const LocationSection = () => (
               <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
               <div>
                 <p className="font-semibold text-sm">Адрес</p>
-                <p className="text-muted-foreground text-sm">Краснодарский край, Туапсинский район, с. Тенгинка</p>
+                <p className="text-muted-foreground text-sm">Краснодарский край, Туапсинский район, с. Тенгинка, ул. Кооперативная, д. 39</p>
               </div>
             </div>
             <p className="text-sm text-muted-foreground">
