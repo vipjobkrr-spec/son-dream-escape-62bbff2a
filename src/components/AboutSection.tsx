@@ -14,6 +14,14 @@ import aboutFamily from "@/assets/about/family-pool.jpg";
 import aboutPoolGirls from "@/assets/about/pool-girls.jpg";
 import aboutTerritory from "@/assets/about/territory-sun.webp";
 
+import natureRiverCanyon from "@/assets/nature/river-canyon.webp";
+import natureRiverTree from "@/assets/nature/river-tree.webp";
+import natureRiverRocks from "@/assets/nature/river-rocks.webp";
+import natureSeaSunset from "@/assets/nature/sea-sunset.webp";
+import natureSeaClouds from "@/assets/nature/sea-clouds.webp";
+import natureMountainStream from "@/assets/nature/mountain-stream.webp";
+import banyaImg from "@/assets/services/banya.jpg";
+
 const heroSlides = [
   { src: aboutTerritory, alt: "Территория базы отдыха Сон — домики и бассейн" },
   { src: aboutPoolWalk, alt: "Прогулка у бассейна на базе Сон" },
@@ -21,6 +29,16 @@ const heroSlides = [
   { src: aboutBbq, alt: "Барбекю с друзьями на базе Сон" },
   { src: aboutPoolGirl, alt: "Отдых у бассейна с видом на горы" },
   { src: aboutPoolGirls, alt: "Купание в бассейне на базе Сон" },
+];
+
+const natureGallery = [
+  { src: natureRiverCanyon, alt: "Горная река в каньоне у Тенгинки" },
+  { src: natureSeaSunset, alt: "Чёрное море на закате" },
+  { src: natureRiverTree, alt: "Река с прозрачной водой и деревьями" },
+  { src: banyaImg, alt: "Баня на территории базы Сон" },
+  { src: natureSeaClouds, alt: "Волны Чёрного моря" },
+  { src: natureRiverRocks, alt: "Горная река у скал" },
+  { src: natureMountainStream, alt: "Горный ручей среди скал и зелени" },
 ];
 
 const tabs = [
@@ -31,6 +49,7 @@ const tabs = [
     heading: "Первозданная природа вокруг",
     text: "Посвятите время себе и своему здоровью. Насладитесь чистой природой и свежим воздухом, наполненным ароматом трав и хвои. Прогуляйтесь по лесным тропинкам, покупайтесь в море и почувствуйте, как отпуск наполняет вас новой энергией.",
     image: territory1,
+    hasGallery: true,
     highlights: [
       { icon: Mountain, text: "Горы и море — всё в шаговой доступности" },
       { icon: Wind, text: "Место, где дышится полной грудью" },
