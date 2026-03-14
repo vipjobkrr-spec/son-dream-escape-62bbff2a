@@ -93,6 +93,21 @@ const tabs = [
   },
 ];
 
+const useSwipe = (onLeft: () => void, onRight: () => void, threshold = 50) => {
+  const touchStart = useRef<number | null>(null);
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  }, []);
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStart.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStart.current;
+    if (diff > threshold) onRight();
+    else if (diff < -threshold) onLeft();
+    touchStart.current = null;
+  }, [onLeft, onRight, threshold]);
+  return { onTouchStart: handleTouchStart, onTouchEnd: handleTouchEnd };
+};
+
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [heroSlide, setHeroSlide] = useState(0);
@@ -107,6 +122,17 @@ const AboutSection = () => {
     setHeroSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
   }, []);
 
+  const nextNature = useCallback(() => {
+    setNatureSlide((prev) => (prev + 1) % natureGallery.length);
+  }, []);
+
+  const prevNature = useCallback(() => {
+    setNatureSlide((prev) => (prev - 1 + natureGallery.length) % natureGallery.length);
+  }, []);
+
+  const heroSwipe = useSwipe(nextSlide, prevSlide);
+  const natureSwipe = useSwipe(nextNature, prevNature);
+
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
@@ -115,7 +141,7 @@ const AboutSection = () => {
   return (
     <section id="about" className="relative">
       {/* Hero slider */}
-      <div className="relative h-[55vh] md:h-[65vh] overflow-hidden touch-pan-y">
+      <div className="relative h-[55vh] md:h-[65vh] overflow-hidden touch-pan-y" {...heroSwipe}>
         <AnimatePresence mode="wait">
           <motion.img
             key={heroSlide}
