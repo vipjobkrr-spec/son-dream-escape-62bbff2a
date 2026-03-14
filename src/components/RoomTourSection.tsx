@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Bed, CookingPot, Sofa, Bath, RotateCcw, X, ChevronLeft, ChevronRight, Expand } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
@@ -54,6 +54,17 @@ const RoomTourSection = () => {
     setActiveZone(idx);
     setActiveImage(0);
   };
+
+  // Auto-advance every 4s when lightbox is closed
+  const nextImage = useCallback(() => {
+    setActiveImage((prev) => (prev + 1) % zones[activeZone].images.length);
+  }, [activeZone]);
+
+  useEffect(() => {
+    if (lightbox !== null) return;
+    const timer = setInterval(nextImage, 4000);
+    return () => clearInterval(timer);
+  }, [nextImage, lightbox, activeImage]);
 
   return (
     <section id="tour" className="py-16 md:py-24 bg-muted/50">
