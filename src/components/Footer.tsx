@@ -48,20 +48,30 @@ const Footer = () => (
           </div>
         </div>
 
-        {/* Address */}
+        {/* Address & Map */}
         <div>
           <p className="font-semibold text-primary-foreground mb-3 text-sm">Адрес</p>
-          <div className="flex items-start gap-2 text-sm">
+          <div className="flex items-start gap-2 text-sm mb-3">
             <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-            <span>Краснодарский край, Туапсинский район, с.&nbsp;Тенгинка</span>
+            <span>Краснодарский край, Туапсинский район, с.&nbsp;Тенгинка, ул.&nbsp;Кооперативная,&nbsp;д.&nbsp;39</span>
+          </div>
+          <div className="rounded-lg overflow-hidden mb-3">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?text=Тенгинка+ул+Кооперативная+39&z=14&l=map"
+              width="100%"
+              height="150"
+              style={{ border: 0 }}
+              loading="lazy"
+              title="Карта — база отдыха Сон"
+            />
           </div>
           <a
-            href="https://yandex.ru/maps/?text=Тенгинка+Туапсинский+район"
+            href="https://yandex.ru/maps/?text=Тенгинка+ул+Кооперативная+39"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-3 text-sm text-secondary hover:text-secondary/80 transition-colors"
+            className="inline-block text-sm text-secondary hover:text-secondary/80 transition-colors"
           >
-            Показать на карте →
+            Построить маршрут →
           </a>
         </div>
       </div>
