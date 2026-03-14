@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 import pool1 from "@/assets/pool-1.jpg";
 import kitchen from "@/assets/kitchen.jpg";
@@ -44,26 +45,30 @@ const GallerySection = () => {
   return (
     <section id="gallery" className="py-16 md:py-24">
       <div className="container">
-        <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-6">
-          Фотогалерея
-        </h2>
+        <ScrollReveal>
+          <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-6">
+            Фотогалерея
+          </h2>
+        </ScrollReveal>
 
         {/* Category filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                activeCategory === cat
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
+        <ScrollReveal>
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                  activeCategory === cat
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </ScrollReveal>
 
         {/* Mobile horizontal scroll */}
         <div className="md:hidden flex gap-3 overflow-x-auto pb-4 snap-x snap-mandatory -mx-5 px-5">
@@ -82,20 +87,21 @@ const GallerySection = () => {
         {/* Desktop grid */}
         <div className="hidden md:grid grid-cols-3 gap-4 max-w-5xl mx-auto">
           {filtered.map((img, i) => (
-            <button
-              key={img.src}
-              onClick={() => setLightbox(i)}
-              className={`rounded-lg overflow-hidden shadow-soft hover:shadow-card transition-shadow ${
-                i === 0 && filtered.length > 3 ? "col-span-2 row-span-2" : ""
-              }`}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className={`w-full object-cover ${i === 0 && filtered.length > 3 ? "h-full" : "h-56"}`}
-                loading="lazy"
-              />
-            </button>
+            <ScrollReveal key={img.src} delay={i * 0.05}>
+              <button
+                onClick={() => setLightbox(i)}
+                className={`rounded-lg overflow-hidden shadow-soft hover:shadow-card transition-all hover:-translate-y-1 duration-300 w-full ${
+                  i === 0 && filtered.length > 3 ? "col-span-2 row-span-2" : ""
+                }`}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className={`w-full object-cover ${i === 0 && filtered.length > 3 ? "h-full" : "h-56"}`}
+                  loading="lazy"
+                />
+              </button>
+            </ScrollReveal>
           ))}
         </div>
       </div>
@@ -103,7 +109,7 @@ const GallerySection = () => {
       {/* Lightbox */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-foreground/90 flex items-center justify-center p-4 animate-fade-in"
           onClick={() => setLightbox(null)}
         >
           <button
@@ -137,6 +143,19 @@ const GallerySection = () => {
             className="max-w-full max-h-[85vh] rounded-lg object-contain"
             onClick={(e) => e.stopPropagation()}
           />
+
+          {/* Thumbnail indicator */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
+            {filtered.map((_, i) => (
+              <button
+                key={i}
+                onClick={(e) => { e.stopPropagation(); setLightbox(i); }}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === lightbox ? "bg-primary-foreground w-6" : "bg-primary-foreground/40"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       )}
     </section>

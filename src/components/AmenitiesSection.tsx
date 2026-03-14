@@ -1,6 +1,7 @@
 import {
   Sun, Flame, Wind, Wifi, UtensilsCrossed, BedDouble, ShowerHead, Armchair
 } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const amenities = [
   { icon: Sun, title: "Открытая терраса", desc: "Стол и стулья для завтраков на свежем воздухе" },
@@ -16,23 +17,24 @@ const amenities = [
 const AmenitiesSection = () => (
   <section className="py-16 md:py-24 bg-muted/40">
     <div className="container">
-      <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
-        В каждом домике
-      </h2>
-      <p className="text-center text-muted-foreground mb-10">
-        Всё необходимое для комфортного отдыха уже включено
-      </p>
+      <ScrollReveal>
+        <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
+          В каждом домике
+        </h2>
+        <p className="text-center text-muted-foreground mb-10">
+          Всё необходимое для комфортного отдыха уже включено
+        </p>
+      </ScrollReveal>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto">
-        {amenities.map((a) => (
-          <div
-            key={a.title}
-            className="bg-popover rounded-lg p-5 shadow-soft text-center hover:shadow-card transition-shadow"
-          >
-            <a.icon className="w-7 h-7 text-primary mx-auto mb-3" />
-            <h3 className="font-display text-lg font-semibold mb-1">{a.title}</h3>
-            <p className="text-xs text-muted-foreground">{a.desc}</p>
-          </div>
+        {amenities.map((a, i) => (
+          <ScrollReveal key={a.title} delay={i * 0.06}>
+            <div className="bg-popover rounded-lg p-5 shadow-soft text-center hover:shadow-card hover:-translate-y-1 transition-all duration-300">
+              <a.icon className="w-7 h-7 text-primary mx-auto mb-3" />
+              <h3 className="font-display text-lg font-semibold mb-1">{a.title}</h3>
+              <p className="text-xs text-muted-foreground">{a.desc}</p>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
     </div>
