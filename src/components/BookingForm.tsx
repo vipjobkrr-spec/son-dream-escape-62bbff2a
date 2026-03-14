@@ -167,23 +167,13 @@ const BookingForm = () => {
             </div>
 
             <div className="flex flex-col gap-3 pt-2">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button
-                  type="submit"
-                  className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
-                >
-                  Отправить заявку
-                </button>
-                <a
-                  href={buildMaxUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 px-6 py-4 border border-primary text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
-                >
-                  <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
-                  Написать в MAX
-                </a>
-              </div>
+              <button
+                type="submit"
+                className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+              >
+                <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+                Забронировать в MAX
+              </button>
               <a
                 href="https://travel.yandex.ru/"
                 target="_blank"

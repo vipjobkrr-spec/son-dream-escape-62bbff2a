@@ -190,7 +190,7 @@ const HeroSection = () => {
               </div>
               <div className="flex gap-2 sm:flex-shrink-0">
                 <button
-                  onClick={scrollToBooking}
+                  onClick={handleBooking}
                   className="flex-1 sm:flex-none px-6 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
                 >
                   <CalendarDays className="w-4 h-4" />
