@@ -45,8 +45,8 @@
     --sidebar-border: 112 37% 25% / 0.1;
     --sidebar-ring: 112 37% 25%;
 
-    --font-display: 'Cormorant Garamond', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Raleway', sans-serif;
 
     --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
     --shadow-card: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
