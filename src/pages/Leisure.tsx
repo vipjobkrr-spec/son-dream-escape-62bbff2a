@@ -135,7 +135,7 @@ const Leisure = () => {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   useEffect(() => {
-    document.title = 'Досуг — База отдыха Сон, Тенгинка';
+    document.title = 'Досуг и услуги — База отдыха Сон, Тенгинка';
   }, []);
 
   const scrollTo = (anchor: string) => {
