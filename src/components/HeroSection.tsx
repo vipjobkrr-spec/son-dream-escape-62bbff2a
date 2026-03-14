@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { Sun, Flame, Wind, Wifi, CalendarDays } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import {
   ContainerScroll,
   BentoGrid,
