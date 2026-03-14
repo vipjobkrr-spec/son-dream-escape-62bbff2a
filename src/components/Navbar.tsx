@@ -9,6 +9,7 @@ const links = [
   { href: "#cabins", id: "cabins", label: "Домики" },
   { href: "#tour", id: "tour", label: "Тур" },
   { href: "#gallery", id: "gallery", label: "Галерея" },
+  { href: "/leisure", id: "leisure", label: "Досуг", isPage: true },
   { href: "#location", id: "location", label: "Локация" },
   { href: "#faq", id: "faq", label: "FAQ" },
   { href: "#booking", id: "booking", label: "Бронь" },
