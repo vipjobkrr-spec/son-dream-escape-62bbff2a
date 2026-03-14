@@ -74,7 +74,7 @@ const HeroSection = () => {
                 src={img.src}
                 alt={img.alt}
                 className="h-full w-full object-cover"
-                loading="lazy"
+                loading="eager"
               />
             )}
           </BentoCell>
@@ -83,8 +83,8 @@ const HeroSection = () => {
 
       {/* Overlay text — scales away on scroll */}
       <ContainerScale>
-        <div className="flex flex-col items-center justify-center text-center px-4">
-          <div className="bg-foreground/70 backdrop-blur-md rounded-3xl p-8 md:p-12 max-w-2xl">
+          <div className="flex flex-col items-center justify-center text-center px-3 sm:px-4">
+            <div className="bg-foreground/70 backdrop-blur-md rounded-3xl p-5 sm:p-8 md:p-12 max-w-2xl w-full">
             <p className="text-secondary font-medium text-sm mb-3 tracking-wider uppercase">
               Черноморское побережье • Тенгинка
             </p>
@@ -111,19 +111,19 @@ const HeroSection = () => {
             </div>
 
             {/* Inline booking bar */}
-            <div className="bg-popover/95 backdrop-blur-md rounded-2xl shadow-card p-4 md:p-5">
+            <div className="bg-popover/95 backdrop-blur-md rounded-2xl shadow-card p-3 sm:p-4 md:p-5">
               <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wider">
-                Гарантированная лучшая цена при прямом бронировании
+                Лучшая цена при прямом бронировании
               </p>
-              <div className="flex flex-col sm:flex-row items-stretch gap-3">
-                <div className="flex-1 flex gap-3">
+              <div className="flex flex-col gap-3">
+                <div className="flex gap-3">
                   <div className="flex-1">
                     <label className="block text-xs text-muted-foreground mb-1">
                       Заезд
                     </label>
                     <input
                       type="date"
-                      className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      className="w-full px-2 sm:px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                     />
                   </div>
                   <div className="flex-1">
@@ -132,14 +132,14 @@ const HeroSection = () => {
                     </label>
                     <input
                       type="date"
-                      className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                      className="w-full px-2 sm:px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                     />
                   </div>
                 </div>
-                <div className="flex gap-3 sm:gap-2">
+                <div className="flex gap-2">
                   <button
                     onClick={scrollToBooking}
-                    className="flex-1 sm:flex-none px-6 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+                    className="flex-1 px-4 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
                   >
                     <CalendarDays className="w-4 h-4" />
                     Забронировать
@@ -148,7 +148,7 @@ const HeroSection = () => {
                     href={MAX_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 sm:flex-none px-5 py-2.5 border border-primary/30 text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
+                    className="px-4 py-2.5 border border-primary/30 text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
                   >
                     <img
                       src={maxLogo}
