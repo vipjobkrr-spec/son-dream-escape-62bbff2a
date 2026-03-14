@@ -53,12 +53,30 @@ const HeroSection = () => {
       <BentoGrid className="h-full p-4 md:p-6">
         {images.map((img, i) => (
           <BentoCell key={i}>
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="h-full w-full object-cover"
-              loading={i === 0 ? "eager" : "lazy"}
-            />
+            {i === 0 ? (
+              <div className="relative h-full w-full">
+                <AnimatePresence mode="popLayout">
+                  <motion.img
+                    key={heroIndex}
+                    src={images[heroIndex].src}
+                    alt={images[heroIndex].alt}
+                    className="absolute inset-0 h-full w-full object-cover"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 1 }}
+                    loading="eager"
+                  />
+                </AnimatePresence>
+              </div>
+            ) : (
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+            )}
           </BentoCell>
         ))}
       </BentoGrid>
