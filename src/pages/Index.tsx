@@ -4,6 +4,7 @@ import TrustBar from "@/components/TrustBar";
 import PricesSection from "@/components/PricesSection";
 import BookingTerms from "@/components/BookingTerms";
 import CabinsSection from "@/components/CabinsSection";
+import RoomTourSection from "@/components/RoomTourSection";
 import AmenitiesSection from "@/components/AmenitiesSection";
 import GallerySection from "@/components/GallerySection";
 import ReviewsSection from "@/components/ReviewsSection";
@@ -23,6 +24,7 @@ const Index = () => {
       <PricesSection />
       <BookingTerms />
       <CabinsSection />
+      <RoomTourSection />
       <AmenitiesSection />
       <GallerySection />
       <ReviewsSection />
