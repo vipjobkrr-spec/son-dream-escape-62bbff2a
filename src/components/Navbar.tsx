@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { Phone, Star, Home, DollarSign, Building, Video, Image, TreePine, BookOpen, MessageSquare, MapPin, HelpCircle, CalendarDays } from "lucide-react";
+import { Phone, Star, Home, DollarSign, Building, Video, Image, TreePine, BookOpen, MessageSquare, MapPin, HelpCircle, CalendarDays, Sparkles } from "lucide-react";
 import { FloatingNav, FloatingNavItem } from "@/components/ui/floating-navbar";
 
 const links: (FloatingNavItem & { id: string; isPage?: boolean })[] = [
@@ -9,6 +9,7 @@ const links: (FloatingNavItem & { id: string; isPage?: boolean })[] = [
   { name: "Тур", link: "#tour", id: "tour", icon: <Video className="w-4 h-4" /> },
   { name: "Галерея", link: "#gallery", id: "gallery", icon: <Image className="w-4 h-4" /> },
   { name: "Досуг", link: "/leisure", id: "leisure", isPage: true, icon: <TreePine className="w-4 h-4" /> },
+  { name: "Услуги", link: "/services", id: "services", isPage: true, icon: <Sparkles className="w-4 h-4" /> },
   { name: "Блог", link: "/blog", id: "blog", isPage: true, icon: <BookOpen className="w-4 h-4" /> },
   { name: "Отзывы", link: "#reviews", id: "reviews", icon: <MessageSquare className="w-4 h-4" /> },
   { name: "Локация", link: "#location", id: "location", icon: <MapPin className="w-4 h-4" /> },
