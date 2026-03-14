@@ -5,8 +5,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import Leisure from "./pages/Leisure.tsx";
-import Services from "./pages/Services.tsx";
 import NotFound from "./pages/NotFound.tsx";
+import { Navigate } from "react-router-dom";
 
 const queryClient = new QueryClient();
 
