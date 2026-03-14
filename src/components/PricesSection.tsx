@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { CalendarDays, Users, Bed, ArrowRight, Crown, Flower2, Sun, Waves, Leaf, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
@@ -164,6 +165,7 @@ const ShaderCanvas = () => {
 
 /* ── Main section ────────────────────────────────────────── */
 const PricesSection = () => {
+  const isMobile = useIsMobile();
   const [selected, setSelected] = useState<string | null>(null);
   const [guests, setGuests] = useState(2);
   const [extraBed, setExtraBed] = useState(false);
@@ -183,7 +185,11 @@ const PricesSection = () => {
 
   return (
     <section id="prices" className="relative py-16 md:py-24 overflow-hidden">
-      <ShaderCanvas />
+      {isMobile ? (
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 pointer-events-none" aria-hidden />
+      ) : (
+        <ShaderCanvas />
+      )}
 
       <div className="container relative z-10">
         <ScrollReveal>
@@ -255,6 +261,7 @@ const PricesSection = () => {
                           <button
                             key={n}
                             onClick={() => setGuests(n)}
+                            aria-label={`${n} ${n === 1 ? "гость" : n < 5 ? "гостя" : "гостей"}`}
                             className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                               guests === n
                                 ? "bg-primary text-primary-foreground shadow-md"
@@ -275,6 +282,7 @@ const PricesSection = () => {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => setNights(Math.max(1, nights - 1))}
+                          aria-label="Уменьшить количество ночей"
                           className="w-10 h-10 rounded-lg bg-muted/60 text-muted-foreground font-semibold hover:bg-muted/80 transition-colors backdrop-blur-sm"
                         >
                           −
@@ -284,6 +292,7 @@ const PricesSection = () => {
                         </span>
                         <button
                           onClick={() => setNights(Math.min(30, nights + 1))}
+                          aria-label="Увеличить количество ночей"
                           className="w-10 h-10 rounded-lg bg-muted/60 text-muted-foreground font-semibold hover:bg-muted/80 transition-colors backdrop-blur-sm"
                         >
                           +

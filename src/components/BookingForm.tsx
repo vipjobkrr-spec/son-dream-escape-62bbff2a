@@ -127,7 +127,19 @@ const BookingForm = () => {
               <input
                 type="tel"
                 value={form.phone}
-                onChange={(e) => set("phone", e.target.value)}
+                onChange={(e) => {
+                  let val = e.target.value.replace(/\D/g, "");
+                  if (val.startsWith("8")) val = "7" + val.slice(1);
+                  if (val.length > 0) {
+                    let formatted = "+7";
+                    if (val.length > 1) formatted += ` (${val.slice(1, 4)}`;
+                    if (val.length > 4) formatted += `) ${val.slice(4, 7)}`;
+                    if (val.length > 7) formatted += `-${val.slice(7, 9)}`;
+                    if (val.length > 9) formatted += `-${val.slice(9, 11)}`;
+                    val = formatted;
+                  }
+                  set("phone", val);
+                }}
                 placeholder="+7 (___) ___-__-__"
                 className={inputClass}
               />
