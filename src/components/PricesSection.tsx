@@ -282,6 +282,7 @@ const PricesSection = () => {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => setNights(Math.max(1, nights - 1))}
+                          aria-label="Уменьшить количество ночей"
                           className="w-10 h-10 rounded-lg bg-muted/60 text-muted-foreground font-semibold hover:bg-muted/80 transition-colors backdrop-blur-sm"
                         >
                           −
