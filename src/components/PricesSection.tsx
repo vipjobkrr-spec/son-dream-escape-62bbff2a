@@ -97,9 +97,11 @@ const PricesSection = () => {
                   key={s.id}
                   onClick={() => setSelected(isActive ? null : s.id)}
                   className={`relative rounded-2xl p-4 md:p-5 text-left transition-all duration-300 border-2 cursor-pointer group ${
-                    isActive
-                      ? "border-primary bg-primary text-primary-foreground shadow-lg scale-[1.02]"
-                      : "border-transparent bg-popover shadow-card hover:shadow-lg hover:border-primary/20"
+                    (s as any).isVip && !isActive
+                      ? "border-amber-500/30 bg-gradient-to-b from-amber-50 to-popover shadow-card hover:shadow-lg"
+                      : isActive
+                        ? "border-primary bg-primary text-primary-foreground shadow-lg scale-[1.02]"
+                        : "border-transparent bg-popover shadow-card hover:shadow-lg hover:border-primary/20"
                   }`}
                   whileTap={{ scale: 0.97 }}
                 >
