@@ -1,101 +1,193 @@
-import { TreePine, Mountain, Sunrise, Wind } from "lucide-react";
+import { useState } from "react";
+import { TreePine, Mountain, Sunrise, Wind, Home, Waves, UtensilsCrossed, Heart } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import territory1 from "@/assets/territory-1.webp";
 import territory2 from "@/assets/territory-2.webp";
+import poolImg from "@/assets/pool-1.jpg";
+import terraceImg from "@/assets/terrace.jpg";
 
-const highlights = [
-  { icon: TreePine, text: "Первозданная природа и тишина вдали от города" },
-  { icon: Mountain, text: "Горы и море — всё в шаговой доступности" },
-  { icon: Sunrise, text: "Закаты и рассветы как на ладони" },
-  { icon: Wind, text: "Место, где дышится полной грудью" },
+const tabs = [
+  {
+    id: "nature",
+    icon: TreePine,
+    title: "Природа",
+    heading: "Первозданная природа вокруг",
+    text: "Посвятите время себе и своему здоровью. Насладитесь чистой природой и свежим воздухом, наполненным ароматом трав и хвои. Прогуляйтесь по лесным тропинкам, покупайтесь в море и почувствуйте, как отпуск наполняет вас новой энергией.",
+    image: territory1,
+    highlights: [
+      { icon: Mountain, text: "Горы и море — всё в шаговой доступности" },
+      { icon: Wind, text: "Место, где дышится полной грудью" },
+    ],
+  },
+  {
+    id: "comfort",
+    icon: Home,
+    title: "Комфорт",
+    heading: "Домашний уют на природе",
+    text: "12 уютных домиков с полным оснащением: кондиционер, кухня, душ, Wi-Fi. Вы будете жить на лоне природы и чувствовать себя комфортно, как дома. Свежее постельное бельё, полотенца и всё необходимое — уже в домике.",
+    image: territory2,
+    highlights: [
+      { icon: Home, text: "12 полностью оборудованных домиков" },
+      { icon: Sunrise, text: "Закаты и рассветы как на ладони" },
+    ],
+  },
+  {
+    id: "activities",
+    icon: Waves,
+    title: "Активности",
+    heading: "Море, горы и приключения",
+    text: "Чёрное море в 10 минутах, горные реки и водопады — рядом. Прокат велосипедов, SUP-бордов, экскурсии к дольменам и каньонам. Каждый день — новое открытие, и не нужно далеко ехать.",
+    image: poolImg,
+    highlights: [
+      { icon: Waves, text: "Пляжи и морские прогулки" },
+      { icon: Mountain, text: "Треки и экскурсии по горам" },
+    ],
+  },
+  {
+    id: "relax",
+    icon: Heart,
+    title: "Отдых",
+    heading: "Расслабление и вкусная еда",
+    text: "Бассейн с шезлонгами, зона барбекю у каждого домика, уютная терраса для завтраков. Закажите доставку фермерских продуктов — и готовьте на природе. Или просто полежите в гамаке с книгой.",
+    image: terraceImg,
+    highlights: [
+      { icon: UtensilsCrossed, text: "Своя зона барбекю у каждого домика" },
+      { icon: Heart, text: "Бассейн, гамаки и полная тишина" },
+    ],
+  },
 ];
 
-const AboutSection = () => (
-  <section className="relative">
-    {/* Full-width parallax hero image */}
-    <div className="relative h-[60vh] md:h-[70vh] overflow-hidden">
-      <img
-        src={territory1}
-        alt="Территория базы отдыха Сон"
-        className="absolute inset-0 w-full h-full object-cover"
-        style={{ transform: "translateZ(0)" }}
-        loading="lazy"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/70" />
+const AboutSection = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const current = tabs[activeTab];
 
-      <div className="absolute inset-0 flex items-center justify-center">
-        <ScrollReveal className="text-center px-5">
-          <p className="text-secondary font-medium text-sm mb-3 tracking-widest uppercase">
-            Откройте для себя
-          </p>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-semibold text-primary-foreground leading-tight mb-4">
-            Что такое база «Сон»?
-          </h2>
-          <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Это загородная база отдыха в духе природного лагеря. Вы будете жить на лоне природы
-            и чувствовать себя комфортно, как дома.
-          </p>
-        </ScrollReveal>
-      </div>
-    </div>
-
-    {/* Content block */}
-    <div className="bg-background">
-      <div className="container py-16 md:py-20">
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
-          {/* Text side */}
-          <ScrollReveal>
-            <div>
-              <p className="text-muted-foreground leading-relaxed mb-8">
-                Посвятите время себе и своему здоровью. Насладитесь чистой природой
-                и свежим воздухом, наполненным ароматом трав и хвои.
-                Прогуляйтесь по лесным тропинкам, покупайтесь в море
-                и почувствуйте, как отпуск наполняет вас новой энергией.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {highlights.map((h, i) => (
-                  <div
-                    key={i}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-primary/5 border border-primary/10"
-                  >
-                    <h.icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                    <span className="text-sm text-foreground/80">{h.text}</span>
-                  </div>
-                ))}
-              </div>
-
-              <a
-                href="#gallery"
-                className="inline-flex items-center gap-2 mt-8 text-primary font-medium text-sm hover:underline underline-offset-4 transition-all"
-              >
-                Смотреть фотогалерею →
-              </a>
-            </div>
-          </ScrollReveal>
-
-          {/* Image side */}
-          <ScrollReveal delay={0.15}>
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-card">
-                <img
-                  src={territory2}
-                  alt="Дорожка между домиками базы Сон"
-                  className="w-full h-80 md:h-[420px] object-cover hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
-              </div>
-              {/* Floating badge */}
-              <div className="absolute -bottom-4 -left-4 md:-left-6 bg-primary text-primary-foreground px-5 py-3 rounded-xl shadow-lg">
-                <p className="font-display text-2xl font-semibold">12</p>
-                <p className="text-xs text-primary-foreground/80">уютных домиков</p>
-              </div>
-            </div>
+  return (
+    <section id="about" className="relative">
+      {/* Hero image */}
+      <div className="relative h-[55vh] md:h-[65vh] overflow-hidden">
+        <img
+          src={territory1}
+          alt="Территория базы отдыха Сон"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ transform: "translateZ(0)" }}
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-foreground/40 via-foreground/20 to-foreground/70" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <ScrollReveal className="text-center px-5">
+            <p className="text-secondary font-medium text-sm mb-3 tracking-widest uppercase">
+              Откройте для себя
+            </p>
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-semibold text-primary-foreground leading-tight mb-4">
+              Что такое база «Сон»?
+            </h2>
+            <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+              Это загородная база отдыха в духе природного лагеря — комфорт дома
+              среди гор и моря Кавказа.
+            </p>
           </ScrollReveal>
         </div>
       </div>
-    </div>
-  </section>
-);
+
+      {/* Tabbed content */}
+      <div className="bg-background">
+        <div className="container py-14 md:py-20">
+          {/* Tab switcher */}
+          <ScrollReveal>
+            <div className="flex justify-center mb-12">
+              <div className="inline-flex flex-wrap items-center gap-1 rounded-2xl border bg-card p-1.5 shadow-sm">
+                {tabs.map((tab, index) => {
+                  const Icon = tab.icon;
+                  const isActive = activeTab === index;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(index)}
+                      className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                        isActive
+                          ? "bg-primary text-primary-foreground shadow-sm"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                      <span className="hidden sm:inline">{tab.title}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* Tab content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+            >
+              <div className="grid md:grid-cols-2 gap-10 md:gap-14 max-w-5xl mx-auto items-center">
+                {/* Text */}
+                <div>
+                  <h3 className="text-2xl md:text-3xl font-display font-semibold mb-5 text-foreground">
+                    {current.heading}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-8">
+                    {current.text}
+                  </p>
+
+                  <div className="space-y-3">
+                    {current.highlights.map((h, i) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-3 p-3.5 rounded-xl bg-primary/5 border border-primary/10"
+                      >
+                        <h.icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                        <span className="text-sm text-foreground/80">
+                          {h.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <a
+                    href="#gallery"
+                    className="inline-flex items-center gap-2 mt-8 text-primary font-medium text-sm hover:underline underline-offset-4 transition-all"
+                  >
+                    Смотреть фотогалерею →
+                  </a>
+                </div>
+
+                {/* Image */}
+                <div className="relative">
+                  <div className="rounded-2xl overflow-hidden shadow-card">
+                    <motion.img
+                      key={current.image}
+                      src={current.image}
+                      alt={current.heading}
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.5 }}
+                      className="w-full h-72 md:h-[400px] object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="absolute -bottom-4 -left-4 md:-left-6 bg-primary text-primary-foreground px-5 py-3 rounded-xl shadow-lg">
+                    <p className="font-display text-2xl font-semibold">12</p>
+                    <p className="text-xs text-primary-foreground/80">
+                      уютных домиков
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default AboutSection;
