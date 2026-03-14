@@ -84,7 +84,7 @@ const HeroSection = () => {
       {/* Overlay text — scales away on scroll */}
       <ContainerScale>
         <div className="flex flex-col items-center justify-center text-center px-4">
-          <div className="bg-foreground/40 backdrop-blur-md rounded-3xl p-8 md:p-12 max-w-2xl">
+          <div className="bg-foreground/70 backdrop-blur-md rounded-3xl p-8 md:p-12 max-w-2xl">
             <p className="text-secondary font-medium text-sm mb-3 tracking-wider uppercase">
               Черноморское побережье • Тенгинка
             </p>
