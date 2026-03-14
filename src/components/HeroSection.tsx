@@ -97,7 +97,7 @@ const HeroSection = () => {
         >
           8 уютных домиков и баня.
           <br className="hidden sm:block" />
-          Терраса, барбекю, кондиционер, Wi‑Fi
+          Тишина и покой, кондиционер, Wi‑Fi
         </motion.p>
 
         {/* Image dots */}
