@@ -79,12 +79,9 @@ const AboutSection = () => {
             <p className="text-secondary font-medium text-sm mb-3 tracking-widest uppercase">
               Откройте для себя
             </p>
-            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-semibold text-primary-foreground leading-tight mb-4">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-display font-semibold text-primary-foreground leading-tight">
               Что такое база «Сон»?
             </h2>
-            <p className="text-primary-foreground/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              База отдыха «Сон» расположена в селе Тенгинка, Туапсинский район, Краснодарский край — курортный посёлок между Краснодаром и Сочи на берегу Чёрного моря. Это небольшая семейная база с 8 домиками и баней, где можно отдохнуть в тишине, но при этом оставаться в удобной доступности от Туапсе и Сочи.
-            </p>
           </ScrollReveal>
         </div>
       </div>
