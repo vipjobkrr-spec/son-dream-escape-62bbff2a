@@ -45,6 +45,7 @@ const Index = () => {
         subtext="Бассейн, барбекю и тишина — всё в одном месте"
       />
       <GallerySection />
+      <LeisureHeroBlock />
       <GiftCertificateSection />
       <ReviewsSection />
       <ParallaxDivider
