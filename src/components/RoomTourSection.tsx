@@ -86,20 +86,20 @@ const RoomTourSection = () => {
 
         {/* Zone tabs */}
         <ScrollReveal delay={0.1}>
-          <div className="flex gap-2 justify-center mb-8 overflow-x-auto pb-2 -mx-5 px-5 md:mx-0 md:px-0">
+          <div className="flex gap-2 justify-center mb-6 md:mb-8 overflow-x-auto pb-2 -mx-5 px-5 md:mx-0 md:px-0">
             {zones.map((z, i) => {
               const Icon = z.icon;
               return (
                 <button
                   key={z.id}
                   onClick={() => handleZoneChange(i)}
-                  className={`flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-medium transition-all whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 md:gap-2 px-3 py-2 md:px-5 md:py-3 rounded-xl text-xs md:text-sm font-medium transition-all whitespace-nowrap ${
                     activeZone === i
                       ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105"
                       : "bg-background text-muted-foreground hover:bg-background/80 shadow-soft"
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-3.5 h-3.5 md:w-4 md:h-4" />
                   {z.label}
                 </button>
               );
