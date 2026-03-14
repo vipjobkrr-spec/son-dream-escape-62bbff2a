@@ -220,10 +220,10 @@ const RoomTourSection = () => {
 
           {lightbox < zone.images.length - 1 && (
             <button
-              className="absolute right-4 text-primary-foreground/80 hover:text-primary-foreground z-10"
+              className="absolute right-2 md:right-4 text-primary-foreground/80 hover:text-primary-foreground z-10 p-2"
               onClick={(e) => { e.stopPropagation(); setLightbox(lightbox + 1); }}
             >
-              <ChevronRight className="w-10 h-10" />
+              <ChevronRight className="w-7 h-7 md:w-10 md:h-10" />
             </button>
           )}
 
