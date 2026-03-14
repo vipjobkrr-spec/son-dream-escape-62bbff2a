@@ -1,8 +1,9 @@
 import { Sun, Flame, Wind, Wifi, CalendarDays } from "lucide-react";
 import { useEffect, useState } from "react";
 import heroImg from "@/assets/atmosphere.webp";
+import maxLogo from "@/assets/max-logo.webp";
 
-const WHATSAPP_URL = "https://wa.me/79001234567?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B4%D0%BE%D0%BC%D0%B8%D0%BA%20%C2%AB%D0%A1%D0%BE%D0%BD%C2%BB...";
+const MAX_URL = "https://max.me/79001234567?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B4%D0%BE%D0%BC%D0%B8%D0%BA%20%C2%AB%D0%A1%D0%BE%D0%BD%C2%BB...";
 
 const features = [
   { icon: Sun, label: "Терраса" },
@@ -81,7 +82,7 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Inline booking bar — inspired by TheGarden */}
+      {/* Inline booking bar */}
       <div
         className="relative z-10 transition-all duration-700 ease-out delay-500"
         style={{
@@ -120,12 +121,13 @@ const HeroSection = () => {
                   Забронировать
                 </button>
                 <a
-                  href={WHATSAPP_URL}
+                  href={MAX_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none px-5 py-2.5 border border-primary/30 text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors"
+                  className="flex-1 sm:flex-none px-5 py-2.5 border border-primary/30 text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
                 >
-                  WhatsApp
+                  <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+                  MAX
                 </a>
               </div>
             </div>

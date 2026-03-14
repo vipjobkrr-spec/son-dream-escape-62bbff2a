@@ -15,7 +15,7 @@ import LocationSection from "@/components/LocationSection";
 import FaqSection from "@/components/FaqSection";
 import BookingForm from "@/components/BookingForm";
 import StickyBookingBar from "@/components/StickyBookingBar";
-import WhatsAppFab from "@/components/WhatsAppFab";
+import MaxFab from "@/components/MaxFab";
 import Footer from "@/components/Footer";
 
 import poolImg from "@/assets/pool-2.webp";
@@ -53,7 +53,7 @@ const Index = () => {
       <BookingForm />
       <Footer />
       <StickyBookingBar />
-      <WhatsAppFab />
+      <MaxFab />
     </>
   );
 };
