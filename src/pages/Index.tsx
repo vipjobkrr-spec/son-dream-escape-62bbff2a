@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
@@ -22,6 +23,10 @@ import poolImg from "@/assets/pool-2.webp";
 import bbqImg from "@/assets/bbq.jpg";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "База отдыха Сон — отдых на Чёрном море, Тенгинка";
+  }, []);
+
   return (
     <>
       <Navbar />
