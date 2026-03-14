@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarDays, Users, Check, Bed, ArrowRight } from "lucide-react";
+import { CalendarDays, Users, Check, Bed, ArrowRight, Crown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
 import maxLogo from "@/assets/max-logo.webp";
@@ -43,6 +43,15 @@ const seasons = [
     label: "Осень",
     price: 7000,
   },
+  {
+    id: "vip",
+    period: "Круглый год",
+    label: "VIP",
+    price: 16999,
+    tag: "VIP",
+    tagColor: "bg-amber-500",
+    isVip: true,
+  },
 ];
 
 const formatPrice = (n: number) =>
@@ -80,7 +89,7 @@ const PricesSection = () => {
 
         {/* Season cards */}
         <ScrollReveal>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 max-w-4xl mx-auto mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 max-w-5xl mx-auto mb-6">
             {seasons.map((s) => {
               const isActive = selected === s.id;
               return (
@@ -88,9 +97,11 @@ const PricesSection = () => {
                   key={s.id}
                   onClick={() => setSelected(isActive ? null : s.id)}
                   className={`relative rounded-2xl p-4 md:p-5 text-left transition-all duration-300 border-2 cursor-pointer group ${
-                    isActive
-                      ? "border-primary bg-primary text-primary-foreground shadow-lg scale-[1.02]"
-                      : "border-transparent bg-popover shadow-card hover:shadow-lg hover:border-primary/20"
+                    (s as any).isVip && !isActive
+                      ? "border-amber-500/30 bg-gradient-to-b from-amber-50 to-popover shadow-card hover:shadow-lg"
+                      : isActive
+                        ? "border-primary bg-primary text-primary-foreground shadow-lg scale-[1.02]"
+                        : "border-transparent bg-popover shadow-card hover:shadow-lg hover:border-primary/20"
                   }`}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -110,7 +121,8 @@ const PricesSection = () => {
                   >
                     {s.label}
                   </div>
-                  <div className="font-display text-2xl md:text-3xl font-semibold leading-tight">
+                  <div className="font-display text-2xl md:text-3xl font-semibold leading-tight flex items-center gap-1.5">
+                    {(s as any).isVip && !isActive && <Crown className="w-5 h-5 text-amber-500" />}
                     {formatPrice(s.price)}
                   </div>
                   <div
