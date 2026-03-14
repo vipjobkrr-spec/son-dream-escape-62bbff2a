@@ -144,21 +144,32 @@ const BookingForm = () => {
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <button
-                type="submit"
-                className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
-              >
-                Отправить заявку
-              </button>
+            <div className="flex flex-col gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  type="submit"
+                  className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
+                >
+                  Отправить заявку
+                </button>
+                <a
+                  href={buildMaxUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-6 py-4 border border-primary text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
+                >
+                  <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+                  Написать в MAX
+                </a>
+              </div>
               <a
-                href={buildMaxUrl()}
+                href="https://travel.yandex.ru/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 px-6 py-4 border border-primary text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
+                className="w-full px-6 py-4 bg-accent text-accent-foreground border border-input rounded-lg text-sm font-medium text-center hover:bg-accent/80 transition-colors flex items-center justify-center gap-2"
               >
-                <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
-                Написать в MAX
+                <ExternalLink className="w-4 h-4" />
+                Забронировать на Яндекс Путешествиях
               </a>
             </div>
           </form>
