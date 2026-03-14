@@ -37,8 +37,16 @@ const BookingForm = () => {
 
   const buildMaxUrl = () => {
     const extraText = form.extraBed ? "да" : "нет";
-    const text = `Здравствуйте! Хочу забронировать домик «Сон». Даты: ${form.checkIn || "___"} – ${form.checkOut || "___"}. Гостей: ${form.guests}. Нужно доп. место: ${extraText}. Подскажите, пожалуйста, итоговую стоимость и условия предоплаты.`;
-    return `${MAX_BASE}?text=${encodeURIComponent(text)}`;
+    const parts = [
+      `Здравствуйте! Хочу забронировать домик «Сон».`,
+      `Даты: ${form.checkIn || "___"} – ${form.checkOut || "___"}.`,
+      `Гостей: ${form.guests}. Доп. место: ${extraText}.`,
+      form.name ? `Имя: ${form.name}.` : "",
+      form.phone ? `Телефон: ${form.phone}.` : "",
+      form.comment ? `Комментарий: ${form.comment}` : "",
+      `Подскажите итоговую стоимость и условия предоплаты.`,
+    ].filter(Boolean).join(" ");
+    return `${MAX_BASE}?text=${encodeURIComponent(parts)}`;
   };
 
   const set = (key: string, value: string | boolean) =>
