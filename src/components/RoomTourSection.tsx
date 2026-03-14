@@ -108,7 +108,10 @@ const RoomTourSection = () => {
                 className="transition-transform duration-500 ease-out group-hover:[transform:rotateY(1deg)_rotateX(-1deg)_scale(1.01)]"
                 style={{ transformStyle: "preserve-3d" }}
               >
-                <div className="relative aspect-[16/10] bg-muted">
+                <button
+                  onClick={() => setLightbox(activeImage)}
+                  className="relative aspect-[16/10] bg-muted w-full cursor-zoom-in"
+                >
                   {zone.images.map((src, i) => (
                     <img
                       key={src}
@@ -120,7 +123,11 @@ const RoomTourSection = () => {
                       loading="lazy"
                     />
                   ))}
-                </div>
+                  <div className="absolute top-4 left-4 bg-foreground/50 text-primary-foreground text-xs px-3 py-1.5 rounded-full backdrop-blur-sm flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Expand className="w-3.5 h-3.5" />
+                    Открыть
+                  </div>
+                </button>
 
                 {/* Zone label overlay */}
                 <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-foreground/60 to-transparent p-6">
