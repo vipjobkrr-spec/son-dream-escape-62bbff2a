@@ -5,6 +5,12 @@ import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
 import { Button } from '@/components/ui/button';
 import {
+  ContainerScroll,
+  BentoGrid,
+  BentoCell,
+  ContainerScale,
+} from '@/components/ui/hero-gallery-scroll-animation';
+import {
   Phone,
   Mountain,
   Waves,
@@ -33,14 +39,14 @@ import sea3 from '@/assets/leisure/sea-3.webp';
 import river4 from '@/assets/leisure/river-4.webp';
 import bbq from '@/assets/bbq.jpg';
 
-/* ── Category slider items ── */
+const heroImages = [sea1, lake, river2, sea3, sunset];
+
 const categories = [
   { icon: Trees, label: 'Природа', anchor: 'nature' },
   { icon: Anchor, label: 'Море', anchor: 'sea' },
   { icon: Compass, label: 'Приключения', anchor: 'adventures' },
 ];
 
-/* ── Main activities ── */
 const activities = [
   {
     id: 'sea',
@@ -107,7 +113,6 @@ const activities = [
   },
 ];
 
-/* ── Extra services ── */
 const extras = [
   {
     icon: MapPin,
@@ -142,21 +147,24 @@ const Leisure = () => {
     <>
       <Navbar />
 
-      {/* ═══ Hero ═══ */}
-      <section className="relative min-h-[75vh] flex items-end overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={lake}
-            alt="Природа Кавказа — база отдыха Сон"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
-        </div>
+      {/* ═══ Animated Hero Gallery ═══ */}
+      <ContainerScroll>
+        <BentoGrid className="h-full p-4">
+          {heroImages.map((src, i) => (
+            <BentoCell key={i}>
+              <img
+                src={src}
+                alt={`Природа Кавказа ${i + 1}`}
+                className="h-full w-full object-cover"
+              />
+            </BentoCell>
+          ))}
+        </BentoGrid>
 
-        <div className="relative z-10 w-full pb-16 pt-32">
-          <div className="container">
+        <ContainerScale>
+          <div className="text-center px-4 max-w-3xl">
             {/* Breadcrumbs */}
-            <nav className="flex items-center gap-1.5 text-sm text-primary-foreground/60 mb-8">
+            <nav className="flex items-center justify-center gap-1.5 text-sm text-primary-foreground/60 mb-6">
               <Link to="/" className="hover:text-primary-foreground transition-colors">
                 Главная
               </Link>
@@ -164,12 +172,12 @@ const Leisure = () => {
               <span className="text-primary-foreground">Досуг</span>
             </nav>
 
-            <h1 className="text-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-4 leading-tight max-w-3xl">
+            <h1 className="text-display text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-4 leading-tight drop-shadow-lg">
               Добавьте впечатлений
               <span className="block text-secondary">к вашему отдыху</span>
             </h1>
-            <p className="text-primary-foreground/80 text-lg md:text-xl max-w-xl mb-8">
-              Море, горы, реки и природа Кавказа — всё в шаговой доступности от базы
+            <p className="text-primary-foreground/80 text-lg md:text-xl max-w-xl mx-auto mb-8 drop-shadow">
+              Море, горы, реки и природа Кавказа — всё в шаговой доступности
             </p>
             <a href="tel:+79001234567">
               <Button
@@ -181,8 +189,8 @@ const Leisure = () => {
               </Button>
             </a>
           </div>
-        </div>
-      </section>
+        </ContainerScale>
+      </ContainerScroll>
 
       {/* ═══ Category slider ═══ */}
       <section className="py-10 md:py-14 border-b border-border">
@@ -234,7 +242,6 @@ const Leisure = () => {
                       isReversed ? 'md:flex-row-reverse' : 'md:flex-row'
                     } gap-8 md:gap-14 items-center`}
                   >
-                    {/* Image */}
                     <div className="w-full md:w-[55%]">
                       <div className="rounded-2xl overflow-hidden shadow-card aspect-[4/3]">
                         <img
@@ -246,7 +253,6 @@ const Leisure = () => {
                       </div>
                     </div>
 
-                    {/* Content */}
                     <div className="w-full md:w-[45%] space-y-4">
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
                         <Icon className="w-4 h-4" />
@@ -259,10 +265,7 @@ const Leisure = () => {
                         {item.description}
                       </p>
                       <a href="tel:+79001234567">
-                        <Button
-                          variant="outline"
-                          className="rounded-full mt-2 gap-2"
-                        >
+                        <Button variant="outline" className="rounded-full mt-2 gap-2">
                           <Phone className="w-4 h-4" />
                           Забронировать
                         </Button>
