@@ -121,7 +121,7 @@ const RoomTourSection = () => {
               >
                 <button
                   onClick={() => setLightbox(activeImage)}
-                  className="relative aspect-[16/10] bg-muted w-full cursor-zoom-in"
+                  className="relative aspect-[4/3] md:aspect-[16/10] bg-muted w-full cursor-zoom-in"
                 >
                   {zone.images.map((src, i) => (
                     <img
