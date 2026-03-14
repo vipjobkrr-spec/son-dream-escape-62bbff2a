@@ -116,7 +116,7 @@ const RoomTourSection = () => {
               style={{ perspective: "1000px" }}
             >
               <div
-                className="transition-transform duration-500 ease-out group-hover:[transform:rotateY(1deg)_rotateX(-1deg)_scale(1.01)]"
+                className="transition-transform duration-500 ease-out md:group-hover:[transform:rotateY(1deg)_rotateX(-1deg)_scale(1.01)]"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 <button
