@@ -21,6 +21,8 @@ const images = [
 const HeroSection = () => {
   const [index, setIndex] = useState(0);
   const [showScroll, setShowScroll] = useState(true);
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
 
   useEffect(() => {
     const onScroll = () => setShowScroll(window.scrollY < 100);
@@ -35,9 +37,14 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const scrollToBooking = useCallback(() => {
-    document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  const handleBooking = useCallback(() => {
+    if (checkIn || checkOut) {
+      const text = `Здравствуйте! Хочу забронировать домик «Сон». Даты: ${checkIn || "___"} – ${checkOut || "___"}. Подскажите наличие и стоимость.`;
+      window.open(`${MAX_URL.split("?")[0]}?text=${encodeURIComponent(text)}`, "_blank");
+    } else {
+      document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [checkIn, checkOut]);
 
   return (
     <section className="relative h-screen w-full overflow-hidden">
@@ -162,24 +169,28 @@ const HeroSection = () => {
                   <label className="block text-xs text-muted-foreground mb-1">
                     Заезд
                   </label>
-                  <input
-                    type="date"
-                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="block text-xs text-muted-foreground mb-1">
-                    Выезд
-                  </label>
-                  <input
-                    type="date"
-                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
+                    <input
+                      type="date"
+                      value={checkIn}
+                      onChange={(e) => setCheckIn(e.target.value)}
+                      className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <label className="block text-xs text-muted-foreground mb-1">
+                      Выезд
+                    </label>
+                    <input
+                      type="date"
+                      value={checkOut}
+                      onChange={(e) => setCheckOut(e.target.value)}
+                      className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
                 </div>
               </div>
               <div className="flex gap-2 sm:flex-shrink-0">
                 <button
-                  onClick={scrollToBooking}
+                  onClick={handleBooking}
                   className="flex-1 sm:flex-none px-6 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
                 >
                   <CalendarDays className="w-4 h-4" />

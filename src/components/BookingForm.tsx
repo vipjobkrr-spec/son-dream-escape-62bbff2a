@@ -31,13 +31,22 @@ const BookingForm = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    toast.success("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+    toast.success("Открываем MAX для подтверждения брони...");
+    window.open(buildMaxUrl(), "_blank");
   };
 
   const buildMaxUrl = () => {
     const extraText = form.extraBed ? "да" : "нет";
-    const text = `Здравствуйте! Хочу забронировать домик «Сон». Даты: ${form.checkIn || "___"} – ${form.checkOut || "___"}. Гостей: ${form.guests}. Нужно доп. место: ${extraText}. Подскажите, пожалуйста, итоговую стоимость и условия предоплаты.`;
-    return `${MAX_BASE}?text=${encodeURIComponent(text)}`;
+    const parts = [
+      `Здравствуйте! Хочу забронировать домик «Сон».`,
+      `Даты: ${form.checkIn || "___"} – ${form.checkOut || "___"}.`,
+      `Гостей: ${form.guests}. Доп. место: ${extraText}.`,
+      form.name ? `Имя: ${form.name}.` : "",
+      form.phone ? `Телефон: ${form.phone}.` : "",
+      form.comment ? `Комментарий: ${form.comment}` : "",
+      `Подскажите итоговую стоимость и условия предоплаты.`,
+    ].filter(Boolean).join(" ");
+    return `${MAX_BASE}?text=${encodeURIComponent(parts)}`;
   };
 
   const set = (key: string, value: string | boolean) =>
@@ -158,23 +167,13 @@ const BookingForm = () => {
             </div>
 
             <div className="flex flex-col gap-3 pt-2">
-              <div className="flex flex-col sm:flex-row gap-3">
-                <button
-                  type="submit"
-                  className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
-                >
-                  Отправить заявку
-                </button>
-                <a
-                  href={buildMaxUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 px-6 py-4 border border-primary text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
-                >
-                  <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
-                  Написать в MAX
-                </a>
-              </div>
+              <button
+                type="submit"
+                className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+              >
+                <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+                Забронировать в MAX
+              </button>
               <a
                 href="https://travel.yandex.ru/"
                 target="_blank"
