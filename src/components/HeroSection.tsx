@@ -52,7 +52,7 @@ const HeroSection = () => {
       {/* Bento gallery background */}
       <BentoGrid className="h-full p-4 md:p-6">
         {images.map((img, i) => (
-          <BentoCell key={i}>
+          <BentoCell key={i} isMain={i === 0}>
             {i === 0 ? (
               <div className="relative h-full w-full">
                 <AnimatePresence mode="popLayout">
