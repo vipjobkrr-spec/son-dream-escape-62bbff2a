@@ -31,7 +31,8 @@ const BookingForm = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    toast.success("Заявка отправлена! Мы свяжемся с вами в ближайшее время.");
+    toast.success("Открываем MAX для подтверждения брони...");
+    window.open(buildMaxUrl(), "_blank");
   };
 
   const buildMaxUrl = () => {
