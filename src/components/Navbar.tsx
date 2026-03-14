@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Star } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
-const links = [
+const links: { href: string; id: string; label: string; isPage?: boolean }[] = [
   { href: "#about", id: "about", label: "О нас" },
   { href: "#prices", id: "prices", label: "Цены" },
   { href: "#cabins", id: "cabins", label: "Домики" },
   { href: "#tour", id: "tour", label: "Тур" },
   { href: "#gallery", id: "gallery", label: "Галерея" },
+  { href: "/leisure", id: "leisure", label: "Досуг", isPage: true },
   { href: "#location", id: "location", label: "Локация" },
   { href: "#faq", id: "faq", label: "FAQ" },
   { href: "#booking", id: "booking", label: "Бронь" },
@@ -17,6 +19,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const activeSection = useActiveSection();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -26,6 +31,10 @@ const Navbar = () => {
 
   const handleClick = (href: string) => {
     setMobileOpen(false);
+    if (!isHome) {
+      navigate("/" + href);
+      return;
+    }
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -68,15 +77,19 @@ const Navbar = () => {
           {links.map((l) => (
             <button
               key={l.href}
-              onClick={() => handleClick(l.href)}
+              onClick={() => l.isPage ? (() => { setMobileOpen(false); navigate(l.href); })() : handleClick(l.href)}
               className={`text-sm font-medium transition-colors relative pb-0.5 ${
                 scrolled ? "text-foreground/80" : "text-primary-foreground/80"
               } ${
-                activeSection === l.id
+                l.isPage && location.pathname === l.href
                   ? scrolled
                     ? "!text-primary"
                     : "!text-primary-foreground"
-                  : ""
+                  : activeSection === l.id
+                    ? scrolled
+                      ? "!text-primary"
+                      : "!text-primary-foreground"
+                    : ""
               } hover:opacity-70`}
             >
               {l.label}
@@ -134,7 +147,7 @@ const Navbar = () => {
           {links.map((l) => (
             <button
               key={l.href}
-              onClick={() => handleClick(l.href)}
+              onClick={() => l.isPage ? (() => { setMobileOpen(false); navigate(l.href); })() : handleClick(l.href)}
               className={`block w-full text-left py-2.5 text-sm font-medium transition-colors ${
                 activeSection === l.id
                   ? "text-primary"
