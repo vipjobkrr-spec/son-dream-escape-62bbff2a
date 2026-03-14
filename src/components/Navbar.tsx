@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Star } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
