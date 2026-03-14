@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Star } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
-const links = [
+const links: { href: string; id: string; label: string; isPage?: boolean }[] = [
   { href: "#about", id: "about", label: "О нас" },
   { href: "#prices", id: "prices", label: "Цены" },
   { href: "#cabins", id: "cabins", label: "Домики" },
