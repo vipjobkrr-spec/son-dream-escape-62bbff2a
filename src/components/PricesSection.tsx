@@ -137,7 +137,7 @@ const PricesSection = () => {
 
         {/* Extra info */}
         <div className="text-center text-sm text-muted-foreground mb-4">
-          Единый тариф на все 12 домиков • Доп. место +1 000 ₽/сут
+          Единый тариф на все 8 домиков • Доп. место +1 000 ₽/сут
         </div>
 
         {/* Calculator panel */}

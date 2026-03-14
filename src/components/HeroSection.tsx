@@ -95,7 +95,7 @@ const HeroSection = () => {
           className="text-white/75 text-base md:text-lg max-w-md mx-auto leading-relaxed mb-10"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          12 уютных домиков на 4–5 человек.
+          8 уютных домиков и баня.
           <br className="hidden sm:block" />
           Терраса, барбекю, кондиционер, Wi‑Fi
         </motion.p>

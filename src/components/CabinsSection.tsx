@@ -30,7 +30,7 @@ const CabinsSection = () => (
           <div>
             <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg mb-6">
               <Home className="w-5 h-5" />
-              <span className="font-display text-xl font-semibold">Всего 12 домиков</span>
+              <span className="font-display text-xl font-semibold">8 домиков и баня</span>
             </div>
 
             <ul className="space-y-3 text-sm">
