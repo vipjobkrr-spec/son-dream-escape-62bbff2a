@@ -100,21 +100,22 @@ const CabinsSection = () => {
                 <span className="font-display text-xl font-semibold">8 домиков и баня</span>
               </div>
 
-              <ul className="space-y-3 text-sm">
+              <div className="grid grid-cols-2 gap-3">
                 {[
-                  "Открытая терраса со столом и стульями для завтраков",
-                  "Индивидуальная зона барбекю с мангалом",
-                  "Полноценная кухня: холодильник, плита, посуда",
-                  "Кровать + удобный диван-кровать",
-                  "Ортопедические матрасы для крепкого сна",
-                  "Санузел с душевой кабиной и полотенцами",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <span className="text-primary mt-0.5">✓</span>
-                    <span className="text-foreground/80">{item}</span>
-                  </li>
+                  { icon: Sun, title: "Терраса", desc: "Стол и стулья для завтраков" },
+                  { icon: Flame, title: "Зона барбекю", desc: "Индивидуальный мангал" },
+                  { icon: UtensilsCrossed, title: "Кухня", desc: "Холодильник, плита, посуда" },
+                  { icon: BedDouble, title: "Кровать + диван", desc: "Ортопедические матрасы" },
+                  { icon: ShowerHead, title: "Санузел", desc: "Душевая и полотенца" },
+                  { icon: Wind, title: "Кондиционер", desc: "Комфорт в любую погоду" },
+                ].map((a) => (
+                  <div key={a.title} className="bg-muted/50 rounded-xl p-3 flex flex-col gap-1.5">
+                    <a.icon className="w-5 h-5 text-primary" />
+                    <span className="font-semibold text-sm text-foreground">{a.title}</span>
+                    <span className="text-xs text-muted-foreground">{a.desc}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </ScrollReveal>
         </div>
