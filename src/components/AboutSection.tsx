@@ -1,11 +1,27 @@
-import { useState } from "react";
-import { TreePine, Mountain, Sunrise, Wind, Home, Waves, UtensilsCrossed, Heart, MapPin, Users, Bath, Wifi } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { TreePine, Mountain, Sunrise, Wind, Home, Waves, UtensilsCrossed, Heart, MapPin, Users, Bath, Wifi, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import territory1 from "@/assets/territory-1.webp";
 import territory2 from "@/assets/territory-2.webp";
 import poolImg from "@/assets/pool-1.jpg";
 import terraceImg from "@/assets/terrace.jpg";
+
+import aboutBbq from "@/assets/about/bbq-friends.jpg";
+import aboutPoolGirl from "@/assets/about/pool-girl.jpg";
+import aboutPoolWalk from "@/assets/about/pool-walk.jpg";
+import aboutFamily from "@/assets/about/family-pool.jpg";
+import aboutPoolGirls from "@/assets/about/pool-girls.jpg";
+import aboutTerritory from "@/assets/about/territory-sun.webp";
+
+const heroSlides = [
+  { src: aboutTerritory, alt: "Территория базы отдыха Сон — домики и бассейн" },
+  { src: aboutPoolWalk, alt: "Прогулка у бассейна на базе Сон" },
+  { src: aboutFamily, alt: "Семейный отдых в бассейне" },
+  { src: aboutBbq, alt: "Барбекю с друзьями на базе Сон" },
+  { src: aboutPoolGirl, alt: "Отдых у бассейна с видом на горы" },
+  { src: aboutPoolGirls, alt: "Купание в бассейне на базе Сон" },
+];
 
 const tabs = [
   {
