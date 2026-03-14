@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { CalendarDays, Users, Check, Bed, ArrowRight, Crown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
@@ -57,6 +57,95 @@ const seasons = [
 const formatPrice = (n: number) =>
   n.toLocaleString("ru-RU") + " ₽";
 
+/* ── WebGL shader background ─────────────────────────────── */
+const ShaderCanvas = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const gl = canvas.getContext("webgl");
+    if (!gl) return;
+
+    const vsSource = `attribute vec2 aP;void main(){gl_Position=vec4(aP,0.,1.);}`;
+    const fsSource = `
+      precision highp float;
+      uniform float iTime;
+      uniform vec2 iRes;
+      mat2 rot(float a){float c=cos(a),s=sin(a);return mat2(c,-s,s,c);}
+      float vary(vec2 v1,vec2 v2,float str,float spd){return sin(dot(normalize(v1),normalize(v2))*str+iTime*spd)/100.;}
+      vec3 circle(vec2 uv,vec2 ctr,float r,float w){
+        vec2 d=ctr-uv;float l=length(d);
+        l+=vary(d,vec2(0.,1.),5.,2.);l-=vary(d,vec2(1.,0.),5.,2.);
+        return vec3(smoothstep(r-w,r,l)-smoothstep(r,r+w,l));
+      }
+      void main(){
+        vec2 uv=gl_FragCoord.xy/iRes;uv.x*=1.5;uv.x-=.25;
+        float m=0.;vec2 c=vec2(.5);float r=.35;
+        m+=circle(uv,c,r,.035).r;
+        m+=circle(uv,c,r-.018,.01).r;
+        m+=circle(uv,c,r+.018,.005).r;
+        vec2 v=rot(iTime)*uv;
+        vec3 fg=vec3(v.x*.3+.15,v.y*.25+.35,.22);
+        vec3 bg=vec3(.96,.95,.93);
+        vec3 col=mix(bg,fg,m);
+        col=mix(col,vec3(1.),circle(uv,c,r,.003).r);
+        gl_FragColor=vec4(col,1.);
+      }`;
+
+    const compile = (type: number, src: string) => {
+      const s = gl.createShader(type)!;
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      return s;
+    };
+    const prog = gl.createProgram()!;
+    gl.attachShader(prog, compile(gl.VERTEX_SHADER, vsSource));
+    gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, fsSource));
+    gl.linkProgram(prog);
+    gl.useProgram(prog);
+
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]), gl.STATIC_DRAW);
+    const aP = gl.getAttribLocation(prog, "aP");
+    gl.enableVertexAttribArray(aP);
+    gl.vertexAttribPointer(aP, 2, gl.FLOAT, false, 0, 0);
+
+    const iTime = gl.getUniformLocation(prog, "iTime");
+    const iRes = gl.getUniformLocation(prog, "iRes");
+
+    let raf: number;
+    const render = (t: number) => {
+      gl.uniform1f(iTime, t * 0.001);
+      gl.uniform2f(iRes, canvas.width, canvas.height);
+      gl.drawArrays(gl.TRIANGLES, 0, 6);
+      raf = requestAnimationFrame(render);
+    };
+    const resize = () => {
+      canvas.width = canvas.clientWidth * devicePixelRatio;
+      canvas.height = canvas.clientHeight * devicePixelRatio;
+      gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
+    };
+    resize();
+    window.addEventListener("resize", resize);
+    raf = requestAnimationFrame(render);
+    return () => {
+      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 w-full h-full opacity-40 pointer-events-none"
+      aria-hidden
+    />
+  );
+};
+
+/* ── Main section ────────────────────────────────────────── */
 const PricesSection = () => {
   const [selected, setSelected] = useState<string | null>(null);
   const [guests, setGuests] = useState(2);
@@ -76,8 +165,11 @@ const PricesSection = () => {
   };
 
   return (
-    <section id="prices" className="py-16 md:py-24">
-      <div className="container">
+    <section id="prices" className="relative py-16 md:py-24 overflow-hidden">
+      {/* Animated WebGL background */}
+      <ShaderCanvas />
+
+      <div className="container relative z-10">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
             Цены на проживание
@@ -87,7 +179,7 @@ const PricesSection = () => {
           </p>
         </ScrollReveal>
 
-        {/* Season cards */}
+        {/* Season cards — glassy */}
         <ScrollReveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-4 max-w-5xl mx-auto mb-6">
             {seasons.map((s) => {
@@ -96,12 +188,12 @@ const PricesSection = () => {
                 <motion.button
                   key={s.id}
                   onClick={() => setSelected(isActive ? null : s.id)}
-                  className={`relative rounded-2xl p-4 md:p-5 text-left transition-all duration-300 border-2 cursor-pointer group ${
+                  className={`relative rounded-2xl p-4 md:p-5 text-left transition-all duration-300 border cursor-pointer group backdrop-blur-xl ${
                     (s as any).isVip && !isActive
-                      ? "border-amber-500/30 bg-gradient-to-b from-amber-50 to-popover shadow-card hover:shadow-lg"
+                      ? "border-amber-500/30 bg-gradient-to-b from-amber-50/80 to-popover/70 shadow-lg hover:shadow-xl"
                       : isActive
-                        ? "border-primary bg-primary text-primary-foreground shadow-lg scale-[1.02]"
-                        : "border-transparent bg-popover shadow-card hover:shadow-lg hover:border-primary/20"
+                        ? "border-primary/50 bg-primary text-primary-foreground shadow-xl scale-[1.02]"
+                        : "border-border/40 bg-popover/60 shadow-md hover:shadow-lg hover:border-primary/30 hover:bg-popover/80"
                   }`}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -152,7 +244,7 @@ const PricesSection = () => {
           Единый тариф на все 8 домиков • Доп. место +1 000 ₽/сут
         </div>
 
-        {/* Calculator panel */}
+        {/* Calculator panel — glassy */}
         <AnimatePresence>
           {activeSeason && (
             <motion.div
@@ -163,7 +255,7 @@ const PricesSection = () => {
               className="overflow-hidden"
             >
               <ScrollReveal>
-                <div className="max-w-2xl mx-auto bg-popover rounded-2xl shadow-card p-5 md:p-8 mt-2">
+                <div className="max-w-2xl mx-auto backdrop-blur-xl bg-popover/70 rounded-2xl shadow-xl border border-border/30 p-5 md:p-8 mt-2">
                   <div className="flex items-center gap-2 mb-5">
                     <CalendarDays className="w-5 h-5 text-primary" />
                     <h3 className="font-display text-lg font-semibold">
@@ -185,8 +277,8 @@ const PricesSection = () => {
                             onClick={() => setGuests(n)}
                             className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                               guests === n
-                                ? "bg-primary text-primary-foreground"
-                                : "bg-muted text-muted-foreground hover:bg-muted/80"
+                                ? "bg-primary text-primary-foreground shadow-md"
+                                : "bg-muted/60 text-muted-foreground hover:bg-muted/80 backdrop-blur-sm"
                             }`}
                           >
                             {n}
@@ -203,7 +295,7 @@ const PricesSection = () => {
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => setNights(Math.max(1, nights - 1))}
-                          className="w-10 h-10 rounded-lg bg-muted text-muted-foreground font-semibold hover:bg-muted/80 transition-colors"
+                          className="w-10 h-10 rounded-lg bg-muted/60 text-muted-foreground font-semibold hover:bg-muted/80 transition-colors backdrop-blur-sm"
                         >
                           −
                         </button>
@@ -212,7 +304,7 @@ const PricesSection = () => {
                         </span>
                         <button
                           onClick={() => setNights(Math.min(30, nights + 1))}
-                          className="w-10 h-10 rounded-lg bg-muted text-muted-foreground font-semibold hover:bg-muted/80 transition-colors"
+                          className="w-10 h-10 rounded-lg bg-muted/60 text-muted-foreground font-semibold hover:bg-muted/80 transition-colors backdrop-blur-sm"
                         >
                           +
                         </button>
@@ -228,8 +320,8 @@ const PricesSection = () => {
                         onClick={() => setExtraBed(!extraBed)}
                         className={`w-full py-2.5 rounded-lg text-sm font-medium transition-all border ${
                           extraBed
-                            ? "bg-primary text-primary-foreground border-primary"
-                            : "bg-muted text-muted-foreground border-transparent hover:bg-muted/80"
+                            ? "bg-primary text-primary-foreground border-primary shadow-md"
+                            : "bg-muted/60 text-muted-foreground border-transparent hover:bg-muted/80 backdrop-blur-sm"
                         }`}
                       >
                         {extraBed ? "✓ +1 000 ₽" : "Нет"}
@@ -238,7 +330,7 @@ const PricesSection = () => {
                   </div>
 
                   {/* Summary */}
-                  <div className="bg-muted/50 rounded-xl p-4 md:p-5 mb-5">
+                  <div className="bg-muted/40 backdrop-blur-sm rounded-xl p-4 md:p-5 mb-5 border border-border/20">
                     <div className="flex justify-between items-center text-sm mb-1">
                       <span className="text-muted-foreground">
                         {formatPrice(activeSeason.price)} × {nights}{" "}
@@ -254,7 +346,7 @@ const PricesSection = () => {
                         <span>{formatPrice(1000 * nights)}</span>
                       </div>
                     )}
-                    <div className="border-t border-border mt-3 pt-3 flex justify-between items-center">
+                    <div className="border-t border-border/30 mt-3 pt-3 flex justify-between items-center">
                       <span className="font-medium">Итого</span>
                       <span className="font-display text-2xl md:text-3xl font-semibold text-primary">
                         {formatPrice(total)}
@@ -277,7 +369,7 @@ const PricesSection = () => {
                       href={buildMaxUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-6 py-4 border border-primary/30 text-primary rounded-xl text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
+                      className="flex-1 px-6 py-4 border border-primary/30 text-primary rounded-xl text-sm font-medium text-center hover:bg-primary/5 transition-colors flex items-center justify-center gap-2 backdrop-blur-sm"
                     >
                       <img
                         src={maxLogo}
