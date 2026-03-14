@@ -8,8 +8,8 @@ const LocationSection = () => (
         <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
           Как добраться
         </h2>
-        <p className="text-center text-muted-foreground mb-10">
-          Тенгинка, Туапсинский район, Краснодарский край
+        <p className="text-center text-muted-foreground mb-10 max-w-2xl mx-auto">
+          База отдыха «Сон» находится в селе Тенгинка, Туапсинский район, Краснодарский край — между Туапсе и Сочи. К нам удобно добираться на автомобиле из Краснодара, Туапсе и Сочи, на поезде до Туапсе или Сочи с последующим трансфером до Тенгинки.
         </p>
       </ScrollReveal>
 

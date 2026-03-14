@@ -174,9 +174,9 @@ const AboutSection = () => {
                     />
                   </div>
                   <div className="absolute -bottom-4 -left-4 md:-left-6 bg-primary text-primary-foreground px-5 py-3 rounded-xl shadow-lg">
-                    <p className="font-display text-2xl font-semibold">12</p>
+                    <p className="font-display text-2xl font-semibold">8</p>
                     <p className="text-xs text-primary-foreground/80">
-                      уютных домиков
+                      домиков и баня
                     </p>
                   </div>
                 </div>
