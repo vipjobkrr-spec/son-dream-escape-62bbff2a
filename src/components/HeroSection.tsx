@@ -73,7 +73,7 @@ const HeroSection = () => {
               <img
                 src={img.src}
                 alt={img.alt}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover brightness-75 hover:brightness-110 transition-all duration-500"
                 loading="eager"
               />
             )}
