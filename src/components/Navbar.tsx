@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Star } from "lucide-react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 
 const links = [
+  { href: "#about", id: "about", label: "О нас" },
   { href: "#prices", id: "prices", label: "Цены" },
   { href: "#cabins", id: "cabins", label: "Домики" },
+  { href: "#tour", id: "tour", label: "Тур" },
   { href: "#gallery", id: "gallery", label: "Галерея" },
   { href: "#location", id: "location", label: "Локация" },
   { href: "#faq", id: "faq", label: "FAQ" },
-  { href: "#booking", id: "booking", label: "Бронирование" },
+  { href: "#booking", id: "booking", label: "Бронь" },
 ];
 
 const Navbar = () => {
@@ -36,17 +38,33 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-14 md:h-16">
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className={`font-display text-lg font-semibold transition-colors ${
-            scrolled ? "text-foreground" : "text-primary-foreground"
-          }`}
-        >
-          «Сон»
-        </button>
+        {/* Logo + Rating */}
+        <div className="flex items-center gap-3">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className={`font-display text-lg font-semibold transition-colors ${
+              scrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
+          >
+            «Сон»
+          </button>
+
+          {/* Rating badge */}
+          <div
+            className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
+              scrolled
+                ? "bg-secondary/15 text-secondary-foreground"
+                : "bg-primary-foreground/15 backdrop-blur-sm text-primary-foreground"
+            }`}
+          >
+            <Star className="w-3.5 h-3.5 fill-secondary text-secondary" />
+            <span className="font-semibold">4.9</span>
+            <span className="opacity-70">Яндекс</span>
+          </div>
+        </div>
 
         {/* Desktop */}
-        <nav className="hidden md:flex items-center gap-5">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-5">
           {links.map((l) => (
             <button
               key={l.href}
@@ -82,6 +100,15 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <div className="flex items-center gap-3 md:hidden">
+          {/* Mobile rating */}
+          <div
+            className={`flex items-center gap-1 text-xs font-medium transition-colors ${
+              scrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
+          >
+            <Star className="w-3.5 h-3.5 fill-secondary text-secondary" />
+            <span>4.9</span>
+          </div>
           <a
             href="tel:+79001234567"
             className={`transition-colors ${
