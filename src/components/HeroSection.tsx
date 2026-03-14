@@ -1,4 +1,4 @@
-import { Sun, Flame, Wind, Wifi } from "lucide-react";
+import { Sun, Flame, Wind, Wifi, CalendarDays } from "lucide-react";
 import { useEffect, useState } from "react";
 import heroImg from "@/assets/atmosphere.webp";
 
@@ -24,7 +24,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-[92vh] flex items-end md:items-center overflow-hidden">
+    <section className="relative min-h-[100vh] flex flex-col overflow-hidden">
       <img
         src={heroImg}
         alt="База отдыха Сон — бассейн и домики"
@@ -34,7 +34,8 @@ const HeroSection = () => {
       />
       <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/30 to-foreground/10" />
 
-      <div className="container relative z-10 pb-16 pt-32 md:py-24">
+      {/* Main content */}
+      <div className="container relative z-10 flex-1 flex items-end md:items-center pb-44 md:pb-32 pt-32 md:py-24">
         <div className="max-w-2xl">
           <div
             className="transition-all duration-700 ease-out"
@@ -64,30 +65,7 @@ const HeroSection = () => {
           </p>
 
           <div
-            className="flex flex-col sm:flex-row gap-3 mb-10 transition-all duration-700 ease-out delay-300"
-            style={{
-              opacity: loaded ? 1 : 0,
-              transform: loaded ? "translateY(0)" : "translateY(24px)",
-            }}
-          >
-            <button
-              onClick={scrollToBooking}
-              className="px-8 py-4 bg-primary text-primary-foreground rounded-lg text-base font-medium hover:opacity-90 transition-all hover:shadow-lg"
-            >
-              Проверить даты
-            </button>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-8 py-4 bg-popover/15 backdrop-blur-sm text-primary-foreground border border-primary-foreground/20 rounded-lg text-base font-medium text-center hover:bg-popover/25 transition-colors"
-            >
-              Написать в WhatsApp
-            </a>
-          </div>
-
-          <div
-            className="flex flex-wrap gap-6 transition-all duration-700 ease-out delay-500"
+            className="flex flex-wrap gap-6 transition-all duration-700 ease-out delay-300"
             style={{
               opacity: loaded ? 1 : 0,
               transform: loaded ? "translateY(0)" : "translateY(24px)",
@@ -99,6 +77,58 @@ const HeroSection = () => {
                 <span className="text-sm font-medium">{f.label}</span>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Inline booking bar — inspired by TheGarden */}
+      <div
+        className="relative z-10 transition-all duration-700 ease-out delay-500"
+        style={{
+          opacity: loaded ? 1 : 0,
+          transform: loaded ? "translateY(0)" : "translateY(24px)",
+        }}
+      >
+        <div className="container pb-8 md:pb-10">
+          <div className="bg-popover/95 backdrop-blur-md rounded-2xl shadow-card p-4 md:p-5 max-w-3xl">
+            <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wider">
+              Гарантированная лучшая цена при прямом бронировании
+            </p>
+            <div className="flex flex-col sm:flex-row items-stretch gap-3">
+              <div className="flex-1 flex gap-3">
+                <div className="flex-1">
+                  <label className="block text-xs text-muted-foreground mb-1">Заезд</label>
+                  <input
+                    type="date"
+                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-xs text-muted-foreground mb-1">Выезд</label>
+                  <input
+                    type="date"
+                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                  />
+                </div>
+              </div>
+              <div className="flex gap-3 sm:gap-2">
+                <button
+                  onClick={scrollToBooking}
+                  className="flex-1 sm:flex-none px-6 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+                >
+                  <CalendarDays className="w-4 h-4" />
+                  Забронировать
+                </button>
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none px-5 py-2.5 border border-primary/30 text-primary rounded-lg text-sm font-medium text-center hover:bg-primary/5 transition-colors"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
