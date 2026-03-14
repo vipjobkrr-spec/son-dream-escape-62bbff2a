@@ -99,17 +99,37 @@ const BentoGrid = React.forwardRef<
 })
 BentoGrid.displayName = "BentoGrid"
 
-const BentoCell = React.forwardRef<HTMLDivElement, HTMLMotionProps<"div">>(
-  ({ className, style, ...props }, ref) => {
+interface BentoCellProps extends HTMLMotionProps<"div"> {
+  isMain?: boolean
+}
+
+const BentoCell = React.forwardRef<HTMLDivElement, BentoCellProps>(
+  ({ className, style, isMain, ...props }, ref) => {
     const { scrollYProgress } = useContainerScrollContext()
-    const translate = useTransform(scrollYProgress, [0.1, 0.9], ["-35%", "0%"])
-    const scale = useTransform(scrollYProgress, [0, 0.9], [0.5, 1])
+
+    // Main cell: starts full, stays full
+    // Other cells: start hidden, fade/scale in as you scroll
+    const translate = useTransform(
+      scrollYProgress,
+      [0.1, 0.9],
+      isMain ? ["0%", "0%"] : ["-35%", "0%"]
+    )
+    const scale = useTransform(
+      scrollYProgress,
+      [0, 0.9],
+      isMain ? [1, 1] : [0.5, 1]
+    )
+    const opacity = useTransform(
+      scrollYProgress,
+      [0.05, 0.6],
+      isMain ? [1, 1] : [0, 1]
+    )
 
     return (
       <motion.div
         ref={ref}
         className={cn("overflow-hidden rounded-xl", className)}
-        style={{ y: translate, scale, ...style }}
+        style={{ y: translate, scale, opacity, ...style }}
         {...props}
       />
     )
