@@ -30,6 +30,10 @@ const Navbar = () => {
 
   const handleClick = (href: string) => {
     setMobileOpen(false);
+    if (!isHome) {
+      navigate("/" + href);
+      return;
+    }
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
