@@ -194,6 +194,80 @@ const Services = () => {
         </div>
       </section>
 
+      {/* Installment Banner */}
+      <section className="py-16 md:py-24 bg-primary/5">
+        <div className="container max-w-4xl">
+          <ScrollReveal>
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              <div className="flex-shrink-0 w-20 h-20 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <CreditCard className="w-10 h-10 text-primary" />
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h2
+                  className="text-3xl md:text-4xl font-semibold mb-3"
+                  style={{ fontFamily: "var(--font-display)" }}
+                >
+                  Оплата частями
+                </h2>
+                <p className="text-muted-foreground max-w-lg">
+                  Внесите всего 30% при бронировании — остаток за 7 дней до заезда. Никаких переплат и скрытых комиссий.
+                </p>
+              </div>
+              <button
+                onClick={() => setInstallmentOpen(true)}
+                className="flex-shrink-0 px-8 py-4 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
+              >
+                Узнать подробнее
+              </button>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Installment Dialog */}
+      <Dialog open={installmentOpen} onOpenChange={setInstallmentOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle
+              className="text-2xl flex items-center gap-2"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              <CreditCard className="w-5 h-5 text-primary" />
+              Оплата частями
+            </DialogTitle>
+            <DialogDescription>
+              Бронируйте отдых без полной оплаты — удобная рассрочка без переплат
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-4 py-4">
+            {installmentSteps.map((s) => (
+              <div key={s.step} className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-sm font-bold">
+                  {s.step}
+                </div>
+                <div>
+                  <p className="font-medium">{s.title}</p>
+                  <p className="text-sm text-muted-foreground">{s.desc}</p>
+                </div>
+              </div>
+            ))}
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-muted/60 text-sm text-muted-foreground mt-2">
+              <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+              Без процентов и комиссий. Итоговая сумма не меняется.
+            </div>
+          </div>
+          <a
+            href={buildMaxUrl("Оплата частями")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
+          >
+            <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+            Оформить рассрочку в MAX
+          </a>
+        </DialogContent>
+      </Dialog>
+
       {/* CTA */}
       <section className="py-16 md:py-24 bg-muted/40">
         <div className="container max-w-3xl text-center">
