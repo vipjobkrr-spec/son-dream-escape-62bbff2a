@@ -261,6 +261,7 @@ const PricesSection = () => {
                           <button
                             key={n}
                             onClick={() => setGuests(n)}
+                            aria-label={`${n} ${n === 1 ? "гость" : n < 5 ? "гостя" : "гостей"}`}
                             className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                               guests === n
                                 ? "bg-primary text-primary-foreground shadow-md"
