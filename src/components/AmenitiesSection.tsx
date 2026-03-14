@@ -1,5 +1,5 @@
 import {
-  Sun, Flame, Wind, Wifi, UtensilsCrossed, BedDouble, ShowerHead, Armchair
+  Sun, Waves, Wind, Wifi, UtensilsCrossed, BedDouble, ShowerHead, Armchair
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
