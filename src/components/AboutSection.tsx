@@ -96,6 +96,7 @@ const tabs = [
 const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [heroSlide, setHeroSlide] = useState(0);
+  const [natureSlide, setNatureSlide] = useState(0);
   const current = tabs[activeTab];
 
   const nextSlide = useCallback(() => {
