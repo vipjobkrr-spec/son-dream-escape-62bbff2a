@@ -25,12 +25,27 @@ const CabinsSection = () => {
   };
 
   return (
-    <section id="cabins" className="py-16 md:py-24">
-      <div className="container">
+    <section id="cabins" className="relative py-16 md:py-24 bg-muted/30 overflow-hidden">
+      {/* Decorative background pattern */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+        <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <pattern id="leaf-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+            <circle cx="30" cy="30" r="1.5" fill="currentColor" />
+            <circle cx="0" cy="0" r="1" fill="currentColor" />
+            <circle cx="60" cy="0" r="1" fill="currentColor" />
+            <circle cx="0" cy="60" r="1" fill="currentColor" />
+            <circle cx="60" cy="60" r="1" fill="currentColor" />
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#leaf-pattern)" className="text-foreground" />
+        </svg>
+      </div>
+
+      <div className="container relative z-10">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
             Домики
           </h2>
+          <div className="w-16 h-1 bg-primary rounded-full mx-auto mb-4" />
           <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto">
             Наши домики в Тенгинке — это современные одноэтажные домики у моря для семьи или небольшой компании в Краснодарском крае. В каждом домике: кухонная зона, санузел с душем, кондиционер, Wi‑Fi, терраса и своя зона барбекю; до моря и пляжей побережья Чёрного моря — несколько минут на машине.
           </p>
@@ -94,10 +109,21 @@ const CabinsSection = () => {
 
           {/* Info */}
           <ScrollReveal delay={0.15}>
-            <div>
-              <div className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2.5 rounded-lg mb-6">
+            <div className="bg-popover rounded-2xl shadow-card p-6">
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground px-5 py-2.5 rounded-lg mb-3">
                 <Home className="w-5 h-5" />
                 <span className="font-display text-xl font-semibold">8 домиков и баня</span>
+              </div>
+
+              <p className="font-display italic text-muted-foreground mb-4">
+                Уютные домики для семейного отдыха
+              </p>
+
+              {/* Decorative dots */}
+              <div className="flex items-center gap-1.5 mb-5">
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary" />
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary/60" />
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary/30" />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
@@ -109,8 +135,10 @@ const CabinsSection = () => {
                   { icon: ShowerHead, title: "Санузел", desc: "Душевая и полотенца" },
                   { icon: Wind, title: "Кондиционер", desc: "Комфорт в любую погоду" },
                 ].map((a) => (
-                  <div key={a.title} className="bg-muted/50 rounded-xl p-3 flex flex-col gap-1.5">
-                    <a.icon className="w-5 h-5 text-primary" />
+                  <div key={a.title} className="bg-background rounded-xl p-3 flex flex-col gap-1.5 border-l-2 border-primary shadow-soft hover:shadow-card hover:-translate-y-0.5 transition-all duration-300">
+                    <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <a.icon className="w-5 h-5 text-primary" />
+                    </div>
                     <span className="font-semibold text-sm text-foreground">{a.title}</span>
                     <span className="text-xs text-muted-foreground">{a.desc}</span>
                   </div>
