@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -45,8 +45,8 @@
     --sidebar-border: 112 37% 25% / 0.1;
     --sidebar-ring: 112 37% 25%;
 
-    --font-display: 'Cormorant Garamond', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Raleway', sans-serif;
 
     --shadow-soft: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
     --shadow-card: 0 4px 20px -4px rgba(0, 0, 0, 0.08);
