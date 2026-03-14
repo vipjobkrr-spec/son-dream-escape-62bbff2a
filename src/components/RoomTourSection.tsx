@@ -141,11 +141,11 @@ const RoomTourSection = () => {
                 </button>
 
                 {/* Zone label overlay */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-foreground/60 to-transparent p-6">
-                  <p className="text-primary-foreground font-display text-xl md:text-2xl font-semibold">
+                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-foreground/60 to-transparent p-4 md:p-6">
+                  <p className="text-primary-foreground font-display text-lg md:text-2xl font-semibold">
                     {zone.label}
                   </p>
-                  <p className="text-primary-foreground/80 text-sm mt-1">
+                  <p className="text-primary-foreground/80 text-xs md:text-sm mt-0.5 md:mt-1">
                     {zone.description}
                   </p>
                 </div>
