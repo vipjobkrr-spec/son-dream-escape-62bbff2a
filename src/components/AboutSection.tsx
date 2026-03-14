@@ -86,8 +86,19 @@ const AboutSection = () => {
         </div>
       </div>
 
-      {/* Tabbed content */}
+      {/* Description block */}
       <div className="bg-background">
+        <div className="container py-10 md:py-14">
+          <ScrollReveal>
+            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto text-center">
+              База отдыха «Сон» расположена в селе Тенгинка, Туапсинский район, Краснодарский край — курортный посёлок между Краснодаром и Сочи на берегу Чёрного моря. Это небольшая семейная база с 8 домиками и баней, где можно отдохнуть в тишине, но при этом оставаться в удобной доступности от Туапсе и Сочи.
+            </p>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      {/* Tabbed content */}
+      <div className="bg-muted/30">
         <div className="container py-14 md:py-20">
           {/* Tab switcher */}
           <ScrollReveal>
