@@ -46,6 +46,7 @@ const zones = [
 const RoomTourSection = () => {
   const [activeZone, setActiveZone] = useState(0);
   const [activeImage, setActiveImage] = useState(0);
+  const [lightbox, setLightbox] = useState<number | null>(null);
 
   const zone = zones[activeZone];
 
