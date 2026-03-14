@@ -95,6 +95,11 @@ const AboutSection = () => {
             </p>
           </ScrollReveal>
           <ScrollReveal>
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-3xl mx-auto text-center mb-10">
+              База отдыха «Сон» подойдёт тем, кто живёт в Краснодаре, Сочи, Туапсе и ищет тихие домики у моря на выходные или отпуск без толпы туристов. До Тенгинки легко доехать на машине по трассе из Краснодара или Сочи, а сама деревня остаётся спокойной даже в высокий сезон.
+            </p>
+          </ScrollReveal>
+          <ScrollReveal>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
               {[
                 { icon: MapPin, label: "Тенгинка", sub: "Туапсинский район" },
