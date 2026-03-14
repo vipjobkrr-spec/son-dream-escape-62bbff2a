@@ -121,7 +121,8 @@ const PricesSection = () => {
                   >
                     {s.label}
                   </div>
-                  <div className="font-display text-2xl md:text-3xl font-semibold leading-tight">
+                  <div className="font-display text-2xl md:text-3xl font-semibold leading-tight flex items-center gap-1.5">
+                    {(s as any).isVip && !isActive && <Crown className="w-5 h-5 text-amber-500" />}
                     {formatPrice(s.price)}
                   </div>
                   <div
