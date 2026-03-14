@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { Phone, Star, Home, DollarSign, Building, Video, Image, TreePine, BookOpen, MessageSquare, MapPin, HelpCircle, CalendarDays } from "lucide-react";
+import { Phone, Star, Home, DollarSign, Building, Video, Image, TreePine, BookOpen, MessageSquare, MapPin, HelpCircle, CalendarDays, Sparkles } from "lucide-react";
 import { FloatingNav, FloatingNavItem } from "@/components/ui/floating-navbar";
 
 const links: (FloatingNavItem & { id: string; isPage?: boolean })[] = [
