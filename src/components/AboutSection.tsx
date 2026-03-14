@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TreePine, Mountain, Sunrise, Wind, Home, Waves, UtensilsCrossed, Heart } from "lucide-react";
+import { TreePine, Mountain, Sunrise, Wind, Home, Waves, UtensilsCrossed, Heart, MapPin, Users, Bath, Wifi } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 import territory1 from "@/assets/territory-1.webp";
