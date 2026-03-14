@@ -122,15 +122,16 @@ const HeroSection = () => {
         {/* Scroll indicator */}
         <motion.button
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1, y: [0, 8, 0] }}
+          animate={{ opacity: showScroll ? 1 : 0, y: [0, 8, 0] }}
           transition={{
-            opacity: { delay: 1.5, duration: 0.8 },
-            y: { delay: 1.5, duration: 2, repeat: Infinity, ease: "easeInOut" },
+            opacity: { duration: 0.4 },
+            y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
           }}
           onClick={() =>
             document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
           }
           className="mt-4 text-white/60 hover:text-white/90 transition-colors"
+          style={{ pointerEvents: showScroll ? "auto" : "none" }}
           aria-label="Прокрутить вниз"
         >
           <ChevronDown className="w-7 h-7" />
