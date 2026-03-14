@@ -314,7 +314,7 @@ const AboutSection = () => {
                   {current.hasGallery ? (
                     <div className="space-y-3">
                       {/* Main nature image with slider */}
-                      <div className="relative rounded-2xl overflow-hidden shadow-card">
+                      <div className="relative rounded-2xl overflow-hidden shadow-card" {...natureSwipe}>
                         <AnimatePresence mode="wait">
                           <motion.img
                             key={natureSlide}
