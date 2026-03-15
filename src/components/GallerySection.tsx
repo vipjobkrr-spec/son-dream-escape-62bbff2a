@@ -13,6 +13,10 @@ import bedroom from "@/assets/interior-bedroom.jpg";
 import terrace from "@/assets/terrace.jpg";
 import bathroom from "@/assets/bathroom.jpg";
 import bbq from "@/assets/bbq.jpg";
+import bbq2 from "@/assets/about/bbq-friends-2.jpg";
+import poolGroup from "@/assets/about/pool-group.png";
+import poolWalk2 from "@/assets/about/pool-walk-2.jpg";
+import territorySun2 from "@/assets/about/territory-sun-2.webp";
 
 const images = [
   { src: pool1, alt: "Бассейн с шезлонгами", category: "Территория" },
