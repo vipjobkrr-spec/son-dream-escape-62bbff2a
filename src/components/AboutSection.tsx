@@ -95,16 +95,24 @@ const tabs = [
 
 const useSwipe = (onLeft: () => void, onRight: () => void, threshold = 50) => {
   const touchStart = useRef<number | null>(null);
+  const onLeftRef = useRef(onLeft);
+  const onRightRef = useRef(onRight);
+  
+  useEffect(() => {
+    onLeftRef.current = onLeft;
+    onRightRef.current = onRight;
+  }, [onLeft, onRight]);
+
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStart.current = e.touches[0].clientX;
   }, []);
   const handleTouchEnd = useCallback((e: React.TouchEvent) => {
     if (touchStart.current === null) return;
     const diff = e.changedTouches[0].clientX - touchStart.current;
-    if (diff > threshold) onRight();
-    else if (diff < -threshold) onLeft();
+    if (diff > threshold) onRightRef.current();
+    else if (diff < -threshold) onLeftRef.current();
     touchStart.current = null;
-  }, [onLeft, onRight, threshold]);
+  }, [threshold]);
   return { onTouchStart: handleTouchStart, onTouchEnd: handleTouchEnd };
 };
 
@@ -278,12 +286,14 @@ const AboutSection = () => {
 
           {/* Tab content */}
           <AnimatePresence mode="wait">
-            <motion.div {...tabSwipe}
+            <motion.div
               key={current.id}
+              {...tabSwipe}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
+              className="touch-pan-y"
             >
               <div className="grid md:grid-cols-2 gap-10 md:gap-14 max-w-5xl mx-auto items-center">
                 {/* Text */}
