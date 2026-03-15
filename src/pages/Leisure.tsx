@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -134,10 +135,6 @@ const extras = [
 const Leisure = () => {
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
-  useEffect(() => {
-    document.title = 'Досуг и услуги — База отдыха Сон, Тенгинка';
-  }, []);
-
   const scrollTo = (anchor: string) => {
     const el = sectionRefs.current[anchor];
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -145,6 +142,11 @@ const Leisure = () => {
 
   return (
     <>
+      <SEO
+        title="Досуг и развлечения — База отдыха Сон, Тенгинка"
+        description="Море, горные реки, SUP-борды, пешие маршруты и природные достопримечательности рядом с базой отдыха Сон в Тенгинке."
+        url="/leisure"
+      />
       <Navbar />
 
       {/* ═══ Animated Hero Gallery ═══ */}

@@ -1,5 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -30,16 +31,6 @@ const BlogPost = () => {
   }, [post]);
 
   useEffect(() => {
-    if (post) {
-      document.title = `${post.title} | База отдыха Сон`;
-      let meta = document.querySelector('meta[name="description"]');
-      if (!meta) {
-        meta = document.createElement("meta");
-        meta.setAttribute("name", "description");
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute("content", post.excerpt);
-    }
     window.scrollTo(0, 0);
   }, [post]);
 
@@ -72,6 +63,13 @@ const BlogPost = () => {
 
   return (
     <>
+      <SEO
+        title={`${post.title} | База отдыха Сон`}
+        description={post.excerpt}
+        image={post.image}
+        url={`/blog/${post.slug}`}
+        type="article"
+      />
       <Navbar />
       <main className="min-h-screen bg-background pt-24 pb-16">
         <div className="container max-w-4xl">

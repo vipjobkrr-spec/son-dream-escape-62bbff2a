@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -20,11 +21,6 @@ const Blog = () => {
   );
 
   useEffect(() => {
-    document.title = "Блог — База отдыха Сон | Тенгинка, Чёрное море";
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute("content", "Полезные статьи об отдыхе в Тенгинке: как добраться, что посмотреть, сколько стоит и когда лучше ехать на Чёрное море.");
-    }
     window.scrollTo(0, 0);
   }, []);
 
@@ -42,6 +38,11 @@ const Blog = () => {
 
   return (
     <>
+      <SEO
+        title="Блог — База отдыха Сон | Тенгинка, Чёрное море"
+        description="Полезные статьи об отдыхе в Тенгинке: как добраться, что посмотреть, сколько стоит и когда лучше ехать на Чёрное море."
+        url="/blog"
+      />
       <Navbar />
       <main className="min-h-screen bg-background pt-24 pb-16">
         <div className="container">
