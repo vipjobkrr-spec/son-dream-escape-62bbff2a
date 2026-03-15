@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import AwaitingYouSection from "@/components/AwaitingYouSection";
 import HeroSection from "@/components/HeroSection";
 import WhyHereSection from "@/components/WhyHereSection";
 import AboutSection from "@/components/AboutSection";
@@ -54,6 +55,7 @@ const Index = () => {
         text="Романтические вечера"
         subtext="Незабываемая атмосфера и вайб любви"
       />
+      <AwaitingYouSection />
       <BookingForm />
       <LocationSection />
       <FaqSection />
