@@ -43,6 +43,12 @@ const SEO = ({
       <meta name="twitter:image" content={fullImage} />
 
       <link rel="canonical" href={fullUrl} />
+
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(Array.isArray(jsonLd) ? jsonLd : jsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 };
