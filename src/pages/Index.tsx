@@ -18,6 +18,7 @@ import BookingForm from "@/components/BookingForm";
 import StickyBookingBar from "@/components/StickyBookingBar";
 import MaxFab from "@/components/MaxFab";
 import LeisureHeroBlock from "@/components/LeisureHeroBlock";
+import WhyNotHotelSection from "@/components/WhyNotHotelSection";
 import Footer from "@/components/Footer";
 
 import poolImg from "@/assets/pool-2.webp";
