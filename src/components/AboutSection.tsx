@@ -286,12 +286,14 @@ const AboutSection = () => {
 
           {/* Tab content */}
           <AnimatePresence mode="wait">
-            <motion.div {...tabSwipe}
+            <motion.div
               key={current.id}
+              {...tabSwipe}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
+              className="touch-pan-y"
             >
               <div className="grid md:grid-cols-2 gap-10 md:gap-14 max-w-5xl mx-auto items-center">
                 {/* Text */}
