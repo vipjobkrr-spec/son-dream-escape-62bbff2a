@@ -1,5 +1,6 @@
 import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import maxLogo from "@/assets/max-logo.webp";
+import sonLogo from "@/assets/son-logo.png";
 
 const MAX_URL =
   "https://max.me/79898397000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!";
@@ -24,9 +25,12 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8 mb-8">
         {/* Brand */}
         <div>
-          <p className="font-display text-2xl text-primary-foreground font-semibold mb-2">
-            База отдыха «Сон»
-          </p>
+          <div className="flex items-center gap-3 mb-2">
+            <img src={sonLogo} alt="Логотип Сон" className="w-10 h-10 object-contain" />
+            <p className="font-display text-2xl text-primary-foreground font-semibold">
+              База отдыха «Сон»
+            </p>
+          </div>
           <p className="text-sm leading-relaxed">
             8 уютных домиков и баня для спокойного семейного отдыха на черноморском побережье
           </p>
@@ -48,8 +52,8 @@ const Footer = () => (
             <a href="https://t.me/son_rest" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
               <Send className="w-4 h-4 shrink-0" /> Telegram
             </a>
-            <a href="mailto:info@son-rest.ru" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
-              <Mail className="w-4 h-4 shrink-0" /> info@son-rest.ru
+            <a href="mailto:booking@sontenginka.ru" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
+              <Mail className="w-4 h-4 shrink-0" /> booking@sontenginka.ru
             </a>
           </div>
         </div>
