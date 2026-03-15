@@ -50,9 +50,9 @@ const Index = () => {
       <ReviewsSection />
       <ParallaxDivider
         image={bbqImg}
-        alt="Вечерняя зона барбекю"
-        text="Вечера у мангала"
-        subtext="Каждый домик — со своей зоной барбекю"
+        alt="Романтический вечер у бассейна"
+        text="Романтические вечера"
+        subtext="Незабываемая атмосфера и вайб любви"
       />
       <BookingForm />
       <LocationSection />
