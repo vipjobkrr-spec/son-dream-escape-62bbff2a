@@ -13,17 +13,25 @@ import bedroom from "@/assets/interior-bedroom.jpg";
 import terrace from "@/assets/terrace.jpg";
 import bathroom from "@/assets/bathroom.jpg";
 import bbq from "@/assets/bbq.jpg";
+import bbq2 from "@/assets/about/bbq-friends-2.jpg";
+import poolGroup from "@/assets/about/pool-group.png";
+import poolWalk2 from "@/assets/about/pool-walk-2.jpg";
+import territorySun2 from "@/assets/about/territory-sun-2.webp";
 
 const images = [
   { src: pool1, alt: "Бассейн с шезлонгами", category: "Территория" },
   { src: terrace, alt: "Терраса с кофе и видом на горы", category: "Терраса" },
   { src: bedroom, alt: "Спальня с кроватью и диваном", category: "Интерьер" },
+  { src: bbq2, alt: "Барбекю с друзьями", category: "Барбекю" },
   { src: bbq, alt: "Зона барбекю вечером", category: "Барбекю" },
+  { src: poolGroup, alt: "Купание в бассейне с друзьями", category: "Территория" },
   { src: bathroom, alt: "Санузел с душевой кабиной", category: "Санузел" },
   { src: kitchen, alt: "Кухня в домике", category: "Интерьер" },
+  { src: poolWalk2, alt: "У бассейна на территории базы", category: "Территория" },
   { src: atmosphere, alt: "Атмосфера базы отдыха", category: "Атмосфера" },
   { src: territory1, alt: "Территория базы и бассейн", category: "Территория" },
   { src: pool2, alt: "Бассейн и домик", category: "Территория" },
+  { src: territorySun2, alt: "Территория базы с видом на горы", category: "Территория" },
   { src: pool3, alt: "Зона отдыха у бассейна", category: "Территория" },
   { src: territory2, alt: "Дорожка между домиками", category: "Территория" },
 ];

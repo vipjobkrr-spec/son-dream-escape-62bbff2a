@@ -8,11 +8,15 @@ import poolImg from "@/assets/pool-1.jpg";
 import terraceImg from "@/assets/terrace.jpg";
 
 import aboutBbq from "@/assets/about/bbq-friends.jpg";
+import aboutBbq2 from "@/assets/about/bbq-friends-2.jpg";
 import aboutPoolGirl from "@/assets/about/pool-girl.jpg";
 import aboutPoolWalk from "@/assets/about/pool-walk.jpg";
+import aboutPoolWalk2 from "@/assets/about/pool-walk-2.jpg";
 import aboutFamily from "@/assets/about/family-pool.jpg";
 import aboutPoolGirls from "@/assets/about/pool-girls.jpg";
+import aboutPoolGroup from "@/assets/about/pool-group.png";
 import aboutTerritory from "@/assets/about/territory-sun.webp";
+import aboutTerritory2 from "@/assets/about/territory-sun-2.webp";
 
 import natureRiverCanyon from "@/assets/nature/river-canyon.webp";
 import natureRiverTree from "@/assets/nature/river-tree.webp";
@@ -24,9 +28,12 @@ import banyaImg from "@/assets/services/banya.jpg";
 
 const heroSlides = [
   { src: aboutTerritory, alt: "Территория базы отдыха Сон — домики и бассейн" },
+  { src: aboutTerritory2, alt: "Территория базы с видом на горы" },
   { src: aboutPoolWalk, alt: "Прогулка у бассейна на базе Сон" },
+  { src: aboutPoolWalk2, alt: "У бассейна на территории базы Сон" },
   { src: aboutFamily, alt: "Семейный отдых в бассейне" },
-  { src: aboutBbq, alt: "Барбекю с друзьями на базе Сон" },
+  { src: aboutPoolGroup, alt: "Купание в бассейне с друзьями" },
+  { src: aboutBbq2, alt: "Барбекю с друзьями на базе Сон" },
   { src: aboutPoolGirl, alt: "Отдых у бассейна с видом на горы" },
   { src: aboutPoolGirls, alt: "Купание в бассейне на базе Сон" },
 ];
