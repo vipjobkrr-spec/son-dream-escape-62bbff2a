@@ -126,8 +126,8 @@ const HeroSection = () => {
           transition={{ delay: 0.85, duration: 0.8 }}
           className="flex flex-col items-start gap-2.5 max-w-xl mx-auto mb-10 text-left"
         >
-          {keyPoints.map((point) => (
-            <div key={point} className="flex items-start gap-2.5">
+          {keyPoints.map((point, i) => (
+            <div key={i} className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
               <span className="text-white/80 text-sm md:text-base leading-snug">{point}</span>
             </div>
