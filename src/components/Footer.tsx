@@ -2,7 +2,7 @@ import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import maxLogo from "@/assets/max-logo.webp";
 
 const MAX_URL =
-  "https://max.me/79001234567?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!";
+  "https://max.me/79898397000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!";
 
 /* ── Inline SVG icons for socials & payments ── */
 
