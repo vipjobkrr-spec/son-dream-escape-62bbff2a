@@ -6,11 +6,15 @@ import {
   Baby,
   Wifi,
   Car,
-  Bath,
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
+import bathIcon from "@/assets/bath-icon.webp";
 
-const items = [
+type ItemWithIcon = { icon: React.ComponentType<{ className?: string }>; image?: never; title: string; sub: string };
+type ItemWithImage = { icon?: never; image: string; title: string; sub: string };
+type Item = ItemWithIcon | ItemWithImage;
+
+const items: Item[] = [
   { icon: Home, title: "Уютные домики", sub: "с кухней и террасой" },
   { icon: Waves, title: "Бассейн", sub: "на территории" },
   { icon: Flame, title: "Зона барбекю", sub: "у каждого домика" },
@@ -18,7 +22,7 @@ const items = [
   { icon: Baby, title: "Для детей", sub: "безопасная территория" },
   { icon: Wifi, title: "Wi‑Fi", sub: "во всех домиках" },
   { icon: Car, title: "Парковка", sub: "бесплатная" },
-  { icon: Bath, title: "Баня", sub: "по запросу" },
+  { image: bathIcon, title: "Баня", sub: "по запросу" },
 ];
 
 const AwaitingYouSection = () => {
@@ -42,7 +46,11 @@ const AwaitingYouSection = () => {
                 className="flex flex-col items-center text-center gap-3 p-4"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <item.icon className="w-7 h-7 text-primary" />
+                  {item.image ? (
+                    <img src={item.image} alt={item.title} className="w-9 h-9 object-contain" />
+                  ) : (
+                    <item.icon className="w-7 h-7 text-primary" />
+                  )}
                 </div>
                 <div>
                   <p className="font-semibold text-sm">{item.title}</p>
