@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 const Privacy = () => {
   useEffect(() => {
-    document.title = "Политика конфиденциальности — База отдыха Сон";
     window.scrollTo(0, 0);
   }, []);
 

@@ -31,16 +31,6 @@ const BlogPost = () => {
   }, [post]);
 
   useEffect(() => {
-    if (post) {
-      document.title = `${post.title} | База отдыха Сон`;
-      let meta = document.querySelector('meta[name="description"]');
-      if (!meta) {
-        meta = document.createElement("meta");
-        meta.setAttribute("name", "description");
-        document.head.appendChild(meta);
-      }
-      meta.setAttribute("content", post.excerpt);
-    }
     window.scrollTo(0, 0);
   }, [post]);
 

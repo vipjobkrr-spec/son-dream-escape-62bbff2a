@@ -21,11 +21,6 @@ const Blog = () => {
   );
 
   useEffect(() => {
-    document.title = "Блог — База отдыха Сон | Тенгинка, Чёрное море";
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute("content", "Полезные статьи об отдыхе в Тенгинке: как добраться, что посмотреть, сколько стоит и когда лучше ехать на Чёрное море.");
-    }
     window.scrollTo(0, 0);
   }, []);
 

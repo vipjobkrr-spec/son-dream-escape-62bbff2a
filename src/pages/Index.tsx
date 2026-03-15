@@ -25,12 +25,13 @@ import poolImg from "@/assets/pool-2.webp";
 import bbqImg from "@/assets/pool-night.jpg";
 
 const Index = () => {
-  useEffect(() => {
-    document.title = "База отдыха Сон — отдых на Чёрном море, Тенгинка";
-  }, []);
-
   return (
     <>
+      <SEO
+        title="База отдыха Сон — отдых на Чёрном море, Тенгинка"
+        description="База отдыха «Сон» в Тенгинке — уютные домики с бассейном, баней и барбекю у Чёрного моря. 2 часа от Краснодара, 1.5 часа от Сочи."
+        url="/"
+      />
       <Navbar />
       <HeroSection />
       <WhyHereSection />

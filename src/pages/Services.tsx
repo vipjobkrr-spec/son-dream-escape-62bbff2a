@@ -99,16 +99,13 @@ const installmentSteps = [
 const Services = () => {
   const [installmentOpen, setInstallmentOpen] = useState(false);
 
-  useEffect(() => {
-    document.title = "Услуги — База отдыха Сон, Тенгинка";
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) {
-      meta.setAttribute("content", "Дополнительные услуги базы отдыха Сон: баня, квадроциклы, конные прогулки, SUP-борды, экскурсии, трансфер. Забронируйте через MAX.");
-    }
-  }, []);
-
   return (
     <>
+      <SEO
+        title="Услуги — База отдыха Сон, Тенгинка"
+        description="Дополнительные услуги базы отдыха Сон: баня, квадроциклы, конные прогулки, SUP-борды, экскурсии, трансфер. Забронируйте через MAX."
+        url="/services"
+      />
       <Navbar />
 
       {/* Hero */}
