@@ -8,11 +8,15 @@ import poolImg from "@/assets/pool-1.jpg";
 import terraceImg from "@/assets/terrace.jpg";
 
 import aboutBbq from "@/assets/about/bbq-friends.jpg";
+import aboutBbq2 from "@/assets/about/bbq-friends-2.jpg";
 import aboutPoolGirl from "@/assets/about/pool-girl.jpg";
 import aboutPoolWalk from "@/assets/about/pool-walk.jpg";
+import aboutPoolWalk2 from "@/assets/about/pool-walk-2.jpg";
 import aboutFamily from "@/assets/about/family-pool.jpg";
 import aboutPoolGirls from "@/assets/about/pool-girls.jpg";
+import aboutPoolGroup from "@/assets/about/pool-group.png";
 import aboutTerritory from "@/assets/about/territory-sun.webp";
+import aboutTerritory2 from "@/assets/about/territory-sun-2.webp";
 
 import natureRiverCanyon from "@/assets/nature/river-canyon.webp";
 import natureRiverTree from "@/assets/nature/river-tree.webp";
