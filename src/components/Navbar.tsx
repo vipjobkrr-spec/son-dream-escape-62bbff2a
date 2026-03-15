@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { FloatingNav, FloatingNavItem } from "@/components/ui/floating-navbar";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import WeatherWidget from "@/components/WeatherWidget";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 const links: (FloatingNavItem & { id: string; isPage?: boolean })[] = [
   { name: "О нас", link: "#about", id: "about", icon: <Home className="w-4 h-4" /> },
@@ -26,6 +27,13 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [sheetOpen, setSheetOpen] = useState(false);
+  const activeSection = useActiveSection();
+
+  const isActive = (item: typeof links[0]) => {
+    if (item.isPage) return location.pathname === item.link || location.pathname.startsWith(item.link + "/");
+    if (!isHome) return false;
+    return activeSection === item.id;
+  };
 
   const handleClick = (link: string, isPage?: boolean) => {
     setSheetOpen(false);
@@ -74,7 +82,7 @@ const Navbar = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.06, duration: 0.3 }}
                       onClick={() => handleClick(item.link, item.isPage)}
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground/70 hover:text-foreground hover:bg-accent/50 transition-colors text-left"
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-left ${isActive(item) ? "text-primary bg-primary/10" : "text-foreground/70 hover:text-foreground hover:bg-accent/50"}`}
                     >
                       {item.icon}
                       <span className="text-sm font-medium">{item.name}</span>
