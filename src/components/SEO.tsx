@@ -19,6 +19,7 @@ const SEO = ({
   image = DEFAULT_IMAGE,
   url,
   type = "website",
+  jsonLd,
 }: SEOProps) => {
   const fullUrl = url ? `${BASE_URL}${url}` : BASE_URL;
   const fullImage = image.startsWith("http") ? image : `${BASE_URL}${image}`;
