@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import SEO from "@/components/SEO";
 import { Link } from "react-router-dom";
 import { ChevronRight, Flame, Mountain, Bike, Ship, TreePine, MapPin, Clock, Sparkles, CreditCard, CheckCircle2 } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
