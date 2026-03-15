@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
-import pool1 from "@/assets/pool-1.jpg";
+import banya from "@/assets/banya.jpg";
 import kitchen from "@/assets/kitchen.jpg";
 import territory1 from "@/assets/territory-1.webp";
 import pool2 from "@/assets/pool-2.webp";
