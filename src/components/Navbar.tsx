@@ -37,15 +37,18 @@ const Navbar = () => {
 
   const handleClick = (link: string, isPage?: boolean) => {
     setSheetOpen(false);
-    if (isPage) {
-      navigate(link);
-      return;
-    }
-    if (!isHome) {
-      navigate("/" + link);
-      return;
-    }
-    document.querySelector(link)?.scrollIntoView({ behavior: "smooth" });
+    // Wait for sheet close animation (300ms) before navigating
+    setTimeout(() => {
+      if (isPage) {
+        navigate(link);
+        return;
+      }
+      if (!isHome) {
+        navigate("/" + link);
+        return;
+      }
+      document.querySelector(link)?.scrollIntoView({ behavior: "smooth" });
+    }, 300);
   };
 
   return (
