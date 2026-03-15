@@ -39,8 +39,8 @@ const AwaitingYouSection = () => {
                 key={item.title}
                 className="flex flex-col items-center text-center gap-3 p-4"
               >
-                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <img src={item.image} alt={item.title} className="w-9 h-9 object-contain" />
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center transition-transform duration-300 hover:scale-110">
+                  <img src={item.image} alt={item.title} className="w-10 h-10 object-contain" />
                 </div>
                 <div>
                   <p className="font-semibold text-sm">{item.title}</p>
