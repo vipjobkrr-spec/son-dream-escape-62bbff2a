@@ -2,7 +2,7 @@ import { useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
-import pool1 from "@/assets/pool-1.jpg";
+import banya from "@/assets/banya.jpg";
 import kitchen from "@/assets/kitchen.jpg";
 import territory1 from "@/assets/territory-1.webp";
 import pool2 from "@/assets/pool-2.webp";
@@ -19,7 +19,7 @@ import poolFull from "@/assets/about/pool-full.webp";
 import territorySun2 from "@/assets/about/territory-sun-2.webp";
 
 const images = [
-  { src: pool1, alt: "Бассейн с шезлонгами", category: "Территория" },
+  { src: banya, alt: "Баня с друзьями", category: "Атмосфера" },
   { src: terrace, alt: "Терраса с кофе и видом на горы", category: "Терраса" },
   { src: bedroom, alt: "Спальня с кроватью и диваном", category: "Интерьер" },
   { src: bbq2, alt: "Барбекю с друзьями", category: "Барбекю" },
