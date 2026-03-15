@@ -192,11 +192,8 @@ const PricesSection = () => {
       <div className="container relative z-10">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
-            Цены на проживание
+            Какой сезон подойдёт вам
           </h2>
-          <p className="text-center text-muted-foreground mb-4 text-base">
-            Выберите сезон — рассчитайте стоимость и забронируйте
-          </p>
           {/* Quick price comparison */}
           <div className="flex flex-wrap justify-center gap-2 mb-10">
             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 text-xs font-medium text-foreground">
