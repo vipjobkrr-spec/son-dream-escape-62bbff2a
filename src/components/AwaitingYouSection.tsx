@@ -46,7 +46,11 @@ const AwaitingYouSection = () => {
                 className="flex flex-col items-center text-center gap-3 p-4"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  <item.icon className="w-7 h-7 text-primary" />
+                  {item.image ? (
+                    <img src={item.image} alt={item.title} className="w-9 h-9 object-contain" />
+                  ) : (
+                    <item.icon className="w-7 h-7 text-primary" />
+                  )}
                 </div>
                 <div>
                   <p className="font-semibold text-sm">{item.title}</p>
