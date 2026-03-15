@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { CheckCircle2, Clock, ShieldCheck, MessageCircle, Clock4, CreditCard, PawPrint, UserCheck } from "lucide-react";
+import { Clock, ShieldCheck, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import ScrollReveal from "./ScrollReveal";
 import maxLogo from "@/assets/max-logo.webp";
@@ -8,16 +8,9 @@ const MAX_BASE = "https://max.me/79001234567";
 const WHATSAPP_URL = "https://wa.me/79001234567?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%B1%D1%80%D0%BE%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D0%B4%D0%BE%D0%BC%D0%B8%D0%BA...";
 
 const steps = [
-  { icon: MessageCircle, title: "Оставьте заявку", desc: "Укажите даты и количество гостей — или напишите в мессенджер" },
-  { icon: Clock, title: "Подтверждение", desc: "Мы проверим наличие и подтвердим бронь за 15 минут" },
-  { icon: ShieldCheck, title: "Предоплата", desc: "Внесите предоплату за 1 сутки — и домик ваш" },
-];
-
-const rules = [
-  { icon: Clock4, text: "Заезд с 14:00, выезд до 12:00" },
-  { icon: CreditCard, text: "Оплата картой или наличными" },
-  { icon: UserCheck, text: "Паспорт при заселении, тишина после 23:00" },
-  { icon: PawPrint, text: "Животные — по согласованию" },
+  { icon: MessageCircle, title: "Оставьте заявку", desc: "Вы оставляете заявку на сайте или пишете нам в мессенджер с желаемыми датами и количеством гостей." },
+  { icon: Clock, title: "Подтверждение", desc: "Мы в ближайшее время проверяем свободные домики и подтверждаем бронь." },
+  { icon: ShieldCheck, title: "Предоплата", desc: "Вы вносите предоплату за 1 сутки — и мы закрепляем домик за вами." },
 ];
 
 const BookingForm = () => {
