@@ -10,6 +10,7 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const SEO = ({
