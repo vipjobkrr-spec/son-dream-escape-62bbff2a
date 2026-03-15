@@ -21,7 +21,7 @@ const faqs = [
 
 const FaqSection = () => {
   return (
-    <section id="faq" className="py-16 md:py-24">
+    <section id="faq" className="py-16 md:py-24 font-sans">
       <div className="container max-w-3xl">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-10">
@@ -42,11 +42,11 @@ const FaqSection = () => {
                     <span className="text-xs font-mono text-muted-foreground shrink-0">
                       {faq.id}
                     </span>
-                    <span className="font-medium text-sm">{faq.q}</span>
+                    <span className="font-medium text-[15px]">{faq.q}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-sm text-muted-foreground pl-9">
+                  <p className="text-[14px] leading-relaxed text-muted-foreground pl-9">
                     {faq.a}
                   </p>
                 </AccordionContent>
