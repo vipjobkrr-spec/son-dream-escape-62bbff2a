@@ -55,6 +55,7 @@ const Index = () => {
         text="Романтические вечера"
         subtext="Незабываемая атмосфера и вайб любви"
       />
+      <AwaitingYouSection />
       <BookingForm />
       <LocationSection />
       <FaqSection />
