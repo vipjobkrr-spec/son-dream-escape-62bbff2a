@@ -124,8 +124,11 @@ const CabinsSection = () => {
                 <span className="font-display text-xl font-semibold">8 домиков и баня</span>
               </div>
 
-              <p className="font-display italic text-muted-foreground mb-4">
+              <p className="font-display italic text-muted-foreground mb-2">
                 Уютные домики для семейного отдыха
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Оптимально для семьи: 2&nbsp;взрослых + 2&nbsp;ребёнка
               </p>
 
               {/* Decorative dots */}

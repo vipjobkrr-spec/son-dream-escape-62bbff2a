@@ -134,6 +134,7 @@ const BookingForm = () => {
                 className={inputClass}
               />
               {errors.phone && <p className="text-destructive text-xs mt-1">{errors.phone}</p>}
+              <p className="text-[11px] text-muted-foreground mt-1">🔒 Мы не передаём ваши контакты третьим лицам</p>
             </div>
 
             <div>
