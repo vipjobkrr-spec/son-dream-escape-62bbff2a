@@ -417,17 +417,51 @@ const AboutSection = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="rounded-2xl overflow-hidden shadow-card">
-                      <motion.img
-                        key={current.image}
-                        src={current.image}
-                        alt={current.heading}
-                        initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="w-full h-72 md:h-[400px] object-cover"
-                        loading="lazy"
-                      />
+                    <div className="space-y-3">
+                      <div className="relative rounded-2xl overflow-hidden shadow-card" {...tabGallerySwipe}>
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={tabSlide}
+                            src={currentGallery[tabSlide]?.src}
+                            alt={currentGallery[tabSlide]?.alt}
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -30 }}
+                            transition={{ duration: 0.4 }}
+                            className="w-full h-72 md:h-[400px] object-cover"
+                            loading="lazy"
+                          />
+                        </AnimatePresence>
+                        {currentGallery.length > 1 && (
+                          <>
+                            <button
+                              onClick={() => setTabSlide((p) => (p - 1 + currentGallery.length) % currentGallery.length)}
+                              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-primary-foreground hover:bg-background/50 transition-all"
+                              aria-label="Назад"
+                            >
+                              <ChevronLeft className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => setTabSlide((p) => (p + 1) % currentGallery.length)}
+                              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-primary-foreground hover:bg-background/50 transition-all"
+                              aria-label="Вперёд"
+                            >
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
+                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                              {currentGallery.map((_, i) => (
+                                <button
+                                  key={i}
+                                  onClick={() => setTabSlide(i)}
+                                  className={`w-2 h-2 rounded-full transition-all ${
+                                    i === tabSlide ? "bg-primary-foreground w-5" : "bg-primary-foreground/40"
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </div>
                   )}
                   <div className="absolute -bottom-4 -left-4 md:-left-6 bg-primary text-primary-foreground px-5 py-3 rounded-xl shadow-lg">
