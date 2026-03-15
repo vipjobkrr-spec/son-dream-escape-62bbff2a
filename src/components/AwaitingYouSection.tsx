@@ -1,7 +1,6 @@
 import {
   Home,
   Waves,
-  Flame,
   TreePine,
   Baby,
   Wifi,
@@ -9,6 +8,7 @@ import {
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import bathIcon from "@/assets/bath-icon.webp";
+import fireIcon from "@/assets/fire-icon.svg";
 
 type ItemWithIcon = { icon: React.ComponentType<{ className?: string }>; image?: never; title: string; sub: string };
 type ItemWithImage = { icon?: never; image: string; title: string; sub: string };
@@ -17,7 +17,7 @@ type Item = ItemWithIcon | ItemWithImage;
 const items: Item[] = [
   { icon: Home, title: "Уютные домики", sub: "с кухней и террасой" },
   { icon: Waves, title: "Бассейн", sub: "на территории" },
-  { icon: Flame, title: "Зона барбекю", sub: "у каждого домика" },
+  { image: fireIcon, title: "Зона барбекю", sub: "у каждого домика" },
   { icon: TreePine, title: "Горы и природа", sub: "реки и ущелья рядом" },
   { icon: Baby, title: "Для детей", sub: "безопасная территория" },
   { icon: Wifi, title: "Wi‑Fi", sub: "во всех домиках" },
