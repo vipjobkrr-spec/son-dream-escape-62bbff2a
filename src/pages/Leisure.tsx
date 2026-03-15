@@ -146,6 +146,24 @@ const Leisure = () => {
         title="Досуг и развлечения — База отдыха Сон, Тенгинка"
         description="Море, горные реки, SUP-борды, пешие маршруты и природные достопримечательности рядом с базой отдыха Сон в Тенгинке."
         url="/leisure"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "TouristDestination",
+          "name": "Досуг и развлечения — База отдыха Сон",
+          "description": "Чёрное море, горные реки, водопады, дольмены, SUP-борды и пешие маршруты рядом с базой отдыха Сон в Тенгинке, Краснодарский край.",
+          "url": "https://son-dream-escape.lovable.app/leisure",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "44.1667",
+            "longitude": "38.9333"
+          },
+          "touristType": ["Пляжный отдых", "Активный отдых", "Экотуризм", "Семейный отдых"],
+          "includesAttraction": [
+            { "@type": "Beach", "name": "Пляжи Чёрного моря" },
+            { "@type": "Waterfall", "name": "Горные водопады Туапсинского района" },
+            { "@type": "Mountain", "name": "Горные маршруты и смотровые площадки" }
+          ]
+        }}
       />
       <Navbar />
 

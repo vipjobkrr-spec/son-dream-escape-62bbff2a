@@ -10,6 +10,7 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const SEO = ({
@@ -18,6 +19,7 @@ const SEO = ({
   image = DEFAULT_IMAGE,
   url,
   type = "website",
+  jsonLd,
 }: SEOProps) => {
   const fullUrl = url ? `${BASE_URL}${url}` : BASE_URL;
   const fullImage = image.startsWith("http") ? image : `${BASE_URL}${image}`;
@@ -41,6 +43,12 @@ const SEO = ({
       <meta name="twitter:image" content={fullImage} />
 
       <link rel="canonical" href={fullUrl} />
+
+      {jsonLd && (
+        <script type="application/ld+json">
+          {JSON.stringify(Array.isArray(jsonLd) ? jsonLd : jsonLd)}
+        </script>
+      )}
     </Helmet>
   );
 };

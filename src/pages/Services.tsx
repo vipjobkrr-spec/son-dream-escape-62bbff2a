@@ -105,6 +105,31 @@ const Services = () => {
         title="Услуги — База отдыха Сон, Тенгинка"
         description="Дополнительные услуги базы отдыха Сон: баня, квадроциклы, конные прогулки, SUP-борды, экскурсии, трансфер. Забронируйте через MAX."
         url="/services"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "TouristAttraction",
+          "name": "Услуги базы отдыха Сон",
+          "description": "Дополнительные услуги базы отдыха Сон в Тенгинке: баня, квадроциклы, конные прогулки, SUP-борды, пешие экскурсии, барбекю, трансфер.",
+          "url": "https://son-dream-escape.lovable.app/services",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Тенгинка",
+            "addressRegion": "Краснодарский край",
+            "addressCountry": "RU"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Услуги",
+            "itemListElement": services.map((s, i) => ({
+              "@type": "Offer",
+              "position": i + 1,
+              "name": s.title,
+              "description": s.description,
+              "price": s.price,
+              "priceCurrency": "RUB"
+            }))
+          }
+        }}
       />
       <Navbar />
 
