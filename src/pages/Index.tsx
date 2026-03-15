@@ -21,7 +21,7 @@ import MaxFab from "@/components/MaxFab";
 import RoomTourSection from "@/components/RoomTourSection";
 
 import poolImg from "@/assets/pool-2.webp";
-import bbqImg from "@/assets/bbq.jpg";
+import bbqImg from "@/assets/pool-night.jpg";
 
 const Index = () => {
   useEffect(() => {
