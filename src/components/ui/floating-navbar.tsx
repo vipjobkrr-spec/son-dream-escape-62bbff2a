@@ -21,6 +21,7 @@ export const FloatingNav = ({
   leftContent,
   rightContent,
   mobileMenuContent,
+  activeItem,
 }: {
   navItems: FloatingNavItem[];
   className?: string;
@@ -28,6 +29,7 @@ export const FloatingNav = ({
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
   mobileMenuContent?: React.ReactNode;
+  activeItem?: string;
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(false);
