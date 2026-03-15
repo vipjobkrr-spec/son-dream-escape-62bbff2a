@@ -345,7 +345,7 @@ const PricesSection = () => {
                         onClick={() => setExtraBed(!extraBed)}
                         className={`w-full py-2.5 rounded-lg text-sm font-medium transition-all border ${
                           extraBed
-                            ? "bg-primary text-primary-foreground border-primary shadow-md"
+                            ? "bg-primary/20 text-primary border-primary/40 shadow-md backdrop-blur-sm"
                             : "bg-muted/60 text-muted-foreground border-transparent hover:bg-muted/80 backdrop-blur-sm"
                         }`}
                       >
