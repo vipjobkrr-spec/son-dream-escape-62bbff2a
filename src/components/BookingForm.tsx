@@ -188,14 +188,9 @@ const BookingForm = () => {
 
         {/* Inline rules */}
         <ScrollReveal delay={0.2}>
-          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {rules.map((rule, i) => (
-              <div key={i} className="flex items-start gap-2 p-3 rounded-lg bg-popover border border-border/20">
-                <rule.icon className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                <span className="text-xs text-muted-foreground leading-snug">{rule.text}</span>
-              </div>
-            ))}
-          </div>
+          <p className="mt-6 text-center text-xs text-muted-foreground">
+            Заезд после 14:00, выезд до 12:00
+          </p>
         </ScrollReveal>
       </div>
     </section>

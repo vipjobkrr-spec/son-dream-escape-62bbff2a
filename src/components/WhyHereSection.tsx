@@ -1,26 +1,26 @@
-import { Home, ShieldCheck, Car, Heart, Wifi } from "lucide-react";
+import { Home, ShieldCheck, Car, Wifi, MapPin } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const items = [
   {
     icon: Home,
-    text: "Только 8 домиков — без толпы и шума больших отелей",
+    text: "Небольшая семейная база: всего 8 домиков, без шума больших отелей и чужих компаний.",
   },
   {
     icon: ShieldCheck,
-    text: "Безопасная закрытая территория, бассейн и детская зона",
-  },
-  {
-    icon: Car,
-    text: "Удобно из Краснодара, Туапсе, Сочи — приехать на машине вечером после работы",
-  },
-  {
-    icon: Heart,
-    text: "Хозяева живут на месте — помогут с маршрутами и любыми вопросами",
+    text: "Закрытая, ухоженная территория с бассейном, баней, мангалами и местами для отдыха.",
   },
   {
     icon: Wifi,
-    text: "Домики под ключ: кухня, санузел, кондиционер, Wi‑Fi",
+    text: "Домики под ключ: кухня, санузел, кондиционер, Wi‑Fi, терраса — всё для самостоятельного и комфортного отдыха.",
+  },
+  {
+    icon: Car,
+    text: "Удобно добираться из Краснодара, Туапсе и Сочи: приехали на машине — и вы уже у моря.",
+  },
+  {
+    icon: MapPin,
+    text: "Рядом море, реки, ущелья и горы — можно чередовать пляжный отдых с прогулками и поездками.",
   },
 ];
 
@@ -29,7 +29,7 @@ const WhyHereSection = () => (
     <div className="container max-w-4xl">
       <ScrollReveal>
         <h2 className="text-2xl md:text-3xl font-display font-semibold text-center mb-8">
-          Почему именно здесь?
+          Почему гости выбирают «Сон у Моря»
         </h2>
       </ScrollReveal>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

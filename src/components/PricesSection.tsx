@@ -412,6 +412,12 @@ const PricesSection = () => {
             </motion.div>
           )}
         </AnimatePresence>
+        {/* Footer CTA */}
+        <ScrollReveal>
+          <p className="text-center text-muted-foreground text-sm mt-8">
+            Напишите нам даты — подскажем, какой сезон лучше подойдёт именно вам.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );
