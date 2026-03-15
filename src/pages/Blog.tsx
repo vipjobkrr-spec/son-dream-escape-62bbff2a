@@ -38,6 +38,11 @@ const Blog = () => {
 
   return (
     <>
+      <SEO
+        title="Блог — База отдыха Сон | Тенгинка, Чёрное море"
+        description="Полезные статьи об отдыхе в Тенгинке: как добраться, что посмотреть, сколько стоит и когда лучше ехать на Чёрное море."
+        url="/blog"
+      />
       <Navbar />
       <main className="min-h-screen bg-background pt-24 pb-16">
         <div className="container">

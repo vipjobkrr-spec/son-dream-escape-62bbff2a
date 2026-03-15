@@ -12,6 +12,11 @@ const Privacy = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Политика конфиденциальности — База отдыха Сон"
+        description="Политика конфиденциальности и обработки персональных данных базы отдыха Сон в Тенгинке."
+        url="/privacy"
+      />
       <Navbar />
       <div className="container max-w-3xl py-12 md:py-20">
         <Link

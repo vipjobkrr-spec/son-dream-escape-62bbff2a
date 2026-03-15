@@ -63,6 +63,13 @@ const BlogPost = () => {
 
   return (
     <>
+      <SEO
+        title={`${post.title} | База отдыха Сон`}
+        description={post.excerpt}
+        image={post.image}
+        url={`/blog/${post.slug}`}
+        type="article"
+      />
       <Navbar />
       <main className="min-h-screen bg-background pt-24 pb-16">
         <div className="container max-w-4xl">
