@@ -37,7 +37,7 @@ import sunset from '@/assets/leisure/sunset.webp';
 import river3 from '@/assets/leisure/river-3.webp';
 import sea3 from '@/assets/leisure/sea-3.webp';
 import river4 from '@/assets/leisure/river-4.webp';
-import bbq from '@/assets/bbq.jpg';
+
 
 const heroImages = [sea1, lake, river2, sea3, sunset];
 
