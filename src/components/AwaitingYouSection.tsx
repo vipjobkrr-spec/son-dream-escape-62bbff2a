@@ -34,7 +34,7 @@ const AwaitingYouSection = () => {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 md:gap-8">
             {items.map((item, i) => (
-              <ScrollReveal key={item.title} delay={0.1 + i * 0.08}>
+              <ScrollReveal key={item.title} delay={0.15 + i * 0.15}>
                 <div className="flex flex-col items-center text-center gap-3 p-4">
                   <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]">
                     <img src={item.image} alt={item.title} className="w-10 h-10 object-contain" />
