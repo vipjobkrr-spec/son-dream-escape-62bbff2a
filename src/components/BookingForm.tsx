@@ -1,10 +1,17 @@
 import { useState, type FormEvent } from "react";
-import { ExternalLink } from "lucide-react";
+import { CheckCircle2, Clock, ShieldCheck, MessageCircle } from "lucide-react";
 import { toast } from "sonner";
 import ScrollReveal from "./ScrollReveal";
 import maxLogo from "@/assets/max-logo.webp";
 
 const MAX_BASE = "https://max.me/79001234567";
+
+const steps = [
+  { icon: MessageCircle, text: "Заполните форму — мы получим заявку" },
+  { icon: Clock, text: "Подтвердим наличие в течение 15 минут" },
+  { icon: ShieldCheck, text: "Предоплата 30% — остаток за 7 дней до заезда" },
+  { icon: CheckCircle2, text: "Готово — домик ваш, ждём вас!" },
+];
 
 const BookingForm = () => {
   const [form, setForm] = useState({
@@ -57,14 +64,28 @@ const BookingForm = () => {
 
   return (
     <section id="booking" className="py-16 md:py-24 bg-muted/40">
-      <div className="container max-w-2xl">
+      <div className="container max-w-3xl">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
             Забронировать домик
           </h2>
-          <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto text-sm">
-            Забронировать домик на базе отдыха «Сон» удобно жителям Краснодара, Сочи и всего Краснодарского края — достаточно выбрать даты, указать количество гостей и дождаться подтверждения. Мы ориентированы на семейный отдых и помогаем спланировать поездку в Тенгинку с учётом дороги, времени в пути и особенностей сезона.
+          <p className="text-center text-muted-foreground mb-8 max-w-xl mx-auto text-sm">
+            Оставьте заявку — подтвердим бронь за 15 минут. Без скрытых доплат.
           </p>
+        </ScrollReveal>
+
+        {/* Process steps */}
+        <ScrollReveal delay={0.05}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+            {steps.map((step, i) => (
+              <div key={i} className="flex flex-col items-center text-center gap-2 p-3 rounded-xl bg-popover border border-border/30">
+                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <step.icon className="w-4 h-4 text-primary" />
+                </div>
+                <span className="text-xs text-foreground/70 leading-snug">{step.text}</span>
+              </div>
+            ))}
+          </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
@@ -114,7 +135,7 @@ const BookingForm = () => {
                     onChange={(e) => set("extraBed", e.target.checked)}
                     className="w-4 h-4 rounded border-input text-primary focus:ring-primary/30"
                   />
-                  Доп. кровать
+                  Доп. кровать (+1 000 ₽)
                 </label>
               </div>
             </div>
@@ -166,24 +187,17 @@ const BookingForm = () => {
               />
             </div>
 
-            <div className="flex flex-col gap-3 pt-2">
-              <button
-                type="submit"
-                className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
-              >
-                <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
-                Забронировать в MAX
-              </button>
-              <a
-                href="https://travel.yandex.ru/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full px-6 py-4 bg-accent text-accent-foreground border border-input rounded-lg text-sm font-medium text-center hover:bg-accent/80 transition-colors flex items-center justify-center gap-2"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Забронировать на Яндекс Путешествиях
-              </a>
-            </div>
+            <button
+              type="submit"
+              className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+            >
+              <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+              Отправить заявку — подтвердим за 15 мин
+            </button>
+
+            <p className="text-[11px] text-center text-muted-foreground">
+              Нажимая кнопку, вы соглашаетесь с <a href="/privacy" className="underline hover:text-foreground">политикой конфиденциальности</a>. Предоплата не списывается автоматически — мы свяжемся для подтверждения.
+            </p>
           </form>
         </ScrollReveal>
       </div>

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { CalendarDays, Users, Bed, ArrowRight, Crown, Flower2, Sun, Waves, Leaf, Sparkles } from "lucide-react";
+import { CalendarDays, Users, Bed, ArrowRight, Crown, Flower2, Sun, Waves, Leaf, Sparkles, Check } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import ScrollReveal from "./ScrollReveal";
 import { PricingCard } from "./ui/pricing-card";
@@ -61,19 +61,26 @@ const seasons = [
   },
   {
     id: "vip",
-    label: "VIP",
+    label: "VIP домик",
     period: "Круглый год",
     price: 16999,
     tag: "VIP",
     isVip: true,
     icon: Crown,
-    description: "Премиальный домик с расширенным набором услуг, доступен в любое время года.",
-    features: ["Лучший домик на базе", "Приоритетное бронирование", "Расширенный набор услуг", "Доступен круглый год"],
+    description: "Самый просторный домик с отдельной верандой, панорамным видом и улучшенной мебелью.",
+    features: ["Площадь 45 м² (vs 30 м² стандарт)", "Панорамная веранда с видом на горы", "Кондиционер + тёплый пол", "Приоритетное бронирование"],
   },
 ];
 
 const formatPrice = (n: number) =>
   n.toLocaleString("ru-RU") + " ₽";
+
+/* Quick price hints */
+const quickCalc = (price: number) => [
+  { nights: 3, total: price * 3, label: "3 ночи (выходные)" },
+  { nights: 5, total: price * 5, label: "5 ночей" },
+  { nights: 7, total: price * 7, label: "7 ночей (неделя)" },
+];
 
 /* ── WebGL shader background ─────────────────────────────── */
 const ShaderCanvas = () => {
@@ -196,9 +203,24 @@ const PricesSection = () => {
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
             Цены на проживание
           </h2>
-          <p className="text-center text-muted-foreground mb-12 text-base">
+          <p className="text-center text-muted-foreground mb-4 text-base">
             Выберите сезон — рассчитайте стоимость и забронируйте
           </p>
+          {/* Quick price comparison */}
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 text-xs font-medium text-foreground">
+              <Check className="w-3 h-3 text-secondary" />
+              Весной 3 ночи — от 19 500 ₽ за домик
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 text-xs font-medium text-foreground">
+              <Check className="w-3 h-3 text-secondary" />
+              Дешевле апартаментов в Лазаревском
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 text-xs font-medium text-foreground">
+              <Check className="w-3 h-3 text-secondary" />
+              Предоплата 30% — остаток за 7 дней
+            </span>
+          </div>
         </ScrollReveal>
 
         {/* Season cards grid */}
@@ -224,6 +246,32 @@ const PricesSection = () => {
             })}
           </div>
         </ScrollReveal>
+
+        {/* Quick price hints for selected season */}
+        <AnimatePresence>
+          {activeSeason && !activeSeason.isVip && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className="flex flex-wrap justify-center gap-3 mb-4"
+            >
+              {quickCalc(activeSeason.price).map((q) => (
+                <button
+                  key={q.nights}
+                  onClick={() => setNights(q.nights)}
+                  className={`px-4 py-2 rounded-lg text-sm transition-all border ${
+                    nights === q.nights
+                      ? "bg-primary text-primary-foreground border-primary shadow-md"
+                      : "bg-popover/60 backdrop-blur-sm border-border/30 text-foreground/70 hover:border-primary/30"
+                  }`}
+                >
+                  {q.label} — <span className="font-semibold">{formatPrice(q.total)}</span>
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Extra info */}
         <div className="text-center text-sm text-muted-foreground mb-4">
@@ -341,6 +389,9 @@ const PricesSection = () => {
                         {formatPrice(total)}
                       </span>
                     </div>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Предоплата 30% ({formatPrice(Math.round(total * 0.3))}) • остаток за 7 дней до заезда
+                    </p>
                   </div>
 
                   {/* CTA */}
@@ -351,7 +402,7 @@ const PricesSection = () => {
                       rel="noopener noreferrer"
                       className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
                     >
-                      Забронировать
+                      Забронировать — подтвердим за 15 мин
                       <ArrowRight className="w-4 h-4" />
                     </a>
                     <a
