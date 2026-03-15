@@ -52,11 +52,11 @@ const Navbar = () => {
       rightContent={
         <div className="flex items-center gap-2 ml-2">
           <a
-            href="tel:+79001234567"
+            href="tel:+79898397000"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"
           >
             <Phone className="w-3.5 h-3.5" />
-            <span className="hidden lg:inline">+7 (900) 123-45-67</span>
+            <span className="hidden lg:inline">+7 989 839-70-00</span>
           </a>
         </div>
       }

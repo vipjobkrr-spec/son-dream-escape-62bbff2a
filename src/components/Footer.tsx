@@ -2,7 +2,7 @@ import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import maxLogo from "@/assets/max-logo.webp";
 
 const MAX_URL =
-  "https://max.me/79001234567?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!";
+  "https://max.me/79898397000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!";
 
 /* ── Inline SVG icons for socials & payments ── */
 
@@ -36,13 +36,13 @@ const Footer = () => (
         <div>
           <p className="font-semibold text-primary-foreground mb-3 text-sm">Контакты</p>
           <div className="space-y-2.5">
-            <a href="tel:+79001234567" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
-              <Phone className="w-4 h-4 shrink-0" /> +7 (900) 123-45-67
+            <a href="tel:+79898397000" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
+              <Phone className="w-4 h-4 shrink-0" /> +7 989 839-70-00
             </a>
             <a href={MAX_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
               <img src={maxLogo} alt="MAX" className="w-4 h-4 rounded-full shrink-0" /> MAX
             </a>
-            <a href="https://wa.me/79001234567?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
+            <a href="https://wa.me/79898397000?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
               <MessageCircle className="w-4 h-4 shrink-0" /> WhatsApp
             </a>
             <a href="https://t.me/son_rest" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
@@ -86,7 +86,7 @@ const Footer = () => (
         <a href="https://t.me/son_rest" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="Telegram">
           <Send className="w-4 h-4" />
         </a>
-        <a href="https://wa.me/79001234567" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="WhatsApp">
+        <a href="https://wa.me/79898397000" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="WhatsApp">
           <MessageCircle className="w-4 h-4" />
         </a>
         <a href="https://www.tiktok.com/@son_rest" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="TikTok">

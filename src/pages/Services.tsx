@@ -16,7 +16,7 @@ import transferImg from "@/assets/services/transfer.jpg";
 import bbqImg from "@/assets/bbq.jpg";
 import sea1 from "@/assets/leisure/sea-1.webp";
 
-const MAX_BASE = "https://max.me/79001234567";
+const MAX_BASE = "https://max.me/79898397000";
 
 const buildMaxUrl = (service: string) => {
   const text = `Здравствуйте! Хочу заказать услугу «${service}» на базе отдыха «Сон». Подскажите стоимость и наличие.`;
