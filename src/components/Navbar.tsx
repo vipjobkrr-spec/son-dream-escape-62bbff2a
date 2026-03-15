@@ -95,7 +95,7 @@ const Navbar = () => {
           </div>
         }
         rightContent={
-          <div className="flex items-center gap-2 ml-2">
+          <div className="hidden sm:flex items-center gap-2 ml-2">
             <a
               href="tel:+79898397000"
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all"
