@@ -143,7 +143,7 @@ const HeroSection = () => {
         >
           <button
             onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-            className="px-8 py-4 bg-primary text-primary-foreground rounded-xl text-sm md:text-base font-semibold hover:opacity-90 transition-all hover:shadow-lg"
+            className="px-8 py-4 bg-white/15 text-primary-foreground border border-white/25 backdrop-blur-md rounded-xl text-sm md:text-base font-semibold hover:bg-white/25 hover:border-white/40 transition-all hover:shadow-lg"
           >
             Проверить свободные домики
           </button>

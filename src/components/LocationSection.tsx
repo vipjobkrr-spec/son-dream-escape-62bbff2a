@@ -49,7 +49,7 @@ const LocationSection = () => (
             href="https://yandex.ru/maps/?text=Тенгинка+Туапсинский+район"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm rounded-lg text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all shrink-0"
           >
             <Navigation className="w-4 h-4" />
             Построить маршрут

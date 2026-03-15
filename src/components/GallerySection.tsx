@@ -68,7 +68,7 @@ const GallerySection = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                   activeCategory === cat
-                    ? "bg-primary text-primary-foreground shadow-md"
+                    ? "bg-primary/20 text-primary shadow-md backdrop-blur-sm"
                     : "bg-muted text-muted-foreground hover:bg-muted/80"
                 }`}
               >

@@ -250,7 +250,7 @@ const PricesSection = () => {
                   onClick={() => setNights(q.nights)}
                   className={`px-4 py-2 rounded-lg text-sm transition-all border ${
                     nights === q.nights
-                      ? "bg-primary text-primary-foreground border-primary shadow-md"
+                       ? "bg-primary/20 text-primary border-primary/40 shadow-md backdrop-blur-sm"
                       : "bg-popover/60 backdrop-blur-sm border-border/30 text-foreground/70 hover:border-primary/30"
                   }`}
                 >
@@ -300,7 +300,7 @@ const PricesSection = () => {
                             aria-label={`${n} ${n === 1 ? "гость" : n < 5 ? "гостя" : "гостей"}`}
                             className={`flex-1 py-2 rounded-lg text-sm font-medium transition-all ${
                               guests === n
-                                ? "bg-primary text-primary-foreground shadow-md"
+                                ? "bg-primary/20 text-primary shadow-md backdrop-blur-sm"
                                 : "bg-muted/60 text-muted-foreground hover:bg-muted/80 backdrop-blur-sm"
                             }`}
                           >
@@ -345,7 +345,7 @@ const PricesSection = () => {
                         onClick={() => setExtraBed(!extraBed)}
                         className={`w-full py-2.5 rounded-lg text-sm font-medium transition-all border ${
                           extraBed
-                            ? "bg-primary text-primary-foreground border-primary shadow-md"
+                            ? "bg-primary/20 text-primary border-primary/40 shadow-md backdrop-blur-sm"
                             : "bg-muted/60 text-muted-foreground border-transparent hover:bg-muted/80 backdrop-blur-sm"
                         }`}
                       >
@@ -388,7 +388,7 @@ const PricesSection = () => {
                       href={buildMaxUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+                      className="flex-1 px-6 py-4 bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm rounded-xl text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all hover:shadow-lg flex items-center justify-center gap-2"
                     >
                       Забронировать — подтвердим за 15 мин
                       <ArrowRight className="w-4 h-4" />
