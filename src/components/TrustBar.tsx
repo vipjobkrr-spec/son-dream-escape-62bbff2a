@@ -1,11 +1,11 @@
-import { Shield, Users, CreditCard, RotateCcw } from "lucide-react";
+import { Users, Baby, RotateCcw, ShieldCheck } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const items = [
-  { icon: Shield, text: "Тариф единый на все домики" },
-  { icon: Users, text: "Доп. место возможно" },
-  { icon: CreditCard, text: "Бронь по предоплате 1 суток" },
-  { icon: RotateCcw, text: "Возврат за 30 дней до заезда" },
+  { icon: Baby, value: "85%", text: "гостей приезжают с детьми" },
+  { icon: RotateCcw, value: "30%", text: "возвращаются повторно" },
+  { icon: Users, value: "8", text: "семей максимум одновременно" },
+  { icon: ShieldCheck, value: "4.9", text: "рейтинг на Яндексе" },
 ];
 
 const TrustBar = () => (
@@ -14,9 +14,14 @@ const TrustBar = () => (
       <ScrollReveal>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {items.map((item) => (
-            <div key={item.text} className="flex items-start gap-3">
-              <item.icon className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-              <span className="text-sm text-foreground/80">{item.text}</span>
+            <div key={item.text} className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                <item.icon className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <span className="text-lg font-display font-bold text-foreground block leading-tight">{item.value}</span>
+                <span className="text-xs text-muted-foreground leading-tight">{item.text}</span>
+              </div>
             </div>
           ))}
         </div>
