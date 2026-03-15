@@ -20,12 +20,14 @@ export const FloatingNav = ({
   onItemClick,
   leftContent,
   rightContent,
+  mobileMenuContent,
 }: {
   navItems: FloatingNavItem[];
   className?: string;
   onItemClick?: (link: string, isPage?: boolean) => void;
   leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
+  mobileMenuContent?: React.ReactNode;
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(false);
@@ -58,18 +60,20 @@ export const FloatingNav = ({
       >
         {leftContent}
         <div className="w-px h-4 bg-border/30 hidden sm:block" />
-        {navItems.map((navItem, idx) => (
-          <button
-            key={idx}
-            onClick={() => onItemClick?.(navItem.link, navItem.isPage)}
-            className="relative items-center flex space-x-1 text-foreground/70 hover:text-foreground transition-colors"
-          >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="hidden sm:block text-sm whitespace-nowrap">
-              {navItem.name}
-            </span>
-          </button>
-        ))}
+        <div className="hidden sm:flex items-center space-x-3">
+          {navItems.map((navItem, idx) => (
+            <button
+              key={idx}
+              onClick={() => onItemClick?.(navItem.link, navItem.isPage)}
+              className="relative items-center flex space-x-1 text-foreground/70 hover:text-foreground transition-colors"
+            >
+              <span className="hidden sm:block text-sm whitespace-nowrap">
+                {navItem.name}
+              </span>
+            </button>
+          ))}
+        </div>
+        {mobileMenuContent}
         {rightContent}
       </motion.div>
     </AnimatePresence>
