@@ -168,11 +168,19 @@ const AboutSection = () => {
   const heroSwipe = useSwipe(nextSlide, prevSlide);
   const natureSwipe = useSwipe(nextNature, prevNature);
 
+  const nextTabSlide = useCallback(() => {
+    setTabSlide((prev) => (prev + 1) % (currentGallery.length || 1));
+  }, [currentGallery.length]);
+  const prevTabSlide = useCallback(() => {
+    setTabSlide((prev) => (prev - 1 + (currentGallery.length || 1)) % (currentGallery.length || 1));
+  }, [currentGallery.length]);
+  const tabGallerySwipe = useSwipe(nextTabSlide, prevTabSlide);
+
   const nextTab = useCallback(() => {
-    setActiveTab((prev) => (prev + 1) % tabs.length);
+    setActiveTab((prev) => { setTabSlide(0); return (prev + 1) % tabs.length; });
   }, []);
   const prevTab = useCallback(() => {
-    setActiveTab((prev) => (prev - 1 + tabs.length) % tabs.length);
+    setActiveTab((prev) => { setTabSlide(0); return (prev - 1 + tabs.length) % tabs.length; });
   }, []);
   const tabSwipe = useSwipe(nextTab, prevTab);
 
