@@ -67,11 +67,23 @@ export const FloatingNav = ({
             <button
               key={idx}
               onClick={() => onItemClick?.(navItem.link, navItem.isPage)}
-              className="relative items-center flex space-x-1 text-foreground/70 hover:text-foreground transition-colors"
+              className={cn(
+                "relative items-center flex flex-col space-x-1 transition-colors pb-1",
+                activeItem === navItem.link
+                  ? "text-primary font-medium"
+                  : "text-foreground/70 hover:text-foreground"
+              )}
             >
               <span className="hidden sm:block text-sm whitespace-nowrap">
                 {navItem.name}
               </span>
+              {activeItem === navItem.link && (
+                <motion.div
+                  layoutId="active-nav-dot"
+                  className="absolute -bottom-0.5 h-1 w-1 rounded-full bg-primary"
+                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                />
+              )}
             </button>
           ))}
         </div>

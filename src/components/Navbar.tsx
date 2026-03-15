@@ -56,6 +56,7 @@ const Navbar = () => {
       <FloatingNav
         navItems={links}
         onItemClick={handleClick}
+        activeItem={links.find((l) => isActive(l))?.link}
         leftContent={
           <div className="flex items-center gap-2">
             <button onClick={() => handleClick("/", true)} className="font-display text-base font-bold text-foreground whitespace-nowrap hover:text-primary transition-colors">Сон</button>
