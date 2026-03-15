@@ -8,6 +8,7 @@ import Leisure from "./pages/Leisure.tsx";
 import Services from "./pages/Services.tsx";
 import Blog from "./pages/Blog.tsx";
 import BlogPost from "./pages/BlogPost.tsx";
+import Privacy from "./pages/Privacy.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import { Navigate } from "react-router-dom";
 
