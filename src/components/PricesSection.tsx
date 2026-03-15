@@ -388,7 +388,7 @@ const PricesSection = () => {
                       href={buildMaxUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-xl text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+                      className="flex-1 px-6 py-4 bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm rounded-xl text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all hover:shadow-lg flex items-center justify-center gap-2"
                     >
                       Забронировать — подтвердим за 15 мин
                       <ArrowRight className="w-4 h-4" />

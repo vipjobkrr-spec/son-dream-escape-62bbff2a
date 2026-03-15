@@ -11,7 +11,7 @@ const StickyBookingBar = () => {
         href={MAX_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="flex w-full py-3.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-opacity items-center justify-center gap-2"
+        className="flex w-full py-3.5 bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm rounded-lg text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all items-center justify-center gap-2"
       >
         <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
         Забронировать — от 6 500 ₽/сут
