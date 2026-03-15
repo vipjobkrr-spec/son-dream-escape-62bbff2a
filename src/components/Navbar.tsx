@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { FloatingNav, FloatingNavItem } from "@/components/ui/floating-navbar";
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import WeatherWidget from "@/components/WeatherWidget";
+import { useActiveSection } from "@/hooks/useActiveSection";
 
 const links: (FloatingNavItem & { id: string; isPage?: boolean })[] = [
   { name: "О нас", link: "#about", id: "about", icon: <Home className="w-4 h-4" /> },
