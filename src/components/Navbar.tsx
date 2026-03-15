@@ -27,6 +27,13 @@ const Navbar = () => {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [sheetOpen, setSheetOpen] = useState(false);
+  const activeSection = useActiveSection();
+
+  const isActive = (item: typeof links[0]) => {
+    if (item.isPage) return location.pathname === item.link || location.pathname.startsWith(item.link + "/");
+    if (!isHome) return false;
+    return activeSection === item.id;
+  };
 
   const handleClick = (link: string, isPage?: boolean) => {
     setSheetOpen(false);
