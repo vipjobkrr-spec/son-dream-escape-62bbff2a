@@ -41,7 +41,7 @@ const Navbar = () => {
       onItemClick={handleClick}
       leftContent={
         <div className="flex items-center gap-2">
-          <span className="font-display text-base font-bold text-foreground whitespace-nowrap">Сон</span>
+          <button onClick={() => handleClick("/", true)} className="font-display text-base font-bold text-foreground whitespace-nowrap hover:text-primary transition-colors">Сон</button>
           <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-secondary/10 text-xs font-medium text-foreground">
             <Star className="w-3 h-3 fill-secondary text-secondary" />
             <span>4.9</span>
