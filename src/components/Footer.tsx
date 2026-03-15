@@ -25,9 +25,12 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8 mb-8">
         {/* Brand */}
         <div>
-          <p className="font-display text-2xl text-primary-foreground font-semibold mb-2">
-            База отдыха «Сон»
-          </p>
+          <div className="flex items-center gap-3 mb-2">
+            <img src={sonLogo} alt="Логотип Сон" className="w-10 h-10 object-contain" />
+            <p className="font-display text-2xl text-primary-foreground font-semibold">
+              База отдыха «Сон»
+            </p>
+          </div>
           <p className="text-sm leading-relaxed">
             8 уютных домиков и баня для спокойного семейного отдыха на черноморском побережье
           </p>
