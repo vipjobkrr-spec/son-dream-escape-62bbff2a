@@ -15,7 +15,7 @@ import bathroom from "@/assets/bathroom.jpg";
 import bbq from "@/assets/bbq.jpg";
 import bbq2 from "@/assets/about/bbq-friends-2.jpg";
 import poolGroup from "@/assets/about/pool-group.png";
-import poolWalk2 from "@/assets/about/pool-walk-2.jpg";
+import poolFull from "@/assets/about/pool-full.webp";
 import territorySun2 from "@/assets/about/territory-sun-2.webp";
 
 const images = [
@@ -27,7 +27,7 @@ const images = [
   { src: poolGroup, alt: "Купание в бассейне с друзьями", category: "Территория" },
   { src: bathroom, alt: "Санузел с душевой кабиной", category: "Санузел" },
   { src: kitchen, alt: "Кухня в домике", category: "Интерьер" },
-  { src: poolWalk2, alt: "У бассейна на территории базы", category: "Территория" },
+  { src: poolFull, alt: "Бассейн с видом на горы", category: "Территория" },
   { src: atmosphere, alt: "Атмосфера базы отдыха", category: "Атмосфера" },
   { src: territory1, alt: "Территория базы и бассейн", category: "Территория" },
   { src: pool2, alt: "Бассейн и домик", category: "Территория" },
