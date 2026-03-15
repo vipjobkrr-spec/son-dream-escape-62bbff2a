@@ -18,7 +18,7 @@ const zones = [
     label: "Спальня",
     icon: Bed,
     description: "Уютная спальня с кроватью, шкафом и мягким освещением",
-    images: [bedroom1, bedroom2, bedroom3],
+    images: [bedroom1, bedroom2],
   },
   {
     id: "kitchen",
