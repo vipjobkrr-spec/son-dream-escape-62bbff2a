@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const Privacy = () => {
   useEffect(() => {
@@ -10,6 +12,7 @@ const Privacy = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Navbar />
       <div className="container max-w-3xl py-12 md:py-20">
         <Link
           to="/"
@@ -83,6 +86,7 @@ const Privacy = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
