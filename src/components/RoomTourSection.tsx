@@ -25,7 +25,7 @@ const zones = [
     label: "Кухня",
     icon: CookingPot,
     description: "Полностью оборудованная кухня со столовой зоной",
-    images: [kitchen1, kitchen2, kitchen3],
+    images: [kitchen1, kitchen2, kitchen3, kitchen4, kitchen5],
   },
   {
     id: "living",
