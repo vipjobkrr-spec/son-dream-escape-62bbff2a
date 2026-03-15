@@ -150,7 +150,7 @@ const BookingForm = () => {
 
             <button
               type="submit"
-              className="w-full px-6 py-4 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
+              className="w-full px-6 py-4 bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm rounded-lg text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all hover:shadow-lg flex items-center justify-center gap-2"
             >
               <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
               Отправить заявку — подтвердим за 15 мин

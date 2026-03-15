@@ -19,7 +19,7 @@ const NotFound = () => {
           <p className="mb-6 text-xl text-muted-foreground">Страница не найдена</p>
           <a
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all"
           >
             На главную
           </a>
