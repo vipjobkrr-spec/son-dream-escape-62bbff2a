@@ -46,7 +46,7 @@ const FaqSection = () => {
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
-                  <p className="text-sm text-muted-foreground pl-9">
+                  <p className="text-[14px] leading-relaxed text-muted-foreground pl-9">
                     {faq.a}
                   </p>
                 </AccordionContent>
