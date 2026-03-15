@@ -36,8 +36,8 @@ const Footer = () => (
         <div>
           <p className="font-semibold text-primary-foreground mb-3 text-sm">Контакты</p>
           <div className="space-y-2.5">
-            <a href="tel:+79001234567" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
-              <Phone className="w-4 h-4 shrink-0" /> +7 (900) 123-45-67
+            <a href="tel:+79898397000" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
+              <Phone className="w-4 h-4 shrink-0" /> +7 989 839-70-00
             </a>
             <a href={MAX_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
               <img src={maxLogo} alt="MAX" className="w-4 h-4 rounded-full shrink-0" /> MAX
