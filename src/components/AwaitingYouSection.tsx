@@ -1,27 +1,21 @@
-import {
-  Home,
-  Waves,
-  TreePine,
-  Baby,
-  Wifi,
-  Car,
-} from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import bathIcon from "@/assets/bath-icon.webp";
 import fireIcon from "@/assets/fire-icon.svg";
+import homeIcon from "@/assets/icons/home-icon.svg";
+import poolIcon from "@/assets/icons/pool-icon.svg";
+import mountainIcon from "@/assets/icons/mountain-icon.svg";
+import babyIcon from "@/assets/icons/baby-icon.svg";
+import wifiIcon from "@/assets/icons/wifi-icon.svg";
+import parkingIcon from "@/assets/icons/parking-icon.svg";
 
-type ItemWithIcon = { icon: React.ComponentType<{ className?: string }>; image?: never; title: string; sub: string };
-type ItemWithImage = { icon?: never; image: string; title: string; sub: string };
-type Item = ItemWithIcon | ItemWithImage;
-
-const items: Item[] = [
-  { icon: Home, title: "Уютные домики", sub: "с кухней и террасой" },
-  { icon: Waves, title: "Бассейн", sub: "на территории" },
+const items = [
+  { image: homeIcon, title: "Уютные домики", sub: "с кухней и террасой" },
+  { image: poolIcon, title: "Бассейн", sub: "на территории" },
   { image: fireIcon, title: "Зона барбекю", sub: "у каждого домика" },
-  { icon: TreePine, title: "Горы и природа", sub: "реки и ущелья рядом" },
-  { icon: Baby, title: "Для детей", sub: "безопасная территория" },
-  { icon: Wifi, title: "Wi‑Fi", sub: "во всех домиках" },
-  { icon: Car, title: "Парковка", sub: "бесплатная" },
+  { image: mountainIcon, title: "Горы и природа", sub: "реки и ущелья рядом" },
+  { image: babyIcon, title: "Для детей", sub: "безопасная территория" },
+  { image: wifiIcon, title: "Wi‑Fi", sub: "во всех домиках" },
+  { image: parkingIcon, title: "Парковка", sub: "бесплатная" },
   { image: bathIcon, title: "Баня", sub: "по запросу" },
 ];
 
@@ -46,11 +40,7 @@ const AwaitingYouSection = () => {
                 className="flex flex-col items-center text-center gap-3 p-4"
               >
                 <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                  {item.image ? (
-                    <img src={item.image} alt={item.title} className="w-9 h-9 object-contain" />
-                  ) : (
-                    <item.icon className="w-7 h-7 text-primary" />
-                  )}
+                  <img src={item.image} alt={item.title} className="w-9 h-9 object-contain" />
                 </div>
                 <div>
                   <p className="font-semibold text-sm">{item.title}</p>
