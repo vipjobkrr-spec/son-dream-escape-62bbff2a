@@ -6,6 +6,11 @@ import territory1 from "@/assets/territory-1.webp";
 import territory2 from "@/assets/territory-2.webp";
 import poolImg from "@/assets/pool-1.jpg";
 import terraceImg from "@/assets/terrace.jpg";
+import poolTerritory from "@/assets/about/pool-territory.webp";
+import poolFull from "@/assets/about/pool-full.webp";
+import bedroomInterior from "@/assets/about/bedroom-interior.webp";
+import poolLoungers from "@/assets/about/pool-loungers.webp";
+import territoryWalkway from "@/assets/about/territory-walkway.webp";
 
 import aboutBbq from "@/assets/about/bbq-friends.jpg";
 import aboutBbq2 from "@/assets/about/bbq-friends-2.jpg";
