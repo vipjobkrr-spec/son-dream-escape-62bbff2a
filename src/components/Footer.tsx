@@ -86,7 +86,7 @@ const Footer = () => (
         <a href="https://t.me/son_rest" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="Telegram">
           <Send className="w-4 h-4" />
         </a>
-        <a href="https://wa.me/79001234567" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="WhatsApp">
+        <a href="https://wa.me/79898397000" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="WhatsApp">
           <MessageCircle className="w-4 h-4" />
         </a>
         <a href="https://www.tiktok.com/@son_rest" target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground/70 hover:text-primary-foreground transition-colors" aria-label="TikTok">
