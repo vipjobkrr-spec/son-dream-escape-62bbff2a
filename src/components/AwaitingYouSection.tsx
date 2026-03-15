@@ -1,7 +1,6 @@
 import {
   Home,
   Waves,
-  Flame,
   TreePine,
   Baby,
   Wifi,
@@ -9,6 +8,7 @@ import {
 } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 import bathIcon from "@/assets/bath-icon.webp";
+import fireIcon from "@/assets/fire-icon.svg";
 
 type ItemWithIcon = { icon: React.ComponentType<{ className?: string }>; image?: never; title: string; sub: string };
 type ItemWithImage = { icon?: never; image: string; title: string; sub: string };
