@@ -21,7 +21,7 @@ const faqs = [
 
 const FaqSection = () => {
   return (
-    <section id="faq" className="py-16 md:py-24">
+    <section id="faq" className="py-16 md:py-24 font-sans">
       <div className="container max-w-3xl">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-10">
