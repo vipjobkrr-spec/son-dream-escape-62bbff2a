@@ -4,12 +4,12 @@ import ScrollReveal from "./ScrollReveal";
 
 import bedroom1 from "@/assets/tour/bedroom-1.jpg";
 import bedroom2 from "@/assets/tour/bedroom-2.jpg";
-import bedroom3 from "@/assets/tour/bedroom-3.jpg";
 import kitchen1 from "@/assets/tour/kitchen-1.jpg";
 import kitchen2 from "@/assets/tour/kitchen-2.jpg";
 import kitchen3 from "@/assets/tour/kitchen-3.jpg";
+import kitchen4 from "@/assets/tour/kitchen-4.jpg";
+import kitchen5 from "@/assets/tour/kitchen-5.webp";
 import living1 from "@/assets/tour/living-1.jpg";
-import living2 from "@/assets/tour/living-2.jpg";
 import bathroom1 from "@/assets/tour/bathroom-1.jpg";
 
 const zones = [
@@ -18,21 +18,21 @@ const zones = [
     label: "Спальня",
     icon: Bed,
     description: "Уютная спальня с кроватью, шкафом и мягким освещением",
-    images: [bedroom1, bedroom2, bedroom3],
+    images: [bedroom1, bedroom2],
   },
   {
     id: "kitchen",
     label: "Кухня",
     icon: CookingPot,
     description: "Полностью оборудованная кухня со столовой зоной",
-    images: [kitchen1, kitchen2, kitchen3],
+    images: [kitchen1, kitchen2, kitchen3, kitchen4, kitchen5],
   },
   {
     id: "living",
     label: "Гостиная",
     icon: Sofa,
     description: "Просторная гостиная с мягкой мебелью для отдыха",
-    images: [living1, living2],
+    images: [living1],
   },
   {
     id: "bathroom",
