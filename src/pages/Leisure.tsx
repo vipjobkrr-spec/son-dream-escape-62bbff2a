@@ -37,7 +37,7 @@ import sunset from '@/assets/leisure/sunset.webp';
 import river3 from '@/assets/leisure/river-3.webp';
 import sea3 from '@/assets/leisure/sea-3.webp';
 import river4 from '@/assets/leisure/river-4.webp';
-import bbq from '@/assets/bbq.jpg';
+
 
 const heroImages = [sea1, lake, river2, sea3, sunset];
 
@@ -108,7 +108,7 @@ const activities = [
     title: 'Барбекю на природе',
     description:
       'У каждого домика — своя зона барбекю с мангалом и всем необходимым. Готовьте на свежем воздухе под звуки реки и пение птиц. Продукты можно заказать прямо у нас.',
-    image: bbq,
+    image: '/lovable-uploads/01fe14e4-5fb9-4652-9c04-206e64db3eea.png',
     badge: 'Бесплатно для гостей',
   },
 ];
