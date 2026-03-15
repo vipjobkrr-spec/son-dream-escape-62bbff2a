@@ -32,7 +32,7 @@ const zones = [
     label: "Гостиная",
     icon: Sofa,
     description: "Просторная гостиная с мягкой мебелью для отдыха",
-    images: [living1, living2],
+    images: [living1],
   },
   {
     id: "bathroom",
