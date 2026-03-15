@@ -215,7 +215,7 @@ const Services = () => {
               </div>
               <button
                 onClick={() => setInstallmentOpen(true)}
-                className="flex-shrink-0 px-8 py-4 bg-primary text-primary-foreground rounded-full text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
+                className="flex-shrink-0 px-8 py-4 bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm rounded-full text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all hover:shadow-lg"
               >
                 Узнать подробнее
               </button>
