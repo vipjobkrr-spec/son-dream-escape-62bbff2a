@@ -82,7 +82,7 @@ const Navbar = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.06, duration: 0.3 }}
                       onClick={() => handleClick(item.link, item.isPage)}
-                      className="flex items-center gap-3 px-4 py-3 rounded-lg text-foreground/70 hover:text-foreground hover:bg-accent/50 transition-colors text-left"
+                      className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors text-left ${isActive(item) ? "text-primary bg-primary/10" : "text-foreground/70 hover:text-foreground hover:bg-accent/50"}`}
                     >
                       {item.icon}
                       <span className="text-sm font-medium">{item.name}</span>
