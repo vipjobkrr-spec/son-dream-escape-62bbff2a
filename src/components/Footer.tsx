@@ -48,8 +48,8 @@ const Footer = () => (
             <a href="https://t.me/son_rest" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
               <Send className="w-4 h-4 shrink-0" /> Telegram
             </a>
-            <a href="mailto:info@son-rest.ru" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
-              <Mail className="w-4 h-4 shrink-0" /> info@son-rest.ru
+            <a href="mailto:booking@sontenginka.ru" className="flex items-center gap-2 text-sm hover:text-primary-foreground transition-colors">
+              <Mail className="w-4 h-4 shrink-0" /> booking@sontenginka.ru
             </a>
           </div>
         </div>
