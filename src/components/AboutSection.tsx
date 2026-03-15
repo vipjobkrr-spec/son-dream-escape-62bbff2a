@@ -28,9 +28,12 @@ import banyaImg from "@/assets/services/banya.jpg";
 
 const heroSlides = [
   { src: aboutTerritory, alt: "Территория базы отдыха Сон — домики и бассейн" },
+  { src: aboutTerritory2, alt: "Территория базы с видом на горы" },
   { src: aboutPoolWalk, alt: "Прогулка у бассейна на базе Сон" },
+  { src: aboutPoolWalk2, alt: "У бассейна на территории базы Сон" },
   { src: aboutFamily, alt: "Семейный отдых в бассейне" },
-  { src: aboutBbq, alt: "Барбекю с друзьями на базе Сон" },
+  { src: aboutPoolGroup, alt: "Купание в бассейне с друзьями" },
+  { src: aboutBbq2, alt: "Барбекю с друзьями на базе Сон" },
   { src: aboutPoolGirl, alt: "Отдых у бассейна с видом на горы" },
   { src: aboutPoolGirls, alt: "Купание в бассейне на базе Сон" },
 ];
