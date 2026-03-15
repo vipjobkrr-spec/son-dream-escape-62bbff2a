@@ -56,7 +56,19 @@ export const HeroSection = React.forwardRef<HTMLDivElement, HeroProps>(
           </div>
 
           {/* Main Showcase Section */}
-          <div className="relative w-full flex items-center justify-center" style={{ height: '400px' }}>
+          <div
+            className="relative w-full flex items-center justify-center touch-pan-y"
+            style={{ height: '400px' }}
+            onTouchStart={(e) => { (e.currentTarget as any).__touchX = e.touches[0].clientX; }}
+            onTouchEnd={(e) => {
+              const startX = (e.currentTarget as any).__touchX;
+              if (startX == null) return;
+              const diff = e.changedTouches[0].clientX - startX;
+              if (diff < -50) handleNext();
+              else if (diff > 50) handlePrev();
+              (e.currentTarget as any).__touchX = null;
+            }}
+          >
             {/* Carousel Wrapper */}
             <div className="relative w-full h-full flex items-center justify-center">
               {images.map((image, index) => {

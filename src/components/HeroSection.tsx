@@ -62,7 +62,7 @@ const HeroSection = () => {
   }, [checkIn, checkOut]);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden touch-pan-y" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       {/* Fullscreen background slideshow */}
       <AnimatePresence mode="popLayout">
         <motion.img
