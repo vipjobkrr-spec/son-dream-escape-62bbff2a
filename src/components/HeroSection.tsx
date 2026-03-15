@@ -18,9 +18,9 @@ const images = [
   { src: heroTerraceSunset, alt: "Терраса домика на закате" },
 ];
 
-const keyPoints = [
+const keyPoints: React.ReactNode[] = [
   "Домики под ключ с кухней, санузлом, кондиционером и Wi‑Fi",
-  "До моря 10–15 минут на авто, рядом реки и ущелья для прогулок",
+  <><span className="font-semibold text-white">До моря 10–15 минут</span> на авто, рядом реки и ущелья для прогулок</>,
   "Семейная атмосфера: хозяева живут на месте и помогают с любыми вопросами",
 ];
 
@@ -114,7 +114,7 @@ const HeroSection = () => {
           className="text-white/75 text-sm md:text-lg leading-relaxed max-w-2xl mx-auto mb-8"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          Малая семейная база из 8 домиков с бассейном и баней: тишина, горы, море
+          Малая <span className="font-semibold text-white">семейная</span> база из <span className="font-semibold text-white">8 домиков с бассейном</span> и баней: тишина, горы, море
           и безопасная территория для отдыха с детьми.{" "}
           <span className="font-semibold text-white">От 6 500 ₽/сутки.</span>
         </motion.p>
@@ -126,8 +126,8 @@ const HeroSection = () => {
           transition={{ delay: 0.85, duration: 0.8 }}
           className="flex flex-col items-start gap-2.5 max-w-xl mx-auto mb-10 text-left"
         >
-          {keyPoints.map((point) => (
-            <div key={point} className="flex items-start gap-2.5">
+          {keyPoints.map((point, i) => (
+            <div key={i} className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
               <span className="text-white/80 text-sm md:text-base leading-snug">{point}</span>
             </div>
