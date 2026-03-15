@@ -18,11 +18,13 @@ export const FloatingNav = ({
   navItems,
   className,
   onItemClick,
+  leftContent,
   rightContent,
 }: {
   navItems: FloatingNavItem[];
   className?: string;
   onItemClick?: (link: string, isPage?: boolean) => void;
+  leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
 }) => {
   const { scrollYProgress } = useScroll();
@@ -54,6 +56,8 @@ export const FloatingNav = ({
           className
         )}
       >
+        {leftContent}
+        <div className="w-px h-4 bg-border/30 hidden sm:block" />
         {navItems.map((navItem, idx) => (
           <button
             key={idx}
