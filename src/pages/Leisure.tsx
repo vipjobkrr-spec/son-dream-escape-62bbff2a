@@ -31,7 +31,7 @@ import sea1 from '@/assets/leisure/sea-1.webp';
 import lake from '@/assets/leisure/lake.webp';
 import sea2 from '@/assets/leisure/sea-2.webp';
 import flowers from '@/assets/leisure/flowers.webp';
-import river1 from '@/assets/leisure/river-1.webp';
+import river1 from '@/assets/leisure/river-clear.webp';
 import river2 from '@/assets/leisure/river-2.webp';
 import sunset from '@/assets/leisure/sunset.webp';
 import river3 from '@/assets/leisure/river-3.webp';
