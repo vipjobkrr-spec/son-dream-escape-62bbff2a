@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { Phone, Star, Home, DollarSign, Building, Video, Image, TreePine, BookOpen, MessageSquare, MapPin, HelpCircle, CalendarDays, Sparkles } from "lucide-react";
 import { FloatingNav, FloatingNavItem } from "@/components/ui/floating-navbar";
+import WeatherWidget from "@/components/WeatherWidget";
 
 const links: (FloatingNavItem & { id: string; isPage?: boolean })[] = [
   { name: "О нас", link: "#about", id: "about", icon: <Home className="w-4 h-4" /> },
@@ -38,12 +39,18 @@ const Navbar = () => {
     <FloatingNav
       navItems={links}
       onItemClick={handleClick}
-      rightContent={
-        <div className="flex items-center gap-2 ml-2">
-          <div className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-secondary/10 text-xs font-medium text-foreground">
-            <Star className="w-3.5 h-3.5 fill-secondary text-secondary" />
+      leftContent={
+        <div className="flex items-center gap-2">
+          <span className="font-display text-base font-bold text-foreground whitespace-nowrap">Сон</span>
+          <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-secondary/10 text-xs font-medium text-foreground">
+            <Star className="w-3 h-3 fill-secondary text-secondary" />
             <span>4.9</span>
           </div>
+          <WeatherWidget />
+        </div>
+      }
+      rightContent={
+        <div className="flex items-center gap-2 ml-2">
           <a
             href="tel:+79001234567"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition-opacity"

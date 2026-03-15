@@ -56,6 +56,8 @@ export const FloatingNav = ({
           className
         )}
       >
+        {leftContent}
+        <div className="w-px h-4 bg-border/30 hidden sm:block" />
         {navItems.map((navItem, idx) => (
           <button
             key={idx}
