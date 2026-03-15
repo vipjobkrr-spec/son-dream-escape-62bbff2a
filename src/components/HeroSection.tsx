@@ -114,7 +114,7 @@ const HeroSection = () => {
           className="text-white/75 text-sm md:text-lg leading-relaxed max-w-2xl mx-auto mb-8"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          Малая семейная база из 8 домиков с бассейном и баней: тишина, горы, море
+          Малая <span className="font-semibold text-white">семейная</span> база из <span className="font-semibold text-white">8 домиков с бассейном</span> и баней: тишина, горы, море
           и безопасная территория для отдыха с детьми.{" "}
           <span className="font-semibold text-white">От 6 500 ₽/сутки.</span>
         </motion.p>
