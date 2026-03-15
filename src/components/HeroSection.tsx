@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { CalendarDays, ChevronDown } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -23,6 +23,21 @@ const HeroSection = () => {
   const [showScroll, setShowScroll] = useState(true);
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
+  const touchStart = useRef<number | null>(null);
+
+  const goNext = useCallback(() => setIndex((p) => (p + 1) % images.length), []);
+  const goPrev = useCallback(() => setIndex((p) => (p - 1 + images.length) % images.length), []);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStart.current = e.touches[0].clientX;
+  }, []);
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (touchStart.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStart.current;
+    if (diff < -50) goNext();
+    else if (diff > 50) goPrev();
+    touchStart.current = null;
+  }, [goNext, goPrev]);
 
   useEffect(() => {
     const onScroll = () => setShowScroll(window.scrollY < 100);
@@ -47,7 +62,7 @@ const HeroSection = () => {
   }, [checkIn, checkOut]);
 
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative h-screen w-full overflow-hidden touch-pan-y" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       {/* Fullscreen background slideshow */}
       <AnimatePresence mode="popLayout">
         <motion.img
