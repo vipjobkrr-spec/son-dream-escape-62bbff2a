@@ -1,5 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '@/components/SEO';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
