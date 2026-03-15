@@ -15,7 +15,7 @@ import bathroom from "@/assets/bathroom.jpg";
 import bbq from "@/assets/bbq.jpg";
 import bbq2 from "@/assets/about/bbq-friends-2.jpg";
 import poolGroup from "@/assets/about/pool-group.png";
-import poolWalk2 from "@/assets/about/pool-walk-2.jpg";
+import poolFull from "@/assets/about/pool-full.webp";
 import territorySun2 from "@/assets/about/territory-sun-2.webp";
 
 const images = [
