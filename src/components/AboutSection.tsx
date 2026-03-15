@@ -133,6 +133,14 @@ const AboutSection = () => {
   const heroSwipe = useSwipe(nextSlide, prevSlide);
   const natureSwipe = useSwipe(nextNature, prevNature);
 
+  const nextTab = useCallback(() => {
+    setActiveTab((prev) => (prev + 1) % tabs.length);
+  }, []);
+  const prevTab = useCallback(() => {
+    setActiveTab((prev) => (prev - 1 + tabs.length) % tabs.length);
+  }, []);
+  const tabSwipe = useSwipe(nextTab, prevTab);
+
   useEffect(() => {
     const timer = setInterval(nextSlide, 5000);
     return () => clearInterval(timer);
@@ -270,7 +278,7 @@ const AboutSection = () => {
 
           {/* Tab content */}
           <AnimatePresence mode="wait">
-            <motion.div
+            <motion.div {...tabSwipe}
               key={current.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
