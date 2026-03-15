@@ -64,7 +64,7 @@ const BookingForm = () => {
       <div className="container max-w-3xl">
         <ScrollReveal>
           <h2 className="text-3xl md:text-5xl font-display font-semibold text-center mb-3">
-            Забронировать домик
+            Как забронировать домик
           </h2>
           <p className="text-center text-muted-foreground mb-10 max-w-xl mx-auto text-sm">
             Оставьте заявку — подтвердим бронь за 15 минут. Без скрытых доплат.
