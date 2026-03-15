@@ -250,7 +250,7 @@ const PricesSection = () => {
                   onClick={() => setNights(q.nights)}
                   className={`px-4 py-2 rounded-lg text-sm transition-all border ${
                     nights === q.nights
-                      ? "bg-primary text-primary-foreground border-primary shadow-md"
+                       ? "bg-primary/20 text-primary border-primary/40 shadow-md backdrop-blur-sm"
                       : "bg-popover/60 backdrop-blur-sm border-border/30 text-foreground/70 hover:border-primary/30"
                   }`}
                 >
