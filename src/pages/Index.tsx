@@ -36,6 +36,7 @@ const Index = () => {
       <TrustBar />
       <AboutSection />
       <PricesSection />
+      <WhyNotHotelSection />
       <CabinsSection />
       <RoomTourSection />
       <AmenitiesSection />
