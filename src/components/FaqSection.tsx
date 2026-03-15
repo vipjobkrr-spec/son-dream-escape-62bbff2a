@@ -42,7 +42,7 @@ const FaqSection = () => {
                     <span className="text-xs font-mono text-muted-foreground shrink-0">
                       {faq.id}
                     </span>
-                    <span className="font-medium text-sm">{faq.q}</span>
+                    <span className="font-medium text-[15px]">{faq.q}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent>
