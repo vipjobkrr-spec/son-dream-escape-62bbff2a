@@ -18,11 +18,13 @@ export const FloatingNav = ({
   navItems,
   className,
   onItemClick,
+  leftContent,
   rightContent,
 }: {
   navItems: FloatingNavItem[];
   className?: string;
   onItemClick?: (link: string, isPage?: boolean) => void;
+  leftContent?: React.ReactNode;
   rightContent?: React.ReactNode;
 }) => {
   const { scrollYProgress } = useScroll();
