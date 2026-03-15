@@ -180,7 +180,7 @@ const Services = () => {
                         href={buildMaxUrl(item.title)}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 mt-2 px-6 py-3 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg"
+                        className="inline-flex items-center gap-2 mt-2 px-6 py-3 bg-primary/15 text-primary border border-primary/25 backdrop-blur-sm rounded-lg text-sm font-medium hover:bg-primary/25 hover:border-primary/40 transition-all hover:shadow-lg"
                       >
                         <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
                         Заказать в MAX
