@@ -145,7 +145,9 @@ const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [heroSlide, setHeroSlide] = useState(0);
   const [natureSlide, setNatureSlide] = useState(0);
+  const [tabSlide, setTabSlide] = useState(0);
   const current = tabs[activeTab];
+  const currentGallery = current.gallery || [];
 
   const nextSlide = useCallback(() => {
     setHeroSlide((prev) => (prev + 1) % heroSlides.length);
