@@ -69,6 +69,32 @@ const BlogPost = () => {
         image={post.image}
         url={`/blog/${post.slug}`}
         type="article"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": post.title,
+          "description": post.excerpt,
+          "image": post.image,
+          "datePublished": post.date,
+          "dateModified": post.date,
+          "author": {
+            "@type": "Organization",
+            "name": "База отдыха Сон",
+            "url": "https://son-dream-escape.lovable.app"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "База отдыха Сон",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://son-dream-escape.lovable.app/og-image.jpg"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://son-dream-escape.lovable.app/blog/${post.slug}`
+          }
+        }}
       />
       <Navbar />
       <main className="min-h-screen bg-background pt-24 pb-16">
