@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import AwaitingYouSection from "@/components/AwaitingYouSection";
 import HeroSection from "@/components/HeroSection";
 import WhyHereSection from "@/components/WhyHereSection";
