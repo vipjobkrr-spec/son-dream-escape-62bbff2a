@@ -6,6 +6,11 @@ import territory1 from "@/assets/territory-1.webp";
 import territory2 from "@/assets/territory-2.webp";
 import poolImg from "@/assets/pool-1.jpg";
 import terraceImg from "@/assets/terrace.jpg";
+import poolTerritory from "@/assets/about/pool-territory.webp";
+import poolFull from "@/assets/about/pool-full.webp";
+import bedroomInterior from "@/assets/about/bedroom-interior.webp";
+import poolLoungers from "@/assets/about/pool-loungers.webp";
+import territoryWalkway from "@/assets/about/territory-walkway.webp";
 
 import aboutBbq from "@/assets/about/bbq-friends.jpg";
 import aboutBbq2 from "@/assets/about/bbq-friends-2.jpg";
@@ -68,7 +73,12 @@ const tabs = [
     title: "Комфорт",
     heading: "Домашний уют на природе",
     text: "8 уютных домиков и баня с полным оснащением: кондиционер, кухня, душ, Wi-Fi. Вы будете жить на лоне природы и чувствовать себя комфортно, как дома. Свежее постельное бельё, полотенца и всё необходимое — уже в домике.",
-    image: territory2,
+    gallery: [
+      { src: bedroomInterior, alt: "Спальня в домике базы Сон" },
+      { src: territory2, alt: "Дорожка между домиками" },
+      { src: territoryWalkway, alt: "Территория базы с видом на горы" },
+      { src: poolTerritory, alt: "Бассейн и территория базы" },
+    ],
     highlights: [
       { icon: Home, text: "8 полностью оборудованных домиков и баня" },
       { icon: Sunrise, text: "Закаты и рассветы как на ладони" },
@@ -80,7 +90,11 @@ const tabs = [
     title: "Активности",
     heading: "Море, горы и приключения",
     text: "Чёрное море в 10 минутах, горные реки и водопады — рядом. Прокат велосипедов, SUP-бордов, экскурсии к дольменам и каньонам. Каждый день — новое открытие, и не нужно далеко ехать.",
-    image: poolImg,
+    gallery: [
+      { src: poolImg, alt: "Бассейн на базе отдыха" },
+      { src: poolFull, alt: "Бассейн с видом на горы" },
+      { src: poolLoungers, alt: "Бассейн с шезлонгами" },
+    ],
     highlights: [
       { icon: Waves, text: "Пляжи и морские прогулки" },
       { icon: Mountain, text: "Треки и экскурсии по горам" },
@@ -92,7 +106,11 @@ const tabs = [
     title: "Отдых",
     heading: "Расслабление и вкусная еда",
     text: "Бассейн с шезлонгами, Навес у каждого домика, уютная атмосфера для завтраков. Закажите доставку фермерских продуктов — и готовьте на природе.",
-    image: terraceImg,
+    gallery: [
+      { src: terraceImg, alt: "Терраса для завтраков" },
+      { src: poolLoungers, alt: "Зона отдыха у бассейна" },
+      { src: poolTerritory, alt: "Территория и бассейн" },
+    ],
     highlights: [
       { icon: UtensilsCrossed, text: "Своя зона барбекю у каждого домика" },
       { icon: Heart, text: "Бассейн, гамаки и полная тишина" },
@@ -127,7 +145,9 @@ const AboutSection = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [heroSlide, setHeroSlide] = useState(0);
   const [natureSlide, setNatureSlide] = useState(0);
+  const [tabSlide, setTabSlide] = useState(0);
   const current = tabs[activeTab];
+  const currentGallery = current.gallery || [];
 
   const nextSlide = useCallback(() => {
     setHeroSlide((prev) => (prev + 1) % heroSlides.length);
@@ -148,11 +168,19 @@ const AboutSection = () => {
   const heroSwipe = useSwipe(nextSlide, prevSlide);
   const natureSwipe = useSwipe(nextNature, prevNature);
 
+  const nextTabSlide = useCallback(() => {
+    setTabSlide((prev) => (prev + 1) % (currentGallery.length || 1));
+  }, [currentGallery.length]);
+  const prevTabSlide = useCallback(() => {
+    setTabSlide((prev) => (prev - 1 + (currentGallery.length || 1)) % (currentGallery.length || 1));
+  }, [currentGallery.length]);
+  const tabGallerySwipe = useSwipe(nextTabSlide, prevTabSlide);
+
   const nextTab = useCallback(() => {
-    setActiveTab((prev) => (prev + 1) % tabs.length);
+    setActiveTab((prev) => { setTabSlide(0); return (prev + 1) % tabs.length; });
   }, []);
   const prevTab = useCallback(() => {
-    setActiveTab((prev) => (prev - 1 + tabs.length) % tabs.length);
+    setActiveTab((prev) => { setTabSlide(0); return (prev - 1 + tabs.length) % tabs.length; });
   }, []);
   const tabSwipe = useSwipe(nextTab, prevTab);
 
@@ -275,7 +303,7 @@ const AboutSection = () => {
                   return (
                     <button
                       key={tab.id}
-                      onClick={() => setActiveTab(index)}
+                      onClick={() => { setActiveTab(index); setTabSlide(0); }}
                       className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
                         isActive
                           ? "bg-primary text-primary-foreground shadow-sm"
@@ -389,17 +417,51 @@ const AboutSection = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="rounded-2xl overflow-hidden shadow-card">
-                      <motion.img
-                        key={current.image}
-                        src={current.image}
-                        alt={current.heading}
-                        initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5 }}
-                        className="w-full h-72 md:h-[400px] object-cover"
-                        loading="lazy"
-                      />
+                    <div className="space-y-3">
+                      <div className="relative rounded-2xl overflow-hidden shadow-card" {...tabGallerySwipe}>
+                        <AnimatePresence mode="wait">
+                          <motion.img
+                            key={tabSlide}
+                            src={currentGallery[tabSlide]?.src}
+                            alt={currentGallery[tabSlide]?.alt}
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -30 }}
+                            transition={{ duration: 0.4 }}
+                            className="w-full h-72 md:h-[400px] object-cover"
+                            loading="lazy"
+                          />
+                        </AnimatePresence>
+                        {currentGallery.length > 1 && (
+                          <>
+                            <button
+                              onClick={() => setTabSlide((p) => (p - 1 + currentGallery.length) % currentGallery.length)}
+                              className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-primary-foreground hover:bg-background/50 transition-all"
+                              aria-label="Назад"
+                            >
+                              <ChevronLeft className="w-4 h-4" />
+                            </button>
+                            <button
+                              onClick={() => setTabSlide((p) => (p + 1) % currentGallery.length)}
+                              className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background/30 backdrop-blur-sm flex items-center justify-center text-primary-foreground hover:bg-background/50 transition-all"
+                              aria-label="Вперёд"
+                            >
+                              <ChevronRight className="w-4 h-4" />
+                            </button>
+                            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5">
+                              {currentGallery.map((_, i) => (
+                                <button
+                                  key={i}
+                                  onClick={() => setTabSlide(i)}
+                                  className={`w-2 h-2 rounded-full transition-all ${
+                                    i === tabSlide ? "bg-primary-foreground w-5" : "bg-primary-foreground/40"
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </div>
                     </div>
                   )}
                   <div className="absolute -bottom-4 -left-4 md:-left-6 bg-primary text-primary-foreground px-5 py-3 rounded-xl shadow-lg">
