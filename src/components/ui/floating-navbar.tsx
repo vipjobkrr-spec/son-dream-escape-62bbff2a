@@ -22,6 +22,7 @@ export const FloatingNav = ({
   rightContent,
   mobileMenuContent,
   activeItem,
+  hidden,
 }: {
   navItems: FloatingNavItem[];
   className?: string;
@@ -30,6 +31,7 @@ export const FloatingNav = ({
   rightContent?: React.ReactNode;
   mobileMenuContent?: React.ReactNode;
   activeItem?: string;
+  hidden?: boolean;
 }) => {
   const { scrollYProgress } = useScroll();
   const [visible, setVisible] = useState(false);
@@ -51,8 +53,8 @@ export const FloatingNav = ({
       <motion.div
         initial={{ opacity: 1, y: -100 }}
         animate={{
-          y: visible ? 0 : -100,
-          opacity: visible ? 1 : 0,
+          y: visible && !hidden ? 0 : -100,
+          opacity: visible && !hidden ? 1 : 0,
         }}
         transition={{ duration: 0.2 }}
         className={cn(
