@@ -19,7 +19,7 @@ import poolFull from "@/assets/about/pool-full.webp";
 import territorySun2 from "@/assets/about/territory-sun-2.webp";
 
 const images = [
-  { src: pool1, alt: "Бассейн с шезлонгами", category: "Территория" },
+  { src: banya, alt: "Баня с друзьями", category: "Атмосфера" },
   { src: terrace, alt: "Терраса с кофе и видом на горы", category: "Терраса" },
   { src: bedroom, alt: "Спальня с кроватью и диваном", category: "Интерьер" },
   { src: bbq2, alt: "Барбекю с друзьями", category: "Барбекю" },
