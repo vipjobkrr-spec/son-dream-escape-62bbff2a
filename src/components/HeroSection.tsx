@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { CalendarDays, ChevronDown, Home, Star, MapPin, Users, Waves } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 
 import heroPoolWalk from "@/assets/hero-pool-walk.jpg";
@@ -18,18 +18,15 @@ const images = [
   { src: heroTerraceSunset, alt: "Терраса домика на закате" },
 ];
 
-const trustItems = [
-  { icon: Home, text: "8 домиков", sub: "макс. 8 семей" },
-  { icon: Star, text: "4.9 рейтинг", sub: "Яндекс" },
-  { icon: MapPin, text: "10 мин до моря", sub: "пешком" },
-  { icon: Waves, text: "Бассейн и баня", sub: "на территории" },
+const keyPoints = [
+  "Домики под ключ с кухней, санузлом, кондиционером и Wi‑Fi",
+  "До моря 10–15 минут на авто, рядом реки и ущелья для прогулок",
+  "Семейная атмосфера: хозяева живут на месте и помогают с любыми вопросами",
 ];
 
 const HeroSection = () => {
   const [index, setIndex] = useState(0);
   const [showScroll, setShowScroll] = useState(true);
-  const [checkIn, setCheckIn] = useState("");
-  const [checkOut, setCheckOut] = useState("");
   const touchStart = useRef<number | null>(null);
 
   const goNext = useCallback(() => setIndex((p) => (p + 1) % images.length), []);
@@ -59,18 +56,13 @@ const HeroSection = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const handleBooking = useCallback(() => {
-    if (checkIn || checkOut) {
-      const text = `Здравствуйте! Хочу забронировать домик «Сон». Даты: ${checkIn || "___"} – ${checkOut || "___"}. Подскажите наличие и стоимость.`;
-      window.open(`${MAX_URL.split("?")[0]}?text=${encodeURIComponent(text)}`, "_blank");
-    } else {
-      document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [checkIn, checkOut]);
-
   return (
-    <section className="relative h-screen w-full overflow-hidden touch-pan-y" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
-      {/* Fullscreen background slideshow */}
+    <section
+      className="relative min-h-screen w-full overflow-hidden touch-pan-y flex items-center"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Background slideshow */}
       <AnimatePresence mode="popLayout">
         <motion.img
           key={index}
@@ -85,20 +77,20 @@ const HeroSection = () => {
         />
       </AnimatePresence>
 
-      {/* Dark gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 z-[1]" />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/65 z-[1]" />
 
-      {/* Centered content */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        {/* Subtitle */}
+      {/* Content */}
+      <div className="relative z-10 container max-w-4xl mx-auto text-center px-4 py-24 md:py-32">
+        {/* Location tag */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.8 }}
-          className="text-white/70 text-sm md:text-base tracking-[0.3em] uppercase mb-4"
+          className="text-white/60 text-xs md:text-sm tracking-[0.3em] uppercase mb-6"
           style={{ fontFamily: "var(--font-body)" }}
         >
-          Черноморское побережье • Тенгинка
+          Черноморское побережье • между Туапсе и Сочи
         </motion.p>
 
         {/* Title */}
@@ -106,62 +98,81 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-semibold text-white leading-[1.05] mb-3"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight mb-5"
           style={{ fontFamily: "var(--font-display)" }}
         >
-          База отдыха
+          Спокойный отдых в домиках
           <br />
-          <span className="text-secondary">«Сон»</span>
+          у моря в <span className="text-secondary">Тенгинке</span>
         </motion.h1>
 
-        {/* Strong offer — concrete, specific */}
-        <motion.div
+        {/* Subtitle */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.8 }}
-          className="max-w-2xl mx-auto text-center mb-6"
+          className="text-white/75 text-sm md:text-lg leading-relaxed max-w-2xl mx-auto mb-8"
+          style={{ fontFamily: "var(--font-body)" }}
         >
-          <p
-            className="text-white text-lg md:text-2xl font-semibold tracking-wide mb-2"
-            style={{ fontFamily: "var(--font-display)" }}
-          >
-            Домики под ключ для семьи — от 6 500 ₽/сут
-          </p>
-          <p
-            className="text-white/70 text-sm md:text-base leading-relaxed"
-            style={{ fontFamily: "var(--font-body)" }}
-          >
-            Маленькая семейная база: максимум 8 семей, нет толпы и шума. Хозяева живут рядом — помогут с маршрутами и бытом. 2 часа из Краснодара, 1.5 часа из Сочи.
-          </p>
-        </motion.div>
+          Малая семейная база из 8 домиков с бассейном и баней: тишина, горы, море
+          и безопасная территория для отдыха с детьми. От 6 500 ₽/сутки.
+        </motion.p>
 
-        {/* Trust triggers */}
+        {/* Key points */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8"
+          transition={{ delay: 0.85, duration: 0.8 }}
+          className="flex flex-col items-start gap-2.5 max-w-xl mx-auto mb-10 text-left"
         >
-          {trustItems.map((item) => (
-            <div
-              key={item.text}
-              className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 md:px-4 md:py-2"
-            >
-              <item.icon className="w-4 h-4 text-secondary" />
-              <div className="text-left">
-                <span className="text-white text-xs md:text-sm font-semibold block leading-tight">{item.text}</span>
-                <span className="text-white/50 text-[10px] md:text-xs leading-tight">{item.sub}</span>
-              </div>
+          {keyPoints.map((point) => (
+            <div key={point} className="flex items-start gap-2.5">
+              <Check className="w-4 h-4 text-secondary shrink-0 mt-0.5" />
+              <span className="text-white/80 text-sm md:text-base leading-snug">{point}</span>
             </div>
           ))}
         </motion.div>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-4"
+        >
+          <button
+            onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+            className="px-8 py-4 bg-primary text-primary-foreground rounded-xl text-sm md:text-base font-semibold hover:opacity-90 transition-all hover:shadow-lg"
+          >
+            Проверить свободные домики
+          </button>
+          <a
+            href={MAX_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-4 border border-white/30 text-white rounded-xl text-sm md:text-base font-medium hover:bg-white/10 transition-colors flex items-center gap-2"
+          >
+            <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
+            Задать вопрос в MAX
+          </a>
+        </motion.div>
+
+        {/* Microcopy under CTA */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.15, duration: 0.6 }}
+          className="text-white/45 text-xs md:text-sm mb-8"
+        >
+          Ответим в течение 15 минут и подтвердим бронь. Предоплата — 1 сутки проживания.
+        </motion.p>
 
         {/* Image dots */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="flex gap-2 mb-6"
+          transition={{ delay: 1.2, duration: 0.6 }}
+          className="flex justify-center gap-2 mb-6"
         >
           {images.map((_, i) => (
             <button
@@ -183,9 +194,7 @@ const HeroSection = () => {
             opacity: { duration: 0.4 },
             y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
           }}
-          onClick={() =>
-            document.getElementById("about")?.scrollIntoView({ behavior: "smooth" })
-          }
+          onClick={() => document.getElementById("why-here")?.scrollIntoView({ behavior: "smooth" })}
           className="text-white/60 hover:text-white/90 transition-colors"
           style={{ pointerEvents: showScroll ? "auto" : "none" }}
           aria-label="Прокрутить вниз"
@@ -193,67 +202,6 @@ const HeroSection = () => {
           <ChevronDown className="w-7 h-7" />
         </motion.button>
       </div>
-
-      {/* Bottom booking bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1, duration: 0.8 }}
-        className="absolute bottom-0 left-0 right-0 z-10"
-      >
-        <div className="max-w-4xl mx-auto px-4 pb-6 md:pb-10">
-          <div className="bg-white/95 backdrop-blur-md rounded-2xl shadow-card p-4 md:p-5">
-            <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wider text-center">
-              Подберём домик за 15 минут — без предоплаты
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <div className="flex gap-3 flex-1">
-                <div className="flex-1">
-                  <label className="block text-xs text-muted-foreground mb-1">Заезд</label>
-                  <input
-                    type="date"
-                    value={checkIn}
-                    onChange={(e) => setCheckIn(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="block text-xs text-muted-foreground mb-1">Выезд</label>
-                  <input
-                    type="date"
-                    value={checkOut}
-                    onChange={(e) => setCheckOut(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-lg bg-muted border border-input text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
-                </div>
-              </div>
-              <div className="flex gap-2 sm:flex-shrink-0">
-                <button
-                  onClick={handleBooking}
-                  className="flex-1 sm:flex-none px-6 py-2.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2"
-                >
-                  <CalendarDays className="w-4 h-4" />
-                  Узнать наличие
-                </button>
-                <a
-                  href={MAX_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2.5 border border-primary/30 text-primary rounded-lg text-sm font-medium hover:bg-primary/5 transition-colors flex items-center justify-center gap-2"
-                >
-                  <img src={maxLogo} alt="MAX" className="w-5 h-5 rounded-full" />
-                  MAX
-                </a>
-              </div>
-            </div>
-            {/* Urgency hint */}
-            <p className="text-[11px] text-center text-muted-foreground/70 mt-2.5">
-              <Users className="w-3 h-3 inline mr-1" />
-              Всего 8 домиков — на популярные даты бронируют за 2–3 недели
-            </p>
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 };
