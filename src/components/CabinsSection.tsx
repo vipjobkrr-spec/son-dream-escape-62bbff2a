@@ -7,9 +7,15 @@ import poolRound from "@/assets/cabins/pool-round.png";
 import poolRect from "@/assets/cabins/pool-rect.png";
 import territoryView from "@/assets/cabins/territory-view.png";
 import cabinsExterior from "@/assets/cabins/cabins-exterior.png";
+import familyWalk from "@/assets/cabins/family-walk.jpg";
+import terraceLoungers from "@/assets/cabins/terrace-loungers.jpg";
+import terraceSeating from "@/assets/cabins/terrace-seating.jpg";
 
 const slides = [
   { src: cabinsExterior, alt: "Домики базы отдыха Сон — вид снаружи" },
+  { src: familyWalk, alt: "Семья на территории базы отдыха" },
+  { src: terraceLoungers, alt: "Терраса с шезлонгами и видом на горы" },
+  { src: terraceSeating, alt: "Зона отдыха на террасе домика" },
   { src: poolRect, alt: "Бассейн с шезлонгами" },
   { src: territoryView, alt: "Территория базы с видом на горы" },
   { src: poolRound, alt: "Круглый бассейн на территории" },
